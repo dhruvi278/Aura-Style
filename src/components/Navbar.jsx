@@ -1,11 +1,11 @@
+import { SquareArrowOutUpRight } from "lucide-react";
 import Button from "./Button";
+import Logo from "./Logo";
 
-function Navbar(){
-    return(
+function Navbar() {
+    return (
         <div>
-            <div className="logo">
-                <h2>AuraStyle</h2>
-            </div>
+            <Logo />
             <div className="links">
                 <ul>
                     <li>Home</li>
@@ -13,9 +13,9 @@ function Navbar(){
                     <li>Support</li>
                 </ul>
             </div>
-            <div className="Buttons">
-                <Button text="Sign In"/>
-                <Button text="Get Start"/>
+            <div className="Buttons flex gap-3">
+                <Button variant="whiten" className="jost font-semibold" size="lg">Sign In</Button>
+                <Button className="jost font-bold">Get Start</Button>
             </div>
         </div>
     )

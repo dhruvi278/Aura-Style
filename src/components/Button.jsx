@@ -1,6 +1,6 @@
-function Button({text}){
+function Button({text, className}){
     return(
-        <Button type="submit" >{text}</Button>
+        <button type="submit" className={className} >{text}</button>
     )
 }
 export default Button;

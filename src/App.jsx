@@ -1,10 +1,15 @@
+
+// import './App.css'
+import Card from './components/Card'
 import Navbar from './components/Navbar'
-import TitleText from './components/TitleText'
+import image from './components/image.png'
 
 function App() {
+
   return (
     <>
-    <Navbar/>
+      <Navbar />
+      <Card src={image}/>
     </>
   )
 }

@@ -9,7 +9,7 @@ import TotalItems from './components/wardrobe/TotalItems'
 import Wardrobe from './pages/Wardrobe'
 
 function App() {
-
+  // const date = new Date(Date.now());
   return (
     <>
      <Wardrobe/>

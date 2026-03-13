@@ -6,13 +6,14 @@ import Formfield from './components/Formfield'
 import Navbar from './components/Navbar'
 
 import TotalItems from './components/wardrobe/TotalItems'
+import HomePage from './pages/HomePage'
 import Wardrobe from './pages/Wardrobe'
 
 function App() {
   // const date = new Date(Date.now());
   return (
     <>
-     <Wardrobe/>
+     <HomePage />
       
     </>
   )

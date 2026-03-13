@@ -38,7 +38,7 @@ function Navbar() {
 
     return (
         <>
-            <nav className="bg-[#faf2e5]/80 backdrop-blur-sm shadow-md sticky w-full z-50">
+            <nav className="bg-[#faf2e5]/80 backdrop-blur-sm shadow-md sticky top-0 w-full z-50">
 
                 <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
@@ -58,14 +58,15 @@ function Navbar() {
 
                     <div className="hidden md:flex gap-4">
                         <Button
-                            text="Sign In"
-                            className="hover:underline cursor-pointer transition-colors duration-200"
-                        />
+                            variant="whiten"
+                            className="jost hover:underline cursor-pointer transition-colors duration-200"
+                        >
+                            Sign In
+                        </Button>
 
                         <Button
-                            text="Get Start"
-                            className="bg-black rounded-3xl px-5 py-2 text-white hover:bg-gray-900 cursor-pointer transition-colors duration-200"
-                        />
+                            className="jost bg-black rounded-3xl px-5 py-2 text-white hover:bg-gray-900 cursor-pointer transition-colors duration-200"
+                        >Get Start</Button>
                     </div>
 
                     <div className="md:hidden flex items-center">

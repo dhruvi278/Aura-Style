@@ -8,8 +8,9 @@ function Card({ src, alt, cardTitle, cardText, type = "normal" }) {
 
 
     return (
-        <div
-            className={`group relative rounded-[24px] w-[320px] overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer ${type !== "normal" ? `border-2 border-dashed border-[#E7E1CF] hover:border-[#C9A96E]` : `bg-[#F0EDE6]`}`}
+        <article
+            aria-label={cardTitle}
+            className={`group relative rounded-[24px] w-full overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer ${type !== "normal" ? `border-2 border-dashed border-[#E7E1CF] hover:border-[#C9A96E]` : `bg-[#F0EDE6]`}`}
 
         >
             {/* Upload Card */}
@@ -21,24 +22,24 @@ function Card({ src, alt, cardTitle, cardText, type = "normal" }) {
             </div>}
 
             {/* Loading Effect */}
-            {!load && type === "normal" && <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#E8E2D9] via-[#F0EDE6] to-[#E8E2D9] bg-[length:200%_100%] animate-shimmer" />}
+            {!load && type === "normal" && <div aria-hidden="true   " className="absolute inset-0 z-10 bg-gradient-to-r from-[#E8E2D9] via-[#F0EDE6] to-[#E8E2D9] bg-[length:200%_100%] animate-shimmer" />}
 
             {/* Item Card */}
             {type === "normal" && <div>
-                <div className="aspect-[4/5] overflow-hidden bg-[#F0EDE6] relative">
+                <figure className="aspect-[4/5] overflow-hidden bg-[#F0EDE6] relative">
                     <img src={src} loading="lazy" alt={alt} onLoad={() => setLoad(true)} className={`w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105`} />
-                </div>
+                </figure>
 
-                <div className="bg-white px-6 py-5">
-                    <h3 className="playfair text-xl text-gray-800 mb-1">{cardTitle}</h3>
-                    <p className="work-sans text-xs tracking-[4px] text-[#EEBD2B] font-semibold uppercase">
+                <footer className="bg-white px-3 py-3 md:px-6 md:py-5">
+                    <h3 className="playfair text-sm sm:text-base md:text-lg lg:text-xl text-gray-800 mb-1">{cardTitle}</h3>
+                    <p className="work-sans text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs tracking-[2px] sm:tracking-[3px] md:tracking-[4px] text-[#EEBD2B] font-semibold uppercase">
                         {cardText}
                     </p>
 
-                </div>
+                </footer>
             </div>}
 
-        </div>
+        </article>
     );
 }
 

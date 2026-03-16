@@ -8,7 +8,7 @@ import AIResponce from './AIResponce'
 
 function OutfitForm() {
     return (
-        <section aria-label='Outfit form' className='flex flex-col gap-6 sm:gap-8 mr-0 md:mr-10 w-full md:w-[80%]'>
+        <section aria-label='Outfit form' className='flex flex-col gap-6 sm:gap-8 mr-0 md:mr-10 w-full lg:w-[80%]'>
 
             <form className='rounded-3xl bg-[#FDFAF6] p-4 sm:p-6 md:p-8 flex flex-col gap-4 border border-[#E7E5E4]'>
                 <h2 className='text-[#C5A059] work-sans font-bold text-[11px] sm:text-[12px] uppercase tracking-[2px]'>Request Details</h2>
@@ -36,7 +36,7 @@ function OutfitForm() {
                 </Button>
             </form>
 
-            <aside className='hidden md:block'>
+            <aside className='hidden lg:block'>
                 <AIResponce />
             </aside>
 

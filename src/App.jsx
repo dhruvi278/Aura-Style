@@ -15,11 +15,8 @@ function App() {
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/wardrobe' element={<Wardrobe />} />
-        <Route path='/generate_outfit' element={<GenerateOutfit />} />
-      </Routes>
+      <GenerateOutfit />
+      {/* <Wardrobe /> */}
 
     </>
   )

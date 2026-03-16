@@ -17,7 +17,7 @@ function Wardrobe() {
     return (
         <div className='flex flex-col gap-5 pt-12 bg-[#E7E1CF]/40' >
             {/* <Navbar /> */}
-            <div className='flex flex-col gap-10 px-10'>
+            <div className='flex flex-col gap-10 px-12'>
                 <section aria-label='My worddrobe' className='flex flex-col md:flex-row md:justify-between md:items-end gap-4'>
                     {/* Headings */}
                     <div>
@@ -26,7 +26,7 @@ function Wardrobe() {
                     </div>
                     <Button className="w-full md:w-auto flex gap-2 justify-center">
                         <CirclePlus color="#ffff" />
-                        <span className='newsreader uppercase'>Upload items</span>
+                        <span className='newsreader uppercase text-md sm:text-lg'>Upload items</span>
                     </Button>
                 </section>
 

@@ -13,7 +13,7 @@ function FilterTabs({ filters = DEFAULT_FILTERS, onFilterChange }) {
   };
 
   return (
-    <nav aria-label="wardrobe filters" className="overflow-x-auto scrollbar-hide">
+    <nav aria-label="wardrobe filters" className="overflow-x-auto scrollbar-hide pb-2 sm:pb-4 lg:pb-6 border-b border-[#E7E1CF]/50">
       <ul className="flex items-center gap-2 min-w-max">
         {filters.map((filter) => (
           <li key={filter}>

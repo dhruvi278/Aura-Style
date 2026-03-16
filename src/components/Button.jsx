@@ -3,7 +3,9 @@ function Button({ children,type, onClick, variant = "primary", className }) {
     const styles = {
         primary: "bg-black text-white",
         secondray: "bg-[#ECB613] text-black",
-        whiten: "bg-white text-black border"
+        whiten: "bg-white text-black border",
+        signin: "bg-none"
+
     }
     return (
         <button type={type} onClick={onClick}

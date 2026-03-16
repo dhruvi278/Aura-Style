@@ -56,15 +56,18 @@ function Navbar() {
                         </li>
                     </ul>
 
-                    <div className="hidden md:flex gap-4">
+                    <div className="hidden md:flex gap-4 ">
                         <Button
-                            text="Sign In"
-                            className="hover:underline cursor-pointer transition-colors duration-200"
+                            children="Sign In"
+                            // className="hover:underline cursor-pointer transition-colors duration-200"
+                            variant="signin"
+                            // className="bg-[#faf2e5]"
                         />
 
                         <Button
-                            text="Get Start"
-                            className="bg-black rounded-3xl px-5 py-2 text-white hover:bg-gray-900 cursor-pointer transition-colors duration-200"
+                            type="submit"
+                            children="Get Start"
+                            variant="primary"
                         />
                     </div>
 
@@ -89,12 +92,12 @@ function Navbar() {
 
             <div
                 ref={sidebarRef}
-                className={`md:hidden fixed  right-0 h-screen w-[220px] bg-[#faf2e5]/90 backdrop-blur-md p-6 
-                z-50 transform transition-transform duration-300 shadow-lg 
+                className={`md:hidden fixed  right-0 h-screen w-[220px] bg-[#faf2e5]/80 backdrop-blur-md p-6 
+                z-50 transform transition-transform duration-300 shadow-lg flex flex-col justify-between 
                 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
             >
 
-                <ul className="flex flex-col gap-6 text-gray-700 font-medium mt-10">
+                <ul className="flex flex-col gap-6 text-gray-700 font-medium ">
 
                     <li className="hover:text-black hover:scale-105 cursor-pointer transition-all duration-200">
                         Home
@@ -108,21 +111,20 @@ function Navbar() {
                         Support
                     </li>
 
-                    <li>
-                        <Button
-                            text="Sign In"
-                            className="hover:scale-105 transition-all duration-200"
-                        />
-                    </li>
-
-                    <li>
-                        <Button
-                            text="Get Start"
-                            className="bg-black text-white rounded-3xl px-5 py-2 hover:bg-gray-900 hover:scale-105 transition-all duration-200"
-                        />
-                    </li>
-
                 </ul>
+                <div className="mb-15 pt-2 border-t border-[#c0c0b391] text-center">
+                        <Button
+                            children="Sign In"
+                            //className="hover:scale-105 transition-all duration-200"
+                            variant="signin"
+                        />
+
+                        <Button
+                            children="Get Start"
+                            //className="bg-black text-white rounded-3xl px-5 py-2 hover:bg-gray-900 hover:scale-105 transition-all duration-200"
+                            variant="primary"
+                        />
+                </div>
 
             </div>
         </>

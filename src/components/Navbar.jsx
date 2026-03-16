@@ -1,12 +1,18 @@
 import { useState, useRef, useEffect } from "react";
 import Button from "./Button";
+<<<<<<< HEAD
 import { Menu, X, LogOut } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import Logo from "./Logo";
+=======
+import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+>>>>>>> signup_page
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const sidebarRef = useRef(null);
+<<<<<<< HEAD
     
     const [isLoggedIn, setIsLoggedIn] = useState(true);
 
@@ -25,6 +31,9 @@ function Navbar() {
         {name:'Support', path:'/support'},
         {name:'Pricing', path:'/pricing'}
     ];
+=======
+    const navigate = useNavigate();
+>>>>>>> signup_page
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -64,6 +73,7 @@ function Navbar() {
 
                     <Logo/>
 
+<<<<<<< HEAD
                     <ul className="hidden lg:flex gap-8 text-gray-700 font-medium">
                    
                         {(isLoggedIn? privateLinks : publicLinks).map((link) =>(
@@ -78,6 +88,18 @@ function Navbar() {
                                
                             </li>
                         ))}
+=======
+                    <ul className="hidden md:flex gap-8 text-gray-700 font-medium">
+                        <li onClick={() => navigate('/')} className="hover:text-black cursor-pointer transition-colors duration-200">
+                            Home
+                        </li>
+                        <li className="hover:text-black cursor-pointer transition-colors duration-200">
+                            Our Story
+                        </li>
+                        <li className="hover:text-black cursor-pointer transition-colors duration-200">
+                            Support
+                        </li>
+>>>>>>> signup_page
                     </ul>
 
                     <div className="hidden lg:flex gap-4 ">
@@ -101,6 +123,7 @@ function Navbar() {
                                         variant="transparent"
                                     />
 
+<<<<<<< HEAD
                                     <Button
                                         type="submit"
                                         children="Get Start"
@@ -109,6 +132,12 @@ function Navbar() {
                             </>
                         )}
                         
+=======
+                        <Button
+                        onClick={() => navigate('/signup')}
+                            className="jost bg-black rounded-3xl px-5 py-2 text-white hover:bg-gray-900 cursor-pointer transition-colors duration-200"
+                        >Get Start</Button>
+>>>>>>> signup_page
                     </div>
 
                     <div className="lg:hidden flex items-center">

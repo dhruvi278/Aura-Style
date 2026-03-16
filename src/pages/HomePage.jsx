@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar";
 const HomePage = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <main>
       <About />
       <WorkSection />

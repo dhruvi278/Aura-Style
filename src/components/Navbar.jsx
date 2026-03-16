@@ -1,10 +1,30 @@
 import { useState, useRef, useEffect } from "react";
 import Button from "./Button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LogOut } from "lucide-react";
+import { NavLink } from "react-router-dom";
+import Logo from "./Logo";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const sidebarRef = useRef(null);
+    
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+
+    const publicLinks = [
+        {name:'Home', path:'/'},
+        {name:'Our story', path:'/ourstory'},
+        {name:'Support', path:'/support'}
+    ];
+    const privateLinks = [
+        {name:'Dashboard', path:'/dashboard'},
+        {name:'Wardrobe',path:'/wardrobe'},
+        {name:'Outfit Generate', path:'/generate_outfit'},
+        {name:'Profile', path:'/profile'},
+        {name:'History' ,path:'/history'},
+        {name:'Support', path:'/support'},
+        {name:'Pricing', path:'/pricing'}
+    ];
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -42,36 +62,56 @@ function Navbar() {
 
                 <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-                    <h2 className="text-xl font-bold">AuraStyle</h2>
+                    <Logo/>
 
-                    <ul className="hidden md:flex gap-8 text-gray-700 font-medium">
-                        <li className="hover:text-black cursor-pointer transition-colors duration-200">
-                            Home
-                        </li>
-                        <li className="hover:text-black cursor-pointer transition-colors duration-200">
-                            Our Story
-                        </li>
-                        <li className="hover:text-black cursor-pointer transition-colors duration-200">
-                            Support
-                        </li>
+                    <ul className="hidden lg:flex gap-8 text-gray-700 font-medium">
+                   
+                        {(isLoggedIn? privateLinks : publicLinks).map((link) =>(
+                            <li key={link.path}>
+                                <NavLink to={link.path} 
+                                  className={({isActive }) => `pb-1 transition-colors duration-200 ${
+                                    isActive
+                                      ? "border-b-2 border-gray-700" 
+                                      : "hover: text-black"
+                                  }`}
+                                >{link.name}</NavLink>
+                               
+                            </li>
+                        ))}
                     </ul>
 
-                    <div className="hidden md:flex gap-4 ">
-                        <Button
-                            children="Sign In"
-                            // className="hover:underline cursor-pointer transition-colors duration-200"
-                            variant="signin"
-                            // className="bg-[#faf2e5]"
-                        />
+                    <div className="hidden lg:flex gap-4 ">
+                        {isLoggedIn ? (
+                            <>
+                                    <Button
+                                        type="submit"
+                                        children="LOGOUT"
+                                        variant="transparent"
+                                        className="flex items-center gap-2"
+                                    >
+                                        <LogOut size={18} />
+                                        LOGOUT
+                                    </Button>
+                             
+                            </>
+                        ):(
+                            <>
+                                    <Button
+                                        children="Sign In"
+                                        variant="transparent"
+                                    />
 
-                        <Button
-                            type="submit"
-                            children="Get Start"
-                            variant="primary"
-                        />
+                                    <Button
+                                        type="submit"
+                                        children="Get Start"
+                                        variant="primary"
+                                    />
+                            </>
+                        )}
+                        
                     </div>
 
-                    <div className="md:hidden flex items-center">
+                    <div className="lg:hidden flex items-center">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="p-2 rounded-md hover:bg-gray-200 transition-colors duration-200"
@@ -92,38 +132,52 @@ function Navbar() {
 
             <div
                 ref={sidebarRef}
-                className={`md:hidden fixed  right-0 h-screen w-[220px] bg-[#faf2e5]/80 backdrop-blur-md p-6 
+                className={`lg:hidden fixed  right-0 h-screen w-[220px] bg-[#faf2e5]/80 backdrop-blur-md p-6 
                 z-50 transform transition-transform duration-300 shadow-lg flex flex-col justify-between 
                 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
             >
 
                 <ul className="flex flex-col gap-6 text-gray-700 font-medium ">
 
-                    <li className="hover:text-black hover:scale-105 cursor-pointer transition-all duration-200">
-                        Home
-                    </li>
-
-                    <li className="hover:text-black hover:scale-105 cursor-pointer transition-all duration-200">
-                        Our Story
-                    </li>
-
-                    <li className="hover:text-black hover:scale-105 cursor-pointer transition-all duration-200">
-                        Support
-                    </li>
-
+                    {(isLoggedIn? privateLinks : publicLinks).map((link) =>(
+                        <li key={link.path}>
+                            <NavLink to={link.path}
+                             className={({isActive}) => 
+                            `pb-1 transition-colors duration-200 ${
+                                isActive
+                                ? "border-b-2 border-gray-700"
+                                : "text-black"
+                            }`}>{link.name}</NavLink>
+                        </li>
+                    ))}
+                    
                 </ul>
                 <div className="mb-15 pt-2 border-t border-[#c0c0b391] text-center">
-                        <Button
-                            children="Sign In"
-                            //className="hover:scale-105 transition-all duration-200"
-                            variant="signin"
-                        />
+                        {isLoggedIn ? (
+                            <>
+                            <Button
+                                type="submit"
+                                children="LOGOUT"
+                                variant="transparent"
+                                className="flex items-center gap-2"
+                            >
+                                <LogOut size={18} />
+                                LOGOUT
+                            </Button>
+                            </>
+                        ):(
+                            <>
+                                <Button
+                                    children="Sign In"
+                                    variant="transparent"
+                                />
 
-                        <Button
-                            children="Get Start"
-                            //className="bg-black text-white rounded-3xl px-5 py-2 hover:bg-gray-900 hover:scale-105 transition-all duration-200"
-                            variant="primary"
-                        />
+                                <Button
+                                    children="Get Start"
+                                    variant="primary"
+                                />
+                            </>
+                        )}
                 </div>
 
             </div>
@@ -132,6 +186,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-
-

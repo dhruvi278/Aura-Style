@@ -59,11 +59,13 @@ function Navbar() {
                     <div className="hidden md:flex gap-4">
                         <Button
                             variant="whiten"
-                            className="hover:underline cursor-pointer transition-colors duration-200 jost"
-                        >Sign In</Button>
+                            className="jost hover:underline cursor-pointer transition-colors duration-200"
+                        >
+                            Sign In
+                        </Button>
 
                         <Button
-                            className="bg-black rounded-3xl px-5 py-2 text-white hover:bg-gray-900 cursor-pointer transition-colors duration-200 jost"
+                            className="jost bg-black rounded-3xl px-5 py-2 text-white hover:bg-gray-900 cursor-pointer transition-colors duration-200"
                         >Get Start</Button>
                     </div>
 

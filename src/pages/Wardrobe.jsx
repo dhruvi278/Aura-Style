@@ -7,6 +7,7 @@ import { CirclePlus } from 'lucide-react'
 import FilterTabs from "../components/wardrobe/FilterTab";
 import CardGrid from '../components/CardGrid'
 import Card from '../components/Card'
+import Pagination from '../components/Pagination'
 
 
 
@@ -14,17 +15,20 @@ import Card from '../components/Card'
 function Wardrobe() {
 
     return (
-        <div className='flex flex-col gap-5' >
-            <Navbar />
+        <div className='flex flex-col gap-5 pt-12 bg-[#E7E1CF]/40' >
+            {/* <Navbar /> */}
             <div className='flex flex-col gap-10 px-10'>
-                <div className='flex justify-between items-end-safe'>
+                <section aria-label='My worddrobe' className='flex flex-col md:flex-row md:justify-between md:items-end gap-4'>
                     {/* Headings */}
                     <div>
                         <TitleText title='My Wardrobe' description='' />
                         <TotalItems />
                     </div>
-                    <Button><div className='flex gap-2 items-center'><CirclePlus color="#ffff" /><span className='newsreader uppercase'>Upload items</span></div></Button>
-                </div>
+                    <Button className="w-full md:w-auto flex gap-2 justify-center">
+                        <CirclePlus color="#ffff" />
+                        <span className='newsreader uppercase'>Upload items</span>
+                    </Button>
+                </section>
 
                 {/* FilterBar */}
                 <div className='sticky top-18  z-40 backdrop-blur-sm py-3 w-full '>
@@ -42,8 +46,11 @@ function Wardrobe() {
                     <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" />
                     <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" />
                     <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" />
-                    
+
                 </CardGrid>
+                <div>
+                    <Pagination totalPages={30} currentPage={15} />
+                </div>
             </div>
         </div>
     )

@@ -12,4 +12,4 @@ function TitleText({
     )
 }
 
-export default TitleText
+export default TitleText;

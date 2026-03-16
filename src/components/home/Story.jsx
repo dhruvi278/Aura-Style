@@ -11,25 +11,27 @@ const Story = () => {
               “
             </span>
             <div>
-              <blockquote className="playfair text-[28px] lg:text-[36px] mb-4 leading-10">
+              <blockquote className="playfair text-[32px] lg:text-[36px] mb-4 leading-10">
                 Style is a way to say who you are without having to speak.
               </blockquote>
               <cite className="work-sans text-[#C5A059] text-[12px] font-bold mb-10 not-italic block">
                 — AuraStyle Manifesto
               </cite>
-              <p className="work-sans text-[16px] text-[#1A1A18]/80 mb-6">
+            </div>
+            
+          </div>
+          
+              <p className="work-sans text-[18px] text-[#1A1A18]/80 mb-6">
                 AuraStyle was born at the intersection of haute couture and
                 neural engineering. We believe that true luxury is not just what
                 you wear, but the peace of mind that comes from knowing your
                 wardrobe is perfectly aligned with your identity.
               </p>
-              <p className="work-sans text-[16px] text-[#1A1A18]/80">
+              <p className="work-sans text-[18px] text-[#1A1A18]/80">
                 Our mission is to democratize the luxury styling experience,
                 providing everyone with a world-class fashion consultant that
                 fits in their pocket.
               </p>
-            </div>
-          </div>
         </div>
 
         <div className="flex-1 flex gap-4">

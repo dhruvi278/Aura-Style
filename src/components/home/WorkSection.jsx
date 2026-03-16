@@ -14,16 +14,16 @@ const WorkSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Card-1 */}
-          <article className="bg-[#EDE9E2] rounded-2xl p-10 flex flex-col gap-6">
+          <article className="bg-[#EDE9E2] rounded-2xl p-5 md:p-10 flex flex-col gap-6">
             <div className="text-[#C5A059]">
               <Sparkles size={30} />
             </div>
 
             <div className="flex flex-col gap-2">
-              <h3 className="text-[20px] playfair-display font-bold">
+              <h3 className="text-[24px] playfair-display font-bold">
                 Curation
               </h3>
-              <p className="work-sans text-[14px] text-[#1A1A18]/70">
+              <p className="work-sans text-[16px] text-[#1A1A18]/70">
                 Every look is handpicked by AI trained on thousands of
                 silhouettes — aligned to your lifestyle rhythm, and evolving
                 aesthetic identity.
@@ -31,17 +31,17 @@ const WorkSection = () => {
             </div>
           </article>
 
-          <article className="bg-[#EDE9E2] rounded-2xl p-10 flex flex-col gap-6">
+          <article className="bg-[#EDE9E2] rounded-2xl p-5 md:p-10 flex flex-col gap-6">
             <div className="text-[#C5A059]">
               <Cpu size={30} />
             </div>
 
             {/* Card-2 */}
             <div className="flex flex-col gap-2">
-              <h3 className="text-[20px] playfair-display font-bold">
+              <h3 className="text-[24px] playfair-display font-bold">
                 Intelligence
               </h3>
-              <p className="work-sans text-[14px] text-[#1A1A18]/70">
+              <p className="work-sans text-[16px] text-[#1A1A18]/70">
                 AuraStyle learns continuously. The more you interact, the
                 sharper its eye becomes — surfacing outfits that feel
                 effortless, not algorithmic.
@@ -50,11 +50,11 @@ const WorkSection = () => {
           </article>
 
           {/* Card-3 */}
-          <article className="bg-[#EDE9E2] rounded-2xl p-10 flex flex-col gap-6">
+          <article className="bg-[#EDE9E2] rounded-2xl p-5 md:p-10 flex flex-col gap-6">
             <div className="text-[#C5A059]"><Leaf size={30} /></div>
             <div className="flex flex-col gap-2">
-              <h3 className="text-[20px] playfair-display font-bold">Conscious Dressing</h3>
-              <p className="work-sans text-[14px] text-[#1A1A18]/70">
+              <h3 className="text-[24px] playfair-display font-bold">Conscious Dressing</h3>
+              <p className="work-sans text-[16px] text-[#1A1A18]/70">
                 Maximize what you already own. AuraStyle identifies wardrobe
                 gaps and only recommends pieces that earn their place in your
                 closet.

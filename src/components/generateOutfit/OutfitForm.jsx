@@ -1,24 +1,25 @@
 import React from 'react'
 import CustomSelect from './CustomSelect'
 import Button from '../Button'
-import { MessagesSquare, Sparkles } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
+import AIResponce from './AIResponce'
 
 
 
 function OutfitForm() {
     return (
-        <div className='flex flex-col gap-8 mr-10 w-[80%]'>
+        <section aria-label='Outfit form' className='flex flex-col gap-6 sm:gap-8 mr-0 md:mr-10 w-full md:w-[80%]'>
 
-            <div className='rounded-3xl bg-[#FDFAF6] p-8 flex flex-col gap-4 border border-[#E7E5E4]'>
-                <p className='text-[#C5A059] work-sans font-bold text-[12px] uppercase'>Request Details</p>
+            <form className='rounded-3xl bg-[#FDFAF6] p-4 sm:p-6 md:p-8 flex flex-col gap-4 border border-[#E7E5E4]'>
+                <h2 className='text-[#C5A059] work-sans font-bold text-[11px] sm:text-[12px] uppercase tracking-[2px]'>Request Details</h2>
                 <CustomSelect label={`Occassion*`} placeholder='Select an occassion' />
                 <label className='flex flex-col gap-2' htmlFor="description">
-                    <p className='work-sans uppercase text-[14px] text-[#A8A29E] tracking-[2px]'>describe your event</p>
+                    <p className='work-sans uppercase text-[10px] sm:text-[11px] md:text-[13px] text-[#A8A29E] tracking-[2px]'>describe your event</p>
                     <textarea
-                        className=' bg-[#F5F0E8] w-full work-sans resize-none scrollbar-hide 
-                                    text-[13px] sm:text-[14px]
-                                    p-3
-                                    rounded-[14px]
+                        className='bg-[#F5F0E8] w-full work-sans resize-none scrollbar-hide 
+                                    text-[12px] sm:text-[13px] md:text-[14px]
+                                    p-2 sm:p-3
+                                    rounded-[10px] sm:rounded-[14px]
                                     border border-[#E7E1CF]
                                     placeholder:text-[#1A1A18]/30 placeholder:italic placeholder:playfair
                                     focus:outline-none focus:border-[#C9A96E]
@@ -29,21 +30,17 @@ function OutfitForm() {
                         rows={4}
                     />
                 </label>
-                <Button className="flex gap-2 justify-center items-center mb-8">
-                    <Sparkles color="#C5A059" fill='#C5A059' />
-                    <span className='text-[14px] work-sans uppercase font-semibold py-4 tracking-[2px]'>Generate My Outfit</span>
+                <Button className="flex gap-2 justify-center items-center w-full mb-4 sm:mb-8">
+                    <Sparkles size={16} color="#C5A059" fill='#C5A059' aria-hidden='true' />
+                    <span className='text-[10px] sm:text-[13px] md:text-[14px] work-sans uppercase font-semibold py-2 sm:py-4 tracking-[2px]'>Generate My Outfit</span>
                 </Button>
-            </div>
+            </form>
 
-            <div className='p-6 border-l-4 border-[#C5A059] bg-[#EDE9E2] rounded-lg flex flex-col gap-2'>
-                <div className='flex gap-2 items-center'>
-                    <MessagesSquare size={16} color="#C5A059" />
-                    <span className='work-sans text-[12px] text-[#57534E] uppercase font-bold tracking-[1px]'>Message or Error</span>
-                </div>
-                <div className='work-sans text-[16px]'>"Error message ."</div>
-            </div>
+            <aside className='hidden md:block'>
+                <AIResponce />
+            </aside>
 
-        </div>
+        </section>
     )
 }
 

@@ -9,25 +9,27 @@ function OutfitCard() {
 
     const outfitItems = [Shirt, Pant, Shoes];
     return (
-        <div className='flex flex-col gap-8 ml-10'>
-            <figure className='bg-[#FDFAF6] border border-[#E7E5E4] rounded-3xl px-8 py-10'>
-                <img src={GenerateOutfitImg} alt="Generated Outfit" className='h-125 overflow-hidden w-full object-cover rounded-2xl' />
+        <article aria-label='Generated Outfit' className='flex flex-col gap-4 sm:gap-6 md:gap-8 ml-0 md:ml-10'>
+            <figure className='bg-[#FDFAF6] border border-[#E7E5E4] rounded-3xl px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-10'>
+                <img src={GenerateOutfitImg} alt="Generated Outfit" className='w-full h-[280px] sm:h-[360px] md:h-[420px] lg:h-[500px] object-cover object-top over' />
             </figure>
 
-            <section className='flex justify-between items-center px-8'>
-                <div className='flex gap-4'>
+            <section aria-label='Outfit actions' className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 px-2 sm:px-4 md:px-8'>
+                <ul className='flex gap-2 sm:gap-3 md:gap-4'>
                     {outfitItems.map((items, i) =>
-                        <figure key={i} className='p-2'>
-                            <img src={items} alt={items} />
-                        </figure>
+                        <li key={i}>
+                            <figure className='p-1 sm:p-2'>
+                                <img src={items} alt={items} className='w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-cover rounded-lg' />
+                            </figure>
+                        </li>
                     )}
-                </div>
-                <div className='flex gap-3'>
-                    <Button variant='bordered' className="border-[#E7E5E4]"><span className='work-sans text-[12px] uppercase font-semibold tracking-[2px]'>Regenerate</span></Button>
-                    <Button className="border-[#E7E5E4]"><span className='work-sans text-[12px] uppercase font-semibold tracking-[2px]'>Select look</span></Button>
+                </ul>
+                <div className='flex gap-2 sm:gap-3'>
+                    <Button variant='bordered' className="border-[#E7E5E4]"><span className='work-sans text-[10px] sm:text-[12px] uppercase font-semibold tracking-[1px] sm:tracking-[2px]'>Regenerate</span></Button>
+                    <Button className="border-[#E7E5E4]"><span className='work-sans text-[10px] sm:text-[12px] uppercase font-semibold tracking-[1px] sm:tracking-[2px]'>Select look</span></Button>
                 </div>
             </section>
-        </div>
+        </article>
     )
 }
 

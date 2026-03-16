@@ -14,8 +14,8 @@ function App() {
   return (
     <>
       <Navbar />
-      {/* <GenerateOutfit /> */}
-      <Wardrobe />
+      <GenerateOutfit />
+      {/* <Wardrobe /> */}
 
     </>
   )

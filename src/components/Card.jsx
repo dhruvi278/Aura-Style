@@ -10,7 +10,7 @@ function Card({ src, alt, cardTitle, cardText, type = "normal" }) {
     return (
         <article
             aria-label={cardTitle}
-            className={`group relative rounded-[48px] w-full overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer ${type !== "normal" ? `border-2 border-dashed border-[#E7E1CF] hover:border-[#C9A96E]` : `bg-[#F0EDE6]`}`}
+            className={`group relative rounded-[24px] lg:rounded-[48px] w-full overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer ${type !== "normal" ? `border-2 border-dashed border-[#E7E1CF] hover:border-[#C9A96E]` : `bg-[#F0EDE6]`}`}
 
         >
             {/* Upload Card */}
@@ -30,7 +30,7 @@ function Card({ src, alt, cardTitle, cardText, type = "normal" }) {
                     <img src={src} loading="lazy" alt={alt} onLoad={() => setLoad(true)} className={`w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105`} />
                 </figure>
 
-                <footer className="bg-[#F0EDE6] px-3 py-3 md:px-6 md:py-5">
+                <footer className="bg-white/50 px-3 py-3 md:px-6 md:py-5">
                     <h3 className="playfair text-sm sm:text-base md:text-lg lg:text-xl text-gray-800 mb-1">{cardTitle}</h3>
                     <p className="work-sans text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs tracking-[2px] sm:tracking-[3px] md:tracking-[4px] text-[#EEBD2B] font-semibold uppercase">
                         {cardText}

@@ -1,8 +1,10 @@
 import React from 'react'
 import AboutLady from "../../assets/home/About_Lady.png";
 import Button from "../Button";
+import { useNavigate } from 'react-router-dom';
 
 const About = () => {
+  const navigate = useNavigate();
   return (
     <section className="min-h-screen w-full bg-[#F7F4EF] flex justify-center items-center px-6 py-20">
         <div className="max-w-6xl w-full flex flex-col lg:flex-row justify-between gap-12 lg:gap-16">
@@ -19,9 +21,9 @@ const About = () => {
               sensibility with sophisticated AI logic. Tailored to your
               silhouette, lifestyle, and unique aura.
             </p>
-            <Button className='w-fit work-sans font-semibold tracking-[1.5px] text-[14px]'><p className='px-4'>Start Your Journey</p></Button>
+            <Button onClick={() => navigate('/signup')} className='w-fit work-sans font-semibold tracking-[1.5px] text-[14px]'><p className='px-4'>Start Your Journey</p></Button>
           </div>
-          <div className="flex-1 max-h-125 lg:max-h-full">
+          <div className="flex-1 min-h-125 lg:max-h-full">
             <img
               src={AboutLady}
               alt="Fashion model wearing a curated AuraStyle outfit"

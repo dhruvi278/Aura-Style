@@ -9,6 +9,7 @@ const Formfield = ({
   label,
   children,
   props,
+  placeholder,
   className
 }) => {
   return (
@@ -26,11 +27,12 @@ const Formfield = ({
             type={type}
             value={value}
             onChange={onChange}
+            placeholder={placeholder}
             {...props}
-            className="jost w-full px-5 py-3 rounded-full border border-gray-300 
+            className={`jost w-full px-5 py-3 rounded-full border border-gray-300 
             bg-[#FDFAF6] outline-none 
             focus:border-[#EEBD2B] focus:ring-2 focus:ring-[#EEBD2B]/30
-            placeholder:text-gray-400 transition"
+            placeholder:text-gray-400 transition ${className}`}
           />
 
           {/* Error */}

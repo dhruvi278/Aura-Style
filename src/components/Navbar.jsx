@@ -38,7 +38,7 @@ function Navbar() {
 
     return (
         <>
-            <nav className="bg-[#faf2e5]/80 backdrop-blur-sm shadow-md sticky w-full z-50">
+            <nav className="bg-[#faf2e5]/80 backdrop-blur-sm shadow-md sticky top-0 w-full z-50">
 
                 <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 

@@ -1,23 +1,46 @@
-function Card({ src, alt, text1,text2 }) {
-    return (
-        <div className="mt-20 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
-            {/* Image */}
-            <div className="overflow-hidden">
-                <img
-                    src={src}
-                    alt={alt}
-                    className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
-                />
-            </div>
+import { Plus } from "lucide-react";
+import { useState } from "react";
 
-            {/* Content */}
-            <div className="p-4">
-                {/* <h1 className="text-lg font-bold mb-2">GHello</h1> */}
-                <p className="text-gray-700 mb-1">{text1}</p>
-                <p className="text-gray-500 text-sm">{text2}</p>
-            </div>
-        </div>
+function Card({ src, alt, cardTitle, cardText, type = "normal" }) {
+
+
+    const [load, setLoad] = useState(false)
+
+
+    return (
+        <article
+            aria-label={cardTitle}
+            className={`group relative rounded-[24px] w-full overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer ${type !== "normal" ? `border-2 border-dashed border-[#E7E1CF] hover:border-[#C9A96E]` : `bg-[#F0EDE6]`}`}
+
+        >
+            {/* Upload Card */}
+            {type !== "normal" && <div className="aspect-[4/5] flex flex-col justify-center items-center gap-3">
+                <div className="p-2 border border-dashed border-[#E7E1CF] rounded-full group-hover:border-[#C9A96E]">
+                    <Plus size={28} color="#1C1C1A" className="opacity-20 group-hover:opacity-40" />
+                </div>
+                <div className="uppercase newsreader text-md text-[#1C1C1A] opacity-40 group-hover:opacity-60">add Item</div>
+            </div>}
+
+            {/* Loading Effect */}
+            {!load && type === "normal" && <div aria-hidden="true   " className="absolute inset-0 z-10 bg-gradient-to-r from-[#E8E2D9] via-[#F0EDE6] to-[#E8E2D9] bg-[length:200%_100%] animate-shimmer" />}
+
+            {/* Item Card */}
+            {type === "normal" && <div>
+                <figure className="aspect-[4/5] overflow-hidden bg-[#F0EDE6] relative">
+                    <img src={src} loading="lazy" alt={alt} onLoad={() => setLoad(true)} className={`w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105`} />
+                </figure>
+
+                <footer className="bg-white px-3 py-3 md:px-6 md:py-5">
+                    <h3 className="playfair text-sm sm:text-base md:text-lg lg:text-xl text-gray-800 mb-1">{cardTitle}</h3>
+                    <p className="work-sans text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs tracking-[2px] sm:tracking-[3px] md:tracking-[4px] text-[#EEBD2B] font-semibold uppercase">
+                        {cardText}
+                    </p>
+
+                </footer>
+            </div>}
+
+        </article>
     );
 }
 
-export default Card;                    
+export default Card;

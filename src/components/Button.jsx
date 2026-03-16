@@ -5,7 +5,6 @@ function Button({ children, type, onClick, variant = "primary", className }) {
         secondray: "bg-[#ECB613] text-black",
         whiten: "bg-white text-black border",
         transparent: "bg-none",
-
         // whiten: " text-black",
         bordered: "border border-[#E7E5E4] text-black"
     }

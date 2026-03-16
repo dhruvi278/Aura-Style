@@ -22,7 +22,7 @@ function Card({ src, alt, cardTitle, cardText, type = "normal" }) {
             </div>}
 
             {/* Loading Effect */}
-            {!load && type === "normal" && <div aria-hidden="true   " className="absolute inset-0 z-10 bg-gradient-to-r from-[#E8E2D9] via-[#F0EDE6] to-[#E8E2D9] bg-[length:200%_100%] animate-shimmer" />}
+            {!load && type === "normal" && <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-r from-[#E8E2D9] via-[#F0EDE6] to-[#E8E2D9] bg-[length:200%_100%] animate-shimmer" />}
 
             {/* Item Card */}
             {type === "normal" && <div>

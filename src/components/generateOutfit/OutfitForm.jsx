@@ -35,7 +35,7 @@ function OutfitForm() {
                     <span className='text-[10px] sm:text-[13px] md:text-[14px] work-sans uppercase font-semibold py-2 sm:py-4 tracking-[2px]'>Generate My Outfit</span>
                 </Button>
             </form>
-
+                                                                                                
             <aside className='hidden md:block'>
                 <AIResponce />
             </aside>

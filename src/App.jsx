@@ -10,13 +10,17 @@ import TotalItems from './components/wardrobe/TotalItems'
 import HomePage from './pages/HomePage'
 import Wardrobe from './pages/Wardrobe'
 import GenerateOutfit from './pages/GenerateOutfit'
+import QuickActions from './components/Dashboard/QuickActions'
+import Dashboard from './pages/Dashboard'
 
 function App() {
   return (
     <>
       <Navbar />
-      <GenerateOutfit />
+      {/* <GenerateOutfit /> */}
       {/* <Wardrobe /> */}
+      <Dashboard/>
+      {/* <QuickActions/> */}
 
     </>
   )

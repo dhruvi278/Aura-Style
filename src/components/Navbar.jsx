@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import Button from "./Button";
 import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const sidebarRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -45,7 +47,7 @@ function Navbar() {
                     <h2 className="text-xl font-bold">AuraStyle</h2>
 
                     <ul className="hidden md:flex gap-8 text-gray-700 font-medium">
-                        <li className="hover:text-black cursor-pointer transition-colors duration-200">
+                        <li onClick={() => navigate('/')} className="hover:text-black cursor-pointer transition-colors duration-200">
                             Home
                         </li>
                         <li className="hover:text-black cursor-pointer transition-colors duration-200">
@@ -65,6 +67,7 @@ function Navbar() {
                         </Button>
 
                         <Button
+                        onClick={() => navigate('/signup')}
                             className="jost bg-black rounded-3xl px-5 py-2 text-white hover:bg-gray-900 cursor-pointer transition-colors duration-200"
                         >Get Start</Button>
                     </div>

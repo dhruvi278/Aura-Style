@@ -6,7 +6,7 @@ import TitleText from "../components/TitleText";
 
 function Dashboard (){
     return(
-        <div className="px-18 pt-10 bg-[#F7F4EF] flex flex-col gap-20">
+        <div className="px-10 pt-10 bg-[#F7F4EF] flex flex-col gap-20">
             <TitleText title="Welcome back, Eleanor" description="Your curated wardrobe is ready for today's selection."/>
             <div>
                 <QuickActions />

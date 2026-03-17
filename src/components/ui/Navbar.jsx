@@ -7,23 +7,23 @@ import Logo from "./Logo";
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const sidebarRef = useRef(null);
-    
+
     const [isLoggedIn, setIsLoggedIn] = useState(true);
 
 
     const publicLinks = [
-        {name:'Home', path:'/'},
-        {name:'Our story', path:'/ourstory'},
-        {name:'Support', path:'/support'}
+        { name: 'Home', path: '/' },
+        { name: 'Our story', path: '/ourstory' },
+        { name: 'Support', path: '/support' }
     ];
     const privateLinks = [
-        {name:'Dashboard', path:'/dashboard'},
-        {name:'Wardrobe',path:'/wardrobe'},
-        {name:'Outfit Generate', path:'/generate_outfit'},
-        {name:'Profile', path:'/profile'},
-        {name:'History' ,path:'/history'},
-        {name:'Support', path:'/support'},
-        {name:'Pricing', path:'/pricing'}
+        { name: 'Dashboard', path: '/dashboard' },
+        { name: 'Wardrobe', path: '/wardrobe' },
+        { name: 'Outfit Generate', path: '/generate_outfit' },
+        { name: 'Profile', path: '/profile' },
+        { name: 'History', path: '/history' },
+        { name: 'Support', path: '/support' },
+        { name: 'Pricing', path: '/pricing' }
     ];
 
     useEffect(() => {
@@ -62,20 +62,19 @@ function Navbar() {
 
                 <div className="min-full mx-auto px-6 py-4 flex justify-between items-center">
 
-                    <Logo/>
+                    <Logo />
 
                     <ul className="hidden lg:flex gap-8 text-gray-700 font-medium">
-                   
-                        {(isLoggedIn? privateLinks : publicLinks).map((link) =>(
+
+                        {(isLoggedIn ? privateLinks : publicLinks).map((link) => (
                             <li key={link.path}>
-                                <NavLink to={link.path} 
-                                  className={({isActive }) => `pb-1 transition-colors duration-200 ${
-                                    isActive
-                                      ? "border-b-2 border-gray-700" 
-                                      : "hover: text-black"
-                                  }`}
+                                <NavLink to={link.path}
+                                    className={({ isActive }) => `pb-1 transition-colors duration-200 ${isActive
+                                            ? "border-b-2 border-gray-700"
+                                            : "hover: text-black"
+                                        }`}
                                 >{link.name}</NavLink>
-                               
+
                             </li>
                         ))}
                     </ul>
@@ -83,32 +82,32 @@ function Navbar() {
                     <div className="hidden lg:flex gap-4 ">
                         {isLoggedIn ? (
                             <>
-                                    <Button
-                                        type="submit"
-                                        children="LOGOUT"
-                                        variant="transparent"
-                                        className="flex items-center gap-2"
-                                    >
-                                        <LogOut size={18} />
-                                        LOGOUT
-                                    </Button>
-                             
-                            </>
-                        ):(
-                            <>
-                                    <Button
-                                        children="Sign In"
-                                        variant="transparent"
-                                    />
+                                <Button
+                                    type="submit"
+                                    children="LOGOUT"
+                                    variant="transparent"
+                                    className="flex items-center gap-2"
+                                >
+                                    <LogOut size={18} />
+                                    LOGOUT
+                                </Button>
 
-                                    <Button
-                                        type="submit"
-                                        children="Get Start"
-                                        variant="primary"
-                                    />
+                            </>
+                        ) : (
+                            <>
+                                <Button
+                                    children="Sign In"
+                                    variant="transparent"
+                                />
+
+                                <Button
+                                    type="submit"
+                                    children="Get Start"
+                                    variant="primary"
+                                />
                             </>
                         )}
-                        
+
                     </div>
 
                     <div className="lg:hidden flex items-center">
@@ -139,22 +138,22 @@ function Navbar() {
 
                 <ul className="flex flex-col gap-6 text-gray-700 font-medium ">
 
-                    {(isLoggedIn? privateLinks : publicLinks).map((link) =>(
-                        <li key={link.path}>
+                    {(isLoggedIn ? privateLinks : publicLinks).map((link) => (
+                        <li onClick={() => setIsOpen(false)} key={link.path}>
                             <NavLink to={link.path}
-                             className={({isActive}) => 
-                            `pb-1 transition-colors duration-200 ${
-                                isActive
-                                ? "border-b-2 border-gray-700"
-                                : "text-black"
-                            }`}>{link.name}</NavLink>
+
+                                className={({ isActive }) =>
+                                    `pb-1 transition-colors duration-200 ${isActive
+                                        ? "border-b-2 border-gray-700"
+                                        : "text-black"
+                                    }`}>{link.name}</NavLink>
                         </li>
                     ))}
-                    
+
                 </ul>
                 <div className="mb-15 pt-2 border-t border-[#c0c0b391] text-center">
-                        {isLoggedIn ? (
-                            <>
+                    {isLoggedIn ? (
+                        <>
                             <Button
                                 type="submit"
                                 children="LOGOUT"
@@ -164,20 +163,20 @@ function Navbar() {
                                 <LogOut size={18} />
                                 LOGOUT
                             </Button>
-                            </>
-                        ):(
-                            <>
-                                <Button
-                                    children="Sign In"
-                                    variant="transparent"
-                                />
+                        </>
+                    ) : (
+                        <>
+                            <Button
+                                children="Sign In"
+                                variant="transparent"
+                            />
 
-                                <Button
-                                    children="Get Start"
-                                    variant="primary"
-                                />
-                            </>
-                        )}
+                            <Button
+                                children="Get Start"
+                                variant="primary"
+                            />
+                        </>
+                    )}
                 </div>
 
             </div>

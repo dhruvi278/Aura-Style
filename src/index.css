@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Actor&family=Alexandria:wght@100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+
 @import "tailwindcss";
 
 .playfair-display {
@@ -36,6 +37,11 @@
   font-style: normal;
 }
 
+
+.alexandria {
+  font-family: "Alexandria", sans-serif;
+}
+
 @theme {
   --animate-shimmer: shimmer 1.5s infinite linear;
 
@@ -59,4 +65,61 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+}
+
+/* ── Base toast ── */
+.aura-toast {
+    border-left: 3px solid #E7E1CF !important;
+    transition: all 0.3s ease !important;
+}
+
+/* ── Title ── */
+.aura-toast-title {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    font-style: italic !important;
+    color: #1A1A18 !important;
+    letter-spacing: 0.01em !important;
+}
+
+/* ── Description ── */
+.aura-toast-description {
+    font-family: 'Jost', sans-serif !important;
+    font-size: 12px !important;
+    color: #6B6460 !important;
+    letter-spacing: 0.03em !important;
+    margin-top: 3px !important;
+}
+
+/* ── Success ── */
+.aura-toast-success {
+    border-left: 3px solid #C9A96E !important;
+    background: #FDFAF6 !important;
+}
+
+/* ── Error ── */
+.aura-toast-error {
+    border-left: 3px solid #C0705A !important;
+    background: #FDFAF6 !important;
+}
+
+/* ── Loading ── */
+.aura-toast-loading {
+    border-left: 3px solid #A8A29E !important;
+    background: #FDFAF6 !important;
+}
+
+/* ── Action button ── */
+.aura-toast-action {
+    font-family: 'Jost', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    background: #1A1A18 !important;
+    color: #FDFAF6 !important;
+    border-radius: 50px !important;
+    padding: 6px 14px !important;
+    border: none !important;
 }

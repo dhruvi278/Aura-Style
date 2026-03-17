@@ -3,7 +3,7 @@ import GenerateOutfitImg from '../../assets/GenerateOutfit.png'
 import Shirt from '../../assets/Shirt.png'
 import Pant from '../../assets/Pant.png'
 import Shoes from '../../assets/Shoes.png'
-import Button from '../Button'
+import Button from '../ui/Button'
 
 function OutfitCard() {
 

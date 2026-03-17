@@ -1,5 +1,5 @@
 import React from 'react'
-import TitleText from '../components/TitleText'
+import TitleText from '../components/ui/TitleText'
 import OutfitForm from '../components/generateOutfit/OutfitForm'
 import OutfitCard from '../components/generateOutfit/OutfitCard'
 import AIResponce from '../components/generateOutfit/AIResponce'

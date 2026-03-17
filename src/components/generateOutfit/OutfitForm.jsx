@@ -1,6 +1,6 @@
 import React from 'react'
 import CustomSelect from './CustomSelect'
-import Button from '../Button'
+import Button from '../ui/Button'
 import { Sparkles } from 'lucide-react'
 import AIResponce from './AIResponce'
 

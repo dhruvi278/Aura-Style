@@ -3,6 +3,7 @@ import Logo from "../Logo";
 import TitleText from "../TitleText";
 import Formfield from "../Formfield";
 import Button from "../Button";
+import { Link } from "react-router-dom";
 
 const SignUpForm = () => {
   return (
@@ -28,14 +29,18 @@ const SignUpForm = () => {
               />
             </div>
             <div className="flex-1">
-            <Formfield
-              label="Phone Number"
-              type="tel"
-              placeholder="+1 (555) 000-0000"
-            />
+              <Formfield
+                label="Phone Number"
+                type="tel"
+                placeholder="+1 (555) 000-0000"
+              />
             </div>
           </div>
-          <Formfield label="Password *" type="password" placeholder="••••••••" />
+          <Formfield
+            label="Password *"
+            type="password"
+            placeholder="••••••••"
+          />
           <div className="flex flex-col gap-2">
             {/* Label */}
             <label className="jost uppercase text-sm text-gray-600 font-medium">
@@ -58,7 +63,17 @@ const SignUpForm = () => {
             <p className="jost py-1 tracking-[2px]">CREATE ACCOUNT →</p>
           </Button>
         </form>
-        <p className="jost text-[14px] text-[#64748B] text-center">Already part of the inner circle? <span className="text-[#C4A982] font-medium cursor-pointer">Login</span></p>
+        <div className="flex gap-1 justify-center">
+          <p className="work-sans text-[14px] text-[#64748B]">
+            Already part of the inner circle?
+          </p>
+          <Link
+            to={"/login"}
+            className="work-sans text-[14px] text-[#C4A982] font-bold"
+          >
+            Login
+          </Link>
+        </div>
       </div>
     </section>
   );

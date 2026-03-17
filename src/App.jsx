@@ -11,6 +11,7 @@ import Wardrobe from "./pages/Wardrobe";
 import GenerateOutfit from "./pages/GenerateOutfit";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/generate_outfit" element={<GenerateOutfit />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
     </>
   );

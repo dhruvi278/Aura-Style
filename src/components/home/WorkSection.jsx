@@ -3,7 +3,7 @@ import React from "react";
 
 const WorkSection = () => {
   return (
-    <section className="w-full bg-[#EDE9E2]/80 flex justify-center items-center py-20 px-6">
+    <section id="workSection" className="w-full bg-[#EDE9E2]/80 flex justify-center items-center py-20 px-6">
       <div className="max-w-6xl w-full flex flex-col gap-16">
         <div className="flex flex-col gap-4 justify-center items-center text-center">
           <h2 className="playfair-display text-[36px]">The Aura Experience</h2>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SideImg from "../../assets/signup/signup_sideimg.jpg";
-import Logo from "../Logo";
+import Logo from "../ui/Logo";
 
 const SignUpSideImg = () => {
   const [load, setLoad] = useState(false);

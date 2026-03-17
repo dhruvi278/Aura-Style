@@ -1,8 +1,8 @@
 import React from "react";
-import Logo from "../Logo";
-import TitleText from "../TitleText";
-import Formfield from "../Formfield";
-import Button from "../Button";
+import Logo from "../ui/Logo";
+import TitleText from "../ui/TitleText";
+import Formfield from "../ui/Formfield";
+import Button from "../ui/Button";
 
 const SignUpForm = () => {
   return (

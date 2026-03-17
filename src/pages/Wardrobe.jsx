@@ -1,13 +1,13 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import TitleText from '../components/TitleText'
+// import Navbar from '../components/Navbar'
+import TitleText from '../components/ui/TitleText'
 import TotalItems from '../components/wardrobe/TotalItems'
-import Button from '../components/Button'
+import Button from '../components/ui/Button'
 import { CirclePlus } from 'lucide-react'
 import FilterTabs from "../components/wardrobe/FilterTab";
-import CardGrid from '../components/CardGrid'
-import Card from '../components/Card'
-import Pagination from '../components/Pagination'
+import CardGrid from '../components/ui/CardGrid'
+import Card from '../components/ui/Card'
+import Pagination from '../components/ui/Pagination'
 
 
 

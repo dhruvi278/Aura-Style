@@ -2,7 +2,7 @@ import CollectionOverview from "../components/Dashboard/CollectionOverview";
 import QuickActions from "../components/Dashboard/QuickActions";
 import QuickGenerateOption from "../components/Dashboard/QuickGenerateOption";
 import RecentlyGenerated from "../components/Dashboard/RecentlyGenerated";
-import TitleText from "../components/TitleText";
+import TitleText from "../components/ui/TitleText";
 
 function Dashboard (){
     return(

@@ -1,16 +1,12 @@
 // import './App.css'
 import { Route, Routes } from "react-router-dom";
-import Card from "./components/Card";
-import CardGrid from "./components/CardGrid";
-import Formfield from "./components/Formfield";
-import Navbar from "./components/Navbar";
-
-import TotalItems from "./components/wardrobe/TotalItems";
+import Navbar from "./components/ui/Navbar";
 import HomePage from "./pages/HomePage";
 import Wardrobe from "./pages/Wardrobe";
 import GenerateOutfit from "./pages/GenerateOutfit";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
+import Support from "./pages/Support";
 
 function App() {
   return (
@@ -22,6 +18,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard/>}/>
           <Route path="/generate_outfit" element={<GenerateOutfit />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/support" element={<Support/>} />
         </Routes>
     </>
   );

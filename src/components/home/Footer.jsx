@@ -1,5 +1,6 @@
 import { Facebook, Instagram } from "lucide-react";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -14,9 +15,9 @@ const Footer = () => {
         <nav className="flex-1 flex flex-col gap-4" aria-label="Footer Navigation">
           <h3 className="work-sans text-[12px] font-bold">Navigation</h3>
           <div className="flex flex-col gap-2">
-            <p className="work-sans text-[12px] text-[#1A1A18]/60 hover:text-[#C5A059] cursor-pointer">About</p>
-            <p className="work-sans text-[12px] text-[#1A1A18]/60 hover:text-[#C5A059] cursor-pointer">How It Works</p>
-            <p className="work-sans text-[12px] text-[#1A1A18]/60 hover:text-[#C5A059] cursor-pointer">Support</p>
+            <NavLink to={`/#about`} className="work-sans text-[12px] text-[#1A1A18]/60 hover:text-[#C5A059] cursor-pointer">About</NavLink>
+            <NavLink to={`/#workSection`} className="work-sans text-[12px] text-[#1A1A18]/60 hover:text-[#C5A059] cursor-pointer">How It Works</NavLink>
+            <NavLink to={`/support`} className="work-sans text-[12px] text-[#1A1A18]/60 hover:text-[#C5A059] cursor-pointer">Support</NavLink>
           </div>
         </nav>
         <div className="flex-1 flex flex-col gap-4">

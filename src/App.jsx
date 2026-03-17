@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import Support from "./pages/Support";
 import Profile from "./pages/Profile";
+import History from "./pages/History";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/generate_outfit" element={<GenerateOutfit />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/profile" element={<Profile/>}/>
+          <Route path="/history" element={<History/>}/>
           <Route path="/support" element={<Support/>} />
         </Routes>
     </>

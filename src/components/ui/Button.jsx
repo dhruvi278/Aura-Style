@@ -1,3 +1,4 @@
+
 function Button({ children, type, onClick, variant = "primary", className }) {
 
     const styles = {
@@ -5,6 +6,7 @@ function Button({ children, type, onClick, variant = "primary", className }) {
         secondray: "bg-[#ECB613] text-black",
         whiten: "bg-white text-black border",
         transparent: "bg-none",
+        upload: "bg-[#EDE9E2] text-black",
         // whiten: " text-black",
         bordered: "border border-[#E7E5E4] text-black"
     }

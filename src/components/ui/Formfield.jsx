@@ -10,15 +10,20 @@ const Formfield = ({
   children,
   props,
   placeholder,
-  className
+  className,
+  variant="primary"
 }) => {
+  const style ={
+    primary:"text-gray-600",
+    secondary: "text-[#C5A059]"
+  }
   return (
     <>
       {children || (
         <div className="flex flex-col gap-2">
 
           {/* Label */}
-          <label className="jost uppercase text-sm text-gray-600 font-medium">
+          <label className={`${style[variant]} jost uppercase text-sm  font-medium`}>
             {label}
           </label>
 

@@ -10,6 +10,7 @@ import Support from "./pages/Support";
 import Profile from "./pages/Profile";
 import { Toaster } from "sonner";
 
+import History from "./pages/History";
 
 function App() {
   return (

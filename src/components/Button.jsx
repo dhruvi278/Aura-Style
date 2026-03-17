@@ -1,4 +1,4 @@
-function Button({ children, type, onClick, variant = "primary", className }) {
+function Button({ children, type, onClick, variant = "primary", className, disabled = false }) {
 
     const styles = {
         primary: "bg-black text-white",
@@ -10,7 +10,8 @@ function Button({ children, type, onClick, variant = "primary", className }) {
     }
     return (
         <button type={type} onClick={onClick}
-            className={`${styles[variant]}  rounded-full ${variant === "whiten" ? `hover:underline cursor-pointer transition-colors duration-200` : `hover:cursor-pointer hover:scale-105 hover:shadow-md transition-all duration-200`} px-4 py-2 md:px-6 md:py-3 ${className}`}>
+            disabled={disabled}
+            className={`${styles[variant]}  rounded-full ${variant === "whiten" ? `hover:underline cursor-pointer transition-colors duration-200` : `hover:cursor-pointer hover:scale-105 hover:shadow-md transition-all duration-200`} px-4 py-2 md:px-6 md:py-3 ${className} disabled:bg-gray-500 disabled:cursor-not-allowed disabled:hover:scale-100`}>
             {children} </ button>
     )
 }

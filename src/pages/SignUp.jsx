@@ -1,6 +1,5 @@
 import React from 'react'
 import SideImg from '../components/signup & login/SideImg'
-import Form from '../components/signup & login/Form'
 import SignUpSideImg from "../assets/signup & login/signup_sideimg.jpg";
 import SignUpForm from '../components/signup & login/SignUpForm';
 

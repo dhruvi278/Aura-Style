@@ -9,8 +9,8 @@ const SideImg = ({image, quote}) => {
       <div className="p-5 lg:p-0">
         {!load && (
           <div
-            aria-hidden="true   "
-            className="absolute inset-0 z-10 bg-gradient-to-r from-[#E8E2D9] via-[#F0EDE6] to-[#E8E2D9] bg-[length:200%_100%] animate-shimmer"
+            aria-hidden="true"
+            className="absolute inset-0 z-10 bg-linear-to-r from-[#E8E2D9] via-[#F0EDE6] to-[#E8E2D9] bg-size-[200%_100%] animate-shimmer"
           />
         )}
         <img

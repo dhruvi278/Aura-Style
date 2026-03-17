@@ -2,15 +2,13 @@ import React from 'react'
 
 const Formfield = ({
   name,
-  value,
   type = "text",
-  onChange,
   error,
   label,
   children,
-  props,
   placeholder,
-  className
+  className,
+  register,
 }) => {
   return (
     <>
@@ -24,11 +22,10 @@ const Formfield = ({
 
           {/* Input */}
           <input
+            name={name}
+            {...(register ? register(name) : {})}
             type={type}
-            value={value}
-            onChange={onChange}
             placeholder={placeholder}
-            {...props}
             className={`jost w-full px-5 py-3 rounded-full border border-gray-300 
             bg-[#FDFAF6] outline-none 
             focus:border-[#EEBD2B] focus:ring-2 focus:ring-[#EEBD2B]/30
@@ -36,7 +33,7 @@ const Formfield = ({
           />
 
           {/* Error */}
-          <p className="text-red-500 text-xs min-h-4">{error}</p>
+          <p className={`text-red-500 text-xs min-h-4 mb-2 transition-opacity duration-200 ${error ? "opacity-100" : "opacity-0"}`}>{error || " "}</p>
         </div>
       )}
     </>

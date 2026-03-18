@@ -3,8 +3,18 @@
 
 @import "tailwindcss";
 
+/* @import "flowbite/dist/flowbite.css";
+@import "flowbite-datepicker/dist/index.css"; */
+/* @import "../node_modules/flowbite-datepicker/dist/flowbite-datepicker.css"; */
+/* 
+@import "tailwindcss";
+@plugin "flowbite/plugin"; */
+@import "tailwindcss";
+@source "../node_modules/flowbite-react/dist";
+@source "../node_modules/flowbite/dist";
 @plugin "flowbite/plugin";
-
+/* @import "flowbite-datepicker/dist/flowbite-datepicker.css"; */
+/* @import "flowbite-datepicker/dist/flowbite-datepicker.css"; */
 
 .playfair-display {
   font-family: "Playfair Display", serif;
@@ -127,3 +137,59 @@
     border: none !important;
 }
 
+
+/* Fix Flowbite calendar vertical layout issue */
+[datepicker] .datepicker-grid,
+.datepicker-grid {
+  display: grid !important;
+  grid-template-columns: repeat(7, 1fr) !important;
+}
+/* 
+.datepicker-controls {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+.custom-datepicker input {
+  
+  padding-left: 8px;
+}
+.datepicker {
+  left: 0 !important;
+  right: auto !important;
+}
+
+@media (max-width: 640px) {
+  .datepicker {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+} */
+
+/* 
+@media (max-width: 640px) {
+  .datepicker {
+    width: 90vw !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+}
+/* force the calendar popup to open to the left */
+/* [data-testid="flowbite-datepicker-popup"] {
+  right: 0 !important;
+  left: auto !important;
+} */
+/* in your stylesheet */
+/* .datepicker-left {
+  right: 0 !important;  
+  left: auto !important;
+} */
+/* align datepicker to the left */
+/* .datepicker-container {
+  position: relative;
+}
+.datepicker-container .flowbite-datepicker-popup {
+  left: 0 !important;
+  right: auto !important;
+}  */

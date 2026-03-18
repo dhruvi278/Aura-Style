@@ -2,6 +2,7 @@ import React from 'react'
 import AboutLady from "../../assets/home/About_Lady.png";
 import Button from "../ui/Button";
 import { useNavigate } from 'react-router-dom';
+import { Typewriter } from "@/components/ui/typewriter-text"
 
 const About = () => {
   const navigate = useNavigate();
@@ -12,15 +13,22 @@ const About = () => {
           <h5 className="work-sans font-bold text-[12px] text-[#C5A059] tracking-[2.4px]">
             AI-Powered Fashion Intelligence
           </h5>
-          <h1 className="playfair-display text-[48px] lg:text-[72px] leading-tight lg:leading-20">
+          <h1 className="min-h-60 md:min-h-30 lg:min-h-60  playfair-display text-[48px] lg:text-[72px] leading-tight lg:leading-20">
             Dress with Intention.{" "}
-            <span className="italic">Every Single Day</span>.
+            <Typewriter
+                text={["Every Single Day.", "Own Every Moment.", "Wear Your Mindset."]}
+                speed={100}
+                loop={true}
+                className="playfair-display text-[#B89B5E] text-[48px] lg:text-[72px] leading-tight lg:leading-20 italic"
+            />
+            {/* <span className="italic">Every Single Day</span>. */}
           </h1>
           <p className="lg:text-[18px] text-[16px] text-[#1A1A18] work-sans leading-[29.3px] max-w-md md:block hidden">
             Experience a personal wardrobe stylist that blends high-fashion
             sensibility with sophisticated AI logic. Tailored to your
             silhouette, lifestyle, and unique aura.
           </p>
+          
           <Button onClick={() => navigate('/signup')} className='w-fit work-sans font-semibold tracking-[1.5px] text-[14px]'><p className='px-4'>Start Your Journey</p></Button>
         </div>
         <div className="flex-1 min-h-125 lg:max-h-full">

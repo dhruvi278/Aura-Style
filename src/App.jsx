@@ -7,6 +7,7 @@ import GenerateOutfit from "./pages/GenerateOutfit";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import Support from "./pages/Support";
+import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
 import { Toaster } from "sonner";
 
@@ -16,7 +17,6 @@ import History from "./pages/History";
 function App() {
   return (
     <>
-        
       <Toaster
         position="top-center"
         gap={12}
@@ -24,28 +24,28 @@ function App() {
         toastOptions={{
           duration: 3000,
           style: {
-            background: '#FDFAF6',
-            border: '1px solid #E7E1CF',
-            borderRadius: '16px',
-            padding: '14px 18px',
-            color: '#1A1A18',
-            fontFamily: 'Jost, sans-serif',
-            fontSize: '13px',
-            fontWeight: '400',
-            letterSpacing: '0.02em',
-            boxShadow: '0 8px 32px rgba(28,28,26,0.10)',
-            minWidth: '300px',
-            maxWidth: '380px',
+            background: "#FDFAF6",
+            border: "1px solid #E7E1CF",
+            borderRadius: "16px",
+            padding: "14px 18px",
+            color: "#1A1A18",
+            fontFamily: "Jost, sans-serif",
+            fontSize: "13px",
+            fontWeight: "400",
+            letterSpacing: "0.02em",
+            boxShadow: "0 8px 32px rgba(28,28,26,0.10)",
+            minWidth: "300px",
+            maxWidth: "380px",
           },
           classNames: {
-            toast: 'aura-toast',
-            title: 'aura-toast-title',
-            description: 'aura-toast-description',
-            success: 'aura-toast-success',
-            error: 'aura-toast-error',
-            loading: 'aura-toast-loading',
-            actionButton: 'aura-toast-action',
-          }
+            toast: "aura-toast",
+            title: "aura-toast-title",
+            description: "aura-toast-description",
+            success: "aura-toast-success",
+            error: "aura-toast-error",
+            loading: "aura-toast-loading",
+            actionButton: "aura-toast-action",
+          },
         }}
       />
       <Navbar />
@@ -58,6 +58,7 @@ function App() {
         <Route path="/history" element={<History/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/support" element={<Support />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </>
   );

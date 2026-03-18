@@ -7,7 +7,11 @@ function Button({ children, type, onClick, variant = "primary", className, disab
         transparent: "bg-none",
         upload: "bg-[#EDE9E2] text-black",
         // whiten: " text-black",
-        bordered: "border border-[#E7E5E4] text-black"
+        bordered: "border border-[#E7E5E4] text-black",
+        ghost: {
+            base: 'bg-[#EDE9E2] text-[#1A1A18] border border-[#DDD8D0]',
+            hover: 'hover:border-[#C9A96E] hover:text-[#A8895E]',
+        }
     }
     return (
         <button type={type} onClick={onClick}

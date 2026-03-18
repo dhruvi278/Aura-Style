@@ -9,6 +9,7 @@ import CardGrid from '../components/ui/CardGrid'
 import Card from '../components/ui/Card'
 import Pagination from '../components/ui/Pagination'
 import Modal from '../components/ui/Modal'
+import UploadOption from '../components/ui/UploadOption'
 
 
 
@@ -40,6 +41,7 @@ function Wardrobe() {
                     <FilterTabs onFilterChange={(filter) => console.log(filter)} />
                 </div>
 
+
                 {/* Cards */}
                 <CardGrid>
                     <Card src="https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
@@ -63,7 +65,9 @@ function Wardrobe() {
                 title='Add to Your Wardrobe'
                 description='Upload a piece and let AI identify the details for you'
                 size='md'
-            ></Modal>
+            >
+                <UploadOption onClose={() => setUploadOpen(false)} onUpload={(e) => console.log(e.target)} />
+            </Modal>
         </div>
     )
 }

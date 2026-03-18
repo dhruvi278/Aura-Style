@@ -23,7 +23,7 @@ const SideImg = ({image, quote}) => {
       </div>
       {/* Text */}
       
-        <div className="absolute bottom-10 left-10 right-10 text-[#FDFAF6] max-w-md ">
+        <div className={`absolute bottom-10 left-10 right-10 text-[#FDFAF6] max-w-md ${!load && 'hidden'}`}>
           <Logo />
           <blockquote className="playfair italic text-[30px] mt-8">
             {quote}

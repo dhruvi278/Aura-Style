@@ -1,15 +1,11 @@
 import { ChevronDown, ChevronUp, CircleQuestionMark, MessageSquareQuote } from 'lucide-react'
 import React, { useState } from 'react'
-import { toast } from 'sonner';
 
 function Question({ question, answer }) {
   const [open, setOpen] = useState(false)
 
   const handleClick = () => {
     setOpen(prev => !prev);
-    toast.success('Profile updated', {
-      description: 'Your style identity has been saved',
-    })
   }
 
   return (
@@ -22,7 +18,7 @@ function Question({ question, answer }) {
 
         <div className='flex gap-4 items-center'>
           <CircleQuestionMark color="#F2CC0D" strokeWidth={3} />
-          <h3 className='work-sans font-medium text-[16px] sm:text-[18px] md:text-[19px] select-none'>{question}?</h3>
+          <h3 className='work-sans text-left font-medium text-[16px] sm:text-[18px] md:text-[19px] select-none'>{question}?</h3>
         </div>
         {open ? <ChevronUp color="#94A3B8" /> : <ChevronDown color="#94A3B8" />}
       </button>

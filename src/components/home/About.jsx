@@ -2,6 +2,7 @@ import React from 'react'
 import AboutLady from "../../assets/home/About_Lady.png";
 import Button from "../ui/Button";
 import { useNavigate } from 'react-router-dom';
+import { Typewriter } from "@/components/ui/typewriter-text"
 
 const About = () => {
   const navigate = useNavigate();
@@ -21,6 +22,12 @@ const About = () => {
             sensibility with sophisticated AI logic. Tailored to your
             silhouette, lifestyle, and unique aura.
           </p>
+          <Typewriter
+                text={["Welcome to HextaUI", "Build awesome websites.", "hextaui.com"]}
+                speed={100}
+                loop={true}
+                className="text-xl font-medium"
+            />
           <Button onClick={() => navigate('/signup')} className='w-fit work-sans font-semibold tracking-[1.5px] text-[14px]'><p className='px-4'>Start Your Journey</p></Button>
         </div>
         <div className="flex-1 min-h-125 lg:max-h-full">

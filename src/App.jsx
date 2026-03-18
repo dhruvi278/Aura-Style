@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <Toaster
-        position="top-center"
+        position="bottom-right"
         gap={12}
         visibleToasts={3}
         toastOptions={{

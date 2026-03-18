@@ -4,6 +4,7 @@ import Logo from "../ui/Logo";
 import TitleText from "../ui/TitleText";
 import Button from "../ui/Button";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 const LoginForm = () => {
   const {
@@ -17,7 +18,12 @@ const LoginForm = () => {
 
   const onSubmit = async (data) => {
     await new Promise((res) => setTimeout(res, 5000));
-    alert("Logged in")
+    // toast.success('Login Successfully', {
+    //   description: 'Welcom back at your Style',
+    // })
+    toast.error('Invalid credentials', {
+      description: 'Please check your email and password',
+    })
     console.log("Sign up data:", data);
   };
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import Navbar from '../components/Navbar'
 import TitleText from '../components/ui/TitleText'
 import TotalItems from '../components/wardrobe/TotalItems'
@@ -8,11 +8,16 @@ import FilterTabs from "../components/wardrobe/FilterTab";
 import CardGrid from '../components/ui/CardGrid'
 import Card from '../components/ui/Card'
 import Pagination from '../components/ui/Pagination'
+import Modal from '../components/ui/Modal'
 
 
 
 
 function Wardrobe() {
+
+
+    const [uploadOpen, setUploadOpen] = useState(false)
+
 
     return (
         <div className='flex flex-col gap-5 pt-12 bg-[#E7E1CF]/40' >
@@ -24,7 +29,7 @@ function Wardrobe() {
                         <TitleText title='My Wardrobe' description='' />
                         <TotalItems />
                     </div>
-                    <Button className="w-full md:w-auto flex gap-2 justify-center">
+                    <Button onClick={() => setUploadOpen(true)} className="w-full md:w-auto flex gap-2 justify-center">
                         <CirclePlus color="#ffff" />
                         <span className='newsreader uppercase text-md sm:text-lg'>Upload items</span>
                     </Button>
@@ -37,21 +42,28 @@ function Wardrobe() {
 
                 {/* Cards */}
                 <CardGrid>
-                    <Card src="https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" />
-                    <Card src="https://images.pexels.com/photos/5560028/pexels-photo-5560028.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" />
-                    <Card src="https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" />
-                    <Card src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" />
-                    <Card src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" />
-                    <Card src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" />
-                    <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" />
-                    <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" />
-                    <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" />
+                    <Card src="https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
+                    <Card src="https://images.pexels.com/photos/5560028/pexels-photo-5560028.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
+                    <Card src="https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
+                    <Card src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
+                    <Card src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
+                    <Card src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
+                    <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
+                    <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
+                    <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
 
                 </CardGrid>
                 <div>
                     <Pagination totalPages={30} currentPage={15} />
                 </div>
             </div>
+            <Modal
+                isOpen={uploadOpen}
+                onClose={() => setUploadOpen(false)}
+                title='Add to Your Wardrobe'
+                description='Upload a piece and let AI identify the details for you'
+                size='md'
+            ></Modal>
         </div>
     )
 }

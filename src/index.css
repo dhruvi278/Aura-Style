@@ -3,6 +3,9 @@
 
 @import "tailwindcss";
 
+@plugin "flowbite/plugin";
+
+
 .playfair-display {
   font-family: "Playfair Display", serif;
 }
@@ -123,3 +126,4 @@
     padding: 6px 14px !important;
     border: none !important;
 }
+

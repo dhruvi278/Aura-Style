@@ -5,7 +5,7 @@ function ProfileCard(){
         <div className="px-5 py-9 md:py-13  flex flex-col justify-center items-center gap-4 w-2xs md:w-lg lg:w-sm bg-[#FDFAF6] rounded-4xl h-1/2">
             <div  className="flex rounded-xl">
                 <img src="https://static.vecteezy.com/system/resources/previews/019/495/228/non_2x/woman-girl-avatar-user-person-long-hair-pink-clothing-flat-style-vector.jpg" alt="photo" 
-                className="h-30 w-30 p-1.5 rounded-full border-2" />
+                    className="h-30 w-30 p-1.5 rounded-full border-3 border-[#C5A059]" />
             </div>
             <div className="flex flex-col items-center">
                 <p className="text-3xl actor-regular font-bold">Riddhi</p>

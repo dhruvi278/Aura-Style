@@ -17,7 +17,7 @@ function ProfileForm(){
                 type="email"
                 name="email"
                 value="ridhi@gmail.com"
-                variant="secondary"
+                variant="secondary" 
                 className="border-b-1 border-t-0 border-l-0 border-r-0 rounded-none "/>
                 <Formfield label="Phone Number"
                 type="text"

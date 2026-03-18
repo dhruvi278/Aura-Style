@@ -11,6 +11,7 @@ import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
 import { Toaster } from "sonner";
 
+
 import History from "./pages/History";
 
 function App() {
@@ -54,6 +55,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/generate_outfit" element={<GenerateOutfit />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/history" element={<History/>}/>
+        <Route path="/profile" element={<Profile/>}/>
         <Route path="/support" element={<Support />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile" element={<Profile />} />

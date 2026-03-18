@@ -7,6 +7,7 @@ import GenerateOutfit from "./pages/GenerateOutfit";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import Support from "./pages/Support";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/generate_outfit" element={<GenerateOutfit />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/support" element={<Support/>} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
     </>
   );

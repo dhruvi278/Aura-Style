@@ -1,13 +1,14 @@
 import { Facebook, Instagram } from "lucide-react";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Logo from "../ui/Logo";
 
 const Footer = () => {
   return (
     <footer className="pt-12 w-full bg-[#F7F4EF] border border-[#1A1A18]/5 flex flex-col justify-center items-center">
       <div className="max-w-6xl w-full flex flex-col sm:flex-row gap-10 mb-12 px-6">
         <div className="flex-1 flex flex-col gap-6 ">
-          <h2 className="playfair-display text-[24px] font-bold">AuraStyle</h2>
+          <Logo />
           <p className="work-sans text-[12px] text-[#1A1A18]/60 max-w-50">
             The premier AI-powered personal stylist for the modern era.
           </p>

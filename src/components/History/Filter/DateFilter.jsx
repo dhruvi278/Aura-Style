@@ -1,163 +1,122 @@
-import { useState, useEffect, useRef } from "react";
-import { Datepicker } from "flowbite-react";
+import React, { useState, useRef, useEffect } from 'react';
+import { DateRange } from 'react-date-range';
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
+import { CalendarDays } from 'lucide-react';
 
 function DateFilter() {
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
-    const [startKey, setStartKey] = useState(0);
-    const [endKey, setEndKey] = useState(0);
+    const [selectionRange, setSelectionRange] = useState(null);
 
-    const startRef = useRef(null);
-    const endRef = useRef(null);
+    const [tempRange, setTempRange] = useState({
+        startDate: new Date(),
+        endDate: new Date(),
+        key: 'selection',
+    });
 
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    const [isOpen, setIsOpen] = useState(false);
 
-    // Clear the input text after remount when date is null
-    useEffect(() => {
-        if (!startDate && startRef.current) {
-            const input = startRef.current.querySelector("input");
-            if (input) input.value = "";
-        }
-    }, [startKey]);
+    const containerRef = useRef(null);
 
     useEffect(() => {
-        if (!endDate && endRef.current) {
-            const input = endRef.current.querySelector("input");
-            if (input) input.value = "";
-        }
-    }, [endKey]);
+        const handleClickOutside = (e) => {
+            if (containerRef.current && !containerRef.current.contains(e.target)) {
+                setIsOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
-    const handleStartDate = (date) => {
-        setStartDate(date);
-        setEndDate(null);
-        setEndKey((k) => k + 1);
+    const handleSelect = (ranges) => {
+        setTempRange(ranges.selection);
     };
 
-    const handleClearStart = () => {
-        setStartDate(null);
-        setEndDate(null);
-        setStartKey((k) => k + 1);
-        setEndKey((k) => k + 1);
-    };
-
-    const handleClearEnd = () => {
-        setEndDate(null);
-        setEndKey((k) => k + 1);
-    };
+    const formatDate = (date) =>
+        date.toLocaleDateString('en-US', {
+            month: 'short',
+            day: '2-digit',
+            year: 'numeric',
+        });
 
     return (
-        <div className="w-full flex flex-col lg:justify-end md:justify-center lg:mr-25 sm:flex-row sm:items-center sm:gap-4 px-0 sm:px-2 lg:px-0">
-            {/* Start Date */}
-            <div className="flex flex-col gap-1 w-full sm:max-w-[180px]">
-                <label className="text-sm font-medium text-black">Start Date</label>
-                <div className="relative" ref={startRef}>
-                    <Datepicker
-                        key={startKey}
-                        title="Start Date"
-                        autoHide
-                        maxDate={today}
-                        onSelectedDateChanged={handleStartDate}
-                        position="left"
-                        placeholder="Select date"
-                        className="border-[#E3E0DB] border-2 rounded-lg bg-[#F7F4EF] w-full"
-                    />
-                    {startDate && (
-                        <button
-                            onClick={handleClearStart}
-                            className="absolute right-8 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 z-10 text-lg leading-none"
-                        >
-                            ×
-                        </button>
-                    )}
-                </div>
+        <div ref={containerRef} className="relative inline-block">
+
+            {/* Input field */}
+            <div
+                onClick={() => setIsOpen((prev) => !prev)}
+                className={`flex items-center gap-2 min-w-[280px] px-3.5 py-2.5 rounded-lg border cursor-pointer select-none transition
+                ${isOpen
+                    ? 'border-[#EEBD2B] shadow-[0_0_0_3px_rgba(99,102,241,0.15)]'
+                        : 'border-gray-300'}
+                bg-[#FDFAF6]`}
+            >
+                <CalendarDays className="w-4 h-4 text-gray-500" />
+
+                {selectionRange ? (
+                    <>
+                        <span className="text-sm text-gray-700 font-medium">
+                            {formatDate(selectionRange.startDate)}
+                        </span>
+                        <span className="text-gray-400 text-sm">→</span>
+                        <span className="text-sm text-gray-700 font-medium">
+                            {formatDate(selectionRange.endDate)}
+                        </span>
+                    </>
+                ) : (
+                    <span className="text-sm text-gray-400">
+                        Select date range
+                    </span>
+                )}
+
+                <span className="ml-auto text-xs text-gray-400">
+                    {isOpen ? '▲' : '▼'}
+                </span>
             </div>
 
-            {/* Arrow */}
-            <span className="text-gray-500 hidden sm:block mt-3 sm:mt-6">→</span>
+            {/* Calendar Dropdown */}
+            {isOpen && (
+                <div className="absolute top-[calc(100%+8px)] left-0 z-50 bg-white rounded-xl shadow-xl border border-gray-200 overflow-hidden">
 
-            {/* End Date */}
-            <div className="flex flex-col gap-1 w-full sm:max-w-[180px]">
-                <label className="text-sm font-medium text-black">End Date</label>
-                <div className="relative" ref={endRef}>
-                    <Datepicker
-                        key={endKey}
-                        title="End Date"
-                        autoHide
-                        maxDate={today}
-                        minDate={startDate}
-                        onSelectedDateChanged={(date) => setEndDate(date)}
-                        placeholder="Select date"
-                        position="left"
-                        className="border-[#E3E0DB] border-2 rounded-lg bg-[#F7F4EF] w-full"
+                    <DateRange
+                        ranges={[tempRange]}
+                        onChange={handleSelect}
+                        moveRangeOnFirstSelection={false}
+                        rangeColors={['#EEBD2B']}
                     />
-                    {endDate && (
+
+                    {/* Action buttons */}
+                    <div className="flex justify-end gap-2 px-4 py-2.5 border-t border-gray-100">
                         <button
-                            onClick={handleClearEnd}
-                            className="absolute right-8 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 z-10 text-lg leading-none"
+                            onClick={() => {
+                                setTempRange(
+                                    selectionRange ?? {
+                                        startDate: new Date(),
+                                        endDate: new Date(),
+                                        key: 'selection',
+                                    }
+                                );
+                                setIsOpen(false);
+                            }}
+                            className="px-4 py-1.5 rounded-md border border-gray-200 bg-gray-50 text-gray-500 text-sm font-medium hover:bg-gray-100 transition"
                         >
-                            ×
+                            Cancel
                         </button>
-                    )}
+
+                        <button
+                            onClick={() => {
+                                setSelectionRange(tempRange);
+                                setIsOpen(false);
+                            }}
+                            className="px-4 py-1.5 rounded-md bg-black text-white text-sm font-medium transition cursor-pointer"
+                        >
+                            Apply
+                        </button>
+                        
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 }
 
 export default DateFilter;
-
-
-// import { useState } from "react";
-// import { Datepicker } from "flowbite-react";
-
-// function DateFilter() {
-//     const [startDate, setStartDate] = useState(null);
-//     const [endDate, setEndDate] = useState(null);
-
-//     const today = new Date();
-//     today.setHours(0, 0, 0, 0);
-
-//     const handleStartDate = (date) => {
-//         setStartDate(date);
-//         setEndDate(null);
-//     };
-
-//     return (
-//         <div className="w-full flex flex-col lg:justify-end md:justify-center lg:mr-25 sm:flex-row sm:items-center sm:gap-4 px-0 sm:px-2 lg:px-0">
-//             {/* Start Date */}
-//             <div className="flex flex-col gap-1 w-full sm:max-w-[180px]">
-//                 <label className="text-sm font-medium text-black">Start Date</label>
-//                 <Datepicker
-//                     title="Start Date"
-//                     autoHide
-//                     maxDate={today}
-//                     onSelectedDateChanged={handleStartDate}
-//                     position="left"
-//                     defaultDate={startDate || today}
-                    
-//                     className="border-[#E3E0DB] border-2 rounded-lg bg-[#F7F4EF] w-full"
-//                 />
-//             </div>
-
-//             {/* Arrow */}
-//             <span className="text-gray-500 hidden sm:block mt-3 sm:mt-6">→</span>
-
-//             {/* End Date */}
-//             <div className="flex flex-col gap-1 w-full sm:max-w-[180px]">
-//                 <label className="text-sm font-medium text-black">End Date</label>
-//                 <Datepicker
-//                     title="End Date"
-//                     autoHide
-//                     maxDate={today}
-//                     minDate={startDate}
-//                     onSelectedDateChanged={(date) => setEndDate(date)}
-//                     defaultDate={endDate || today}
-//                     position="left"
-//                     className=" datepicker-container border-[#E3E0DB] border-2 rounded-lg bg-[#F7F4EF] w-full datepicker-left     "
-//                 />
-//             </div>
-//         </div>
-//     );
-// }
-// export default DateFilter;

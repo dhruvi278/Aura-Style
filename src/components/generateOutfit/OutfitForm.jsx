@@ -32,7 +32,7 @@ function OutfitForm() {
                 </label>
                 <Button className="flex gap-2 justify-center items-center w-full mb-4 sm:mb-8">
                     <Sparkles size={16} color="#C5A059" fill='#C5A059' aria-hidden='true' />
-                    <span className='text-[10px] sm:text-[13px] md:text-[14px] work-sans uppercase font-semibold py-2 sm:py-4 tracking-[2px]'>Generate My Outfit</span>
+                    <span className='text-[10px] sm:text-[13px] md:text-[14px] work-sans uppercase font-semibold py-2 sm:py-3 lg:py-1 tracking-[2px]'>Generate My Outfit</span>
                 </Button>
             </form>
 

@@ -18,7 +18,9 @@ const LoginForm = () => {
 
   const onSubmit = async (data) => {
     await new Promise((res) => setTimeout(res, 5000));
-    alert("Logged in");
+    toast.success('Login', {
+    description: 'Your have logged in successfully!',
+})
     console.log("Sign up data:", data);
   };
 
@@ -67,7 +69,7 @@ const LoginForm = () => {
             <div className="flex gap-2 items-center">
               <label className="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" id="remember" className="sr-only peer" />
-                <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none  rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-[#C4A982]"></div>
+                <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none  rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-[#C4A982]"></div>
 
               </label>
               <label
@@ -90,7 +92,7 @@ const LoginForm = () => {
           </p>
           <Link
             to={"/signup"}
-            className="work-sans text-[14px] text-[#C4A982] font-bold"
+            className="work-sans text-[14px] text-[#C4A982] hover:text-[#8c785d] font-bold"
           >
             Create Account
           </Link>

@@ -6,19 +6,21 @@ import TitleText from "../components/ui/TitleText";
 
 function Dashboard (){
     return(
-        <div className="px-10 pt-10 bg-[#F7F4EF] flex flex-col gap-20">
-            <TitleText title="Welcome back, Eleanor" description="Your curated wardrobe is ready for today's selection."/>
-            <div>
-                <QuickActions />
-            </div>
-            <div>
-                <CollectionOverview />
-            </div>
-            <div>
-                <RecentlyGenerated />
-            </div>
-            <div>
-                <QuickGenerateOption />
+        <div className="px-10 pt-10 bg-[#F7F4EF] flex flex-col gap-20 lg:w-full xl:items-center ">
+            <div className="max-w-6xl gap-20 flex flex-col">
+                <TitleText title="Welcome back, Eleanor" description="Your curated wardrobe is ready for today's selection." />
+                <div>
+                    <QuickActions />
+                </div>
+                <div>
+                    <CollectionOverview />
+                </div>
+                <div>
+                    <RecentlyGenerated />
+                </div>
+                <div>
+                    <QuickGenerateOption />
+                </div>
             </div>
         </div>
     )

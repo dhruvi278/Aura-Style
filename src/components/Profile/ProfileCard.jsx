@@ -11,10 +11,10 @@ function ProfileCard({openModal}) {
                 <p className="playfair text-3xl font-semibold italic">Riddhi</p>
                 <p className="jost text-[#1C1C1A]/50 text-lg">Member since 2023</p>
             </div>
-            <div className="flex flex-col gap-5">
+            {/* <div className="flex flex-col gap-5">
                 <Button onClick={openModal} variant="upload" type="button" ><span className="jost px-10 lg:px-16 font-semibold uppercase">Upload Photo</span></Button>
                 <Button variant="primary" type="button" className="uppercase" ><span className="jost px-10 lg:px-16 font-semibold uppercase">Edit Profile</span></Button>
-            </div>
+            </div> */}
         </div>
     )
 }

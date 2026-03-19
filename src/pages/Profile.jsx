@@ -11,16 +11,21 @@ function Profile() {
     return (
         // <div className=" flex flex-col px-10 pt-5 lg:w-full lg:items-center bg-[#F7F4EF] gap-12 min-h-[calc(100dvh-80px)] ">
         // <div className="flex flex-col px-10 pt-7 lg:w-full lg:items-center bg-[#F7F4EF] gap-12 h-[calc(100dvh-80px)] overflow-hidden">
-        <div className="flex flex-col px-5 pt-10 lg:px-10 lg:pt-5 lg:w-full lg:items-center bg-[#F7F4EF] gap-10 min-h-[calc(100dvh-80px)] overflow-y-auto">
+        <main className="flex flex-col px-5 pt-10 lg:px-10 lg:pt-5 lg:w-full lg:items-center bg-[#F7F4EF] gap-10 min-h-[calc(100dvh-80px)] overflow-y-auto">
             <div className="max-w-6xl flex flex-col gap-8">
-                <TitleText
-                    title="Your Style Identity"
-                    description="Define your vibe, explore your fashion, and let AI style you with looks tailored to your unique aesthetic."
-                />
-                <div className="flex flex-col m-auto max-w-5xl gap-5 xl:gap-10 md:flex-col lg:flex-row">
-                    <ProfileCard openModal={() => setSelfiOpen(true)} />
-                    <ProfileForm />
-                </div>
+                <header>
+                    <TitleText
+                        title="Your Style Identity"
+                        description="Define your vibe, explore your fashion, and let AI style you with looks tailored to your unique aesthetic."
+                    />
+                </header>
+                <section>
+                    <div className="flex flex-col m-auto max-w-5xl gap-5 xl:gap-10 md:flex-col lg:flex-row">
+                        <ProfileCard openModal={() => setSelfiOpen(true)} />
+                        <ProfileForm />
+                    </div>
+                </section>
+                
 
                 <Modal
                     title={` Update Your Portrait`}
@@ -31,7 +36,7 @@ function Profile() {
                     <UploadOption onClose={() => setSelfiOpen(false)} onUpload={(e) => console.log(e.target)} cameraFacing="user" />
                 </Modal>
             </div>
-        </div>
+        </main>
     )
 }
 

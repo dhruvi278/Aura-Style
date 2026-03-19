@@ -13,8 +13,14 @@ function Button({ children, type, onClick, variant = "primary", className, disab
             hover: 'hover:border-[#C9A96E] hover:text-[#A8895E]',
         }
     }
+
+    const handleClick = (e) => {
+        e.preventDefault();
+
+        if(onClick) onClick()
+    }
     return (
-        <button type={type} onClick={onClick}
+        <button type={type} onClick={(e) => handleClick(e)}
             disabled={disabled}
             className={`${styles[variant]}  rounded-full ${variant === "whiten" ? `hover:underline cursor-pointer transition-colors duration-200` : `hover:cursor-pointer hover:scale-105 hover:shadow-md transition-all duration-200`} px-4 py-2 md:px-6 md:py-3 ${className} disabled:bg-gray-500 disabled:cursor-not-allowed disabled:hover:scale-100`}>
             {children} </ button>

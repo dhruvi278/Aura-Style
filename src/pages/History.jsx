@@ -8,7 +8,7 @@ import Pagination from "../components/ui/Pagination";
 
 function History() {
     return (
-        <div className="px-4 sm:px-6 lg:px-10 pt-10 bg-[#F7F4EF] min-h-[calc(100dvh-80px)]">
+        <div className="px-4 sm:px-6 lg:px-10 pt-10  bg-[#F7F4EF] min-h-[calc(100dvh-80px)]">
             <TitleText title="Your Style Archive" description=""/>
 
             <div className="mt-6">
@@ -27,22 +27,22 @@ function History() {
                     <Card
                         src="https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg"
                         cardText="FEB 28, 2026"
-                        cardTitle="Top"
+                        cardTitle="Home"
                     />
                     <Card
                         src="https://images.pexels.com/photos/5560028/pexels-photo-5560028.jpeg"
                         cardText="MAR 1, 2026"
-                        cardTitle="Top"
+                        cardTitle="Formal"
                     />
                     <Card
                         src="https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg"
                         cardText="MAR 2, 2026"
-                        cardTitle="Top"
+                        cardTitle="Casual"
                     />
                     <Card
                         src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg"
                         cardText="MAR 3, 2026"
-                        cardTitle="Top"
+                        cardTitle="Social"
                     />
                 </CardGrid>
             </div>

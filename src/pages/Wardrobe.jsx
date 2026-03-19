@@ -21,9 +21,9 @@ function Wardrobe() {
 
 
     return (
-        <div className='flex flex-col gap-5 pt-12 bg-[#E7E1CF]/40' >
+        <div className='flex flex-col gap-5 lg:justify-center lg:items-center lg:w-full pt-12 bg-[#E7E1CF]/40' >
             {/* <Navbar /> */}
-            <div className='flex flex-col gap-10 px-12'>
+            <div className='flex flex-col gap-10 px-12 lg:max-w-6xl'>
                 <section aria-label='My worddrobe' className='flex flex-col md:flex-row md:justify-between md:items-end gap-4'>
                     {/* Headings */}
                     <div>

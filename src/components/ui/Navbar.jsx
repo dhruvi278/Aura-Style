@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import Button from "./Button";
 import { Menu, X, LogOut } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 
 function Navbar() {
@@ -56,13 +56,17 @@ function Navbar() {
         };
     }, []);
 
+    const navigate = useNavigate();
+
     return (
         <>
             <nav className="bg-[#faf2e5]/80 backdrop-blur-sm shadow-md sticky top-0 w-full z-50">
 
                 <div className="min-full mx-auto px-6 py-4 flex justify-between items-center">
 
-                    <Logo />
+                    <div onClick={() => navigate('/')} className="cursor-pointer">
+                        <Logo />
+                    </div>
 
                     <ul className="hidden lg:flex gap-7 text-gray-700 font-medium">
 
@@ -131,7 +135,7 @@ function Navbar() {
 
             <div
                 ref={sidebarRef}
-                className={`lg:hidden fixed  right-0 h-screen w-[220px] bg-[#faf2e5]/80 backdrop-blur-md p-6 
+                className={`lg:hidden fixed  right-0 h-screen w-55 bg-[#faf2e5]/80 backdrop-blur-md p-6 
                 z-50 transform transition-transform duration-300 shadow-lg flex flex-col justify-between 
                 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
             >

@@ -1,3 +1,4 @@
+import { CircleUserRound } from "lucide-react";
 import CustomSelect from "../generateOutfit/CustomSelect";
 import Button from "../ui/Button";
 import Formfield from "../ui/Formfield";
@@ -5,7 +6,11 @@ import Formfield from "../ui/Formfield";
 function ProfileForm() {
     return (
         <div className="bg-[#FDFAF6] px-10 py-8 rounded-4xl w-2xs lg:w-lg mb-7 xl:w-xl md:w-lg">
-            <h2 className="pb-4 border-b mb-5 border-gray-300 jost uppercase text-sm  font-medium text-[#C5A059] tracking-[3px]">My Profile</h2>
+            <h2
+                className="pb-4 border-b mb-5 flex items-center gap-2 border-gray-300 jost uppercase text-sm  font-medium text-[#C5A059] tracking-[3px]">
+                <CircleUserRound size={20} />
+                <span>My Profile</span>
+            </h2>
             <form className="mx-4">
                 <Formfield label="Full name"
                     type="text"

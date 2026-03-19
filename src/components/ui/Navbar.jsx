@@ -68,7 +68,7 @@ function Navbar() {
                         <Logo />
                     </div>
 
-                    <ul className="hidden lg:flex gap-8 text-gray-700 font-medium">
+                    <ul className="hidden lg:flex gap-7 text-gray-700 font-medium">
 
                         {(isLoggedIn ? privateLinks : publicLinks).map((link) => (
                             <li key={link.path}>

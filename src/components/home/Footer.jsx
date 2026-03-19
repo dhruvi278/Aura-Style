@@ -1,6 +1,6 @@
 import { Facebook, Instagram } from "lucide-react";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../ui/Logo";
 
 const Footer = () => {
@@ -17,16 +17,16 @@ const Footer = () => {
           <nav className="flex-1 flex flex-col gap-4" aria-label="Footer Navigation">
           <h3 className="work-sans text-[12px] font-bold">Navigation</h3>
           <div className="flex flex-col gap-2">
-            <NavLink to={`/#about`} className="work-sans text-[12px] text-[#1A1A18]/60 hover:text-[#C5A059] cursor-pointer">About</NavLink>
-            <NavLink to={`/#workSection`} className="work-sans text-[12px] text-[#1A1A18]/60 hover:text-[#C5A059] cursor-pointer">How It Works</NavLink>
+            <a href="#about" className="work-sans text-[12px] text-[#1A1A18]/60 hover:text-[#C5A059] cursor-pointer">About</a>
+            <a href='/#workSection' className="work-sans text-[12px] text-[#1A1A18]/60 hover:text-[#C5A059] cursor-pointer">How It Works</a>
             <NavLink to={`/support`} className="work-sans text-[12px] text-[#1A1A18]/60 hover:text-[#C5A059] cursor-pointer">Support</NavLink>
           </div>
         </nav>
         <div className="flex-1 flex flex-col gap-4">
           <h4 className="work-sans text-[12px] font-bold">Connect</h4>
           <div className="flex gap-2">
-            <button className="rounded-full text-[#1A1A18]/60 border border-[#1A1A18]/10 p-2 cursor-pointer"><Facebook size={16} /></button>
-            <button className="rounded-full text-[#1A1A18]/60 border border-[#1A1A18]/10 p-2 cursor-pointer"><Instagram size={16} /></button>
+            <a href="https://www.facebook.com/" target="_blank" className="rounded-full text-[#1A1A18]/60 border hover:text-[#C5A059] border-[#1A1A18]/10 hover:border-[#C5A059] p-2 cursor-pointer"><Facebook size={16} /></a>
+            <a href="https://www.instagram.com/?hl=en" target="_blank" className="rounded-full text-[#1A1A18]/60 border hover:text-[#C5A059] border-[#1A1A18]/10 hover:border-[#C5A059] p-2 cursor-pointer"><Instagram size={16} /></a>
           </div>
         </div>
       </div>

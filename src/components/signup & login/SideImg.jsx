@@ -13,6 +13,7 @@ const SideImg = ({image, quote}) => {
             className="absolute inset-0 z-10 bg-linear-to-r from-[#E8E2D9] via-[#F0EDE6] to-[#E8E2D9] bg-size-[200%_100%] animate-shimmer"
           />
         )}
+
         <img
           src={image}
           loading="lazy"
@@ -21,6 +22,7 @@ const SideImg = ({image, quote}) => {
           onLoad={() => setLoad(true)}
         />
       </div>
+      
       {/* Text */}
       
         <div className={`absolute bottom-10 left-10 right-10 text-[#FDFAF6] max-w-md ${!load && 'hidden'}`}>

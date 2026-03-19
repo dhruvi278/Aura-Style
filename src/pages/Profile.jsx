@@ -20,7 +20,7 @@ function Profile() {
                     />
                 </header>
                 <section>
-                    <div className="flex flex-col m-auto max-w-5xl gap-5 xl:gap-10 md:flex-col lg:flex-row">
+                    <div className="flex flex-col m-auto max-w-5xl gap-5 xl:gap-10 md:flex-col lg:flex-row lg:items-start  items-center">
                         <ProfileCard openModal={() => setSelfiOpen(true)} />
                         <ProfileForm />
                     </div>

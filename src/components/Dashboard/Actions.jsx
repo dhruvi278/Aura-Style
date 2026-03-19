@@ -1,6 +1,8 @@
-function Action({ actionName, description, Icon }) {
+function Action({ actionName, description, Icon, onClick }) {
     return (
-        <div className="group bg-white shadow-lg p-6 sm:p-8 md:p-10 rounded-3xl 
+        <button
+            onClick={onClick}
+            className="group bg-white shadow-lg p-6 sm:p-8 md:p-10 rounded-3xl 
                     hover:bg-[#1C1C1A] transition-colors duration-300 cursor-pointer 
                     w-full lg:w-96
                     flex flex-col items-center lg:items-start text-center lg:text-left h-56">
@@ -19,7 +21,7 @@ function Action({ actionName, description, Icon }) {
             <p className="work-sans text-sm sm:text-base text-[#1A1A18]/60 group-hover:text-white transition-colors duration-300 mt-2">
                 {description}
             </p>
-        </div>
+        </button>
     );
 }
 

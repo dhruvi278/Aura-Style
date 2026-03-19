@@ -5,7 +5,7 @@ import { Camera, ImageIcon, ImageUp, X } from 'lucide-react';
 import Button from './Button';
 
 
-function UploadOption({ onUpload, onClose, cameraFacing = 'environment' }) {
+function UploadOption({ onUpload, onClose, cameraFacing }) {
     const { hasBackCamera, hasFrontCamera, loading } = useCamera();
     const [preview, setPreview] = useState(null);
     const [file, setFile] = useState(null);
@@ -113,7 +113,7 @@ function UploadOption({ onUpload, onClose, cameraFacing = 'environment' }) {
                                         {cameraFacing === 'user' ? 'Take a selfie' : 'Capture with camera'}
                                     </p>
                                     <p className='work-sans text-[11px] text-[#6B6460] tracking-[0.02em]'>
-                                       {cameraFacing === 'user' ? 'Use your front camera' : 'Use your back camera for best results'}
+                                        {cameraFacing === 'user' ? 'Use your front camera' : 'Use your back camera for best results'}
                                     </p>
                                 </div>
                             </button>
@@ -155,7 +155,10 @@ function UploadOption({ onUpload, onClose, cameraFacing = 'environment' }) {
                     <aside className='flex items-start gap-2 p-3 rounded-[12px] bg-[#F5ECD9] border border-[#E7E1CF]'>
                         <ImageIcon size={14} className='text-[#C9A96E] mt-0.5 flex-shrink-0' aria-hidden='true' />
                         <p className='work-sans text-[11px] sm:text-[12px] text-[#6B6460] leading-relaxed'>
-                            Our AI will automatically identify the name, category, colour and style of this piece.
+                            {cameraFacing === 'user'
+                                ? 'Our AI will analyse your facial features and body proportions to personalise your outfit recommendations.'
+                                : ' Our AI will automatically identify the name, category, colour and style of this piece.'
+                            }
                         </p>
                     </aside>
 
@@ -173,7 +176,7 @@ function UploadOption({ onUpload, onClose, cameraFacing = 'environment' }) {
                             size='full'
                             onClick={handleUpload}
                         >
-                            Add to Wardrobe
+                            {cameraFacing === 'user' ? "Add to Profile" : "Upload to Wardrobe"}
                         </Button>
                     </div>
                 </section>

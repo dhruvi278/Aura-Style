@@ -33,7 +33,7 @@ function ProfileForm() {
             </form>
             <div className="flex flex-col  justify-between sm:flex-row ">
                 <Button variant="primary" className="mt-10"><span className=" px-5 w-sm md:px-5 lg:px-5 jost">Save Changes</span></Button>
-                <Button variant="secondray" className="mt-10"><span className="px-10 w-sm md:px-7 lg:px-12 jost">Cancel</span></Button>
+                <Button variant="ghost" className="mt-10"><span className="px-10 w-sm md:px-7 lg:px-12 jost">Cancel</span></Button>
             </div>
         </div>
     )

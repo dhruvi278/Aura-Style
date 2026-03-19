@@ -22,31 +22,31 @@ function History() {
                     <DateFilter />
                 </div>
 
-            {/* Card Grid */}
-            <div className="mt-6">
-                <CardGrid showUpload={false}>
-                    <Card
-                        src="https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg"
-                        cardText="FEB 28, 2026"
-                        cardTitle="Home"
-                    />
-                    <Card
-                        src="https://images.pexels.com/photos/5560028/pexels-photo-5560028.jpeg"
-                        cardText="MAR 1, 2026"
-                        cardTitle="Formal"
-                    />
-                    <Card
-                        src="https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg"
-                        cardText="MAR 2, 2026"
-                        cardTitle="Casual"
-                    />
-                    <Card
-                        src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg"
-                        cardText="MAR 3, 2026"
-                        cardTitle="Social"
-                    />
-                </CardGrid>
-            </div>
+                {/* Card Grid */}
+                <div className="mt-6">
+                    <CardGrid showUpload={false}>
+                        <Card
+                            src="https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg"
+                            cardText="FEB 28, 2026"
+                            cardTitle="Home"
+                        />
+                        <Card
+                            src="https://images.pexels.com/photos/5560028/pexels-photo-5560028.jpeg"
+                            cardText="MAR 1, 2026"
+                            cardTitle="Formal"
+                        />
+                        <Card
+                            src="https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg"
+                            cardText="MAR 2, 2026"
+                            cardTitle="Casual"
+                        />
+                        <Card
+                            src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg"
+                            cardText="MAR 3, 2026"
+                            cardTitle="Social"
+                        />
+                    </CardGrid>
+                </div>
 
                 {/* Pagination */}
                 <div className="mt-10 pb-5 flex justify-center">
@@ -57,5 +57,5 @@ function History() {
     )
 }
 
-export default History; 
+export default History;
 

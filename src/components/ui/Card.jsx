@@ -1,11 +1,11 @@
-import { Plus } from "lucide-react";
+import { Plus, X } from "lucide-react";
 import { useState } from "react";
+import Modal from "./Modal";
 
-function Card({ src, alt, cardTitle, cardText, type = "normal" }) {
+function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPage = null }) {
 
 
     const [load, setLoad] = useState(false)
-
 
     return (
         <article
@@ -28,6 +28,32 @@ function Card({ src, alt, cardTitle, cardText, type = "normal" }) {
             {type === "normal" && <div>
                 <figure className="aspect-[4/5] overflow-hidden bg-[#F0EDE6] relative">
                     <img src={src} loading="lazy" alt={alt} onLoad={() => setLoad(true)} className={`w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105`} />
+
+                    {cardPage === "wardrobe" && <button
+                        type="button"
+                        aria-label={`Remove ${cardTitle} from wardrobe`}
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            if (onDelete) onDelete()
+                        }}
+                        className={`
+                            absolute top-4 right-4
+                            sm:top-3 sm:right-3
+                            w-7 h-7 sm:w-8 sm:h-8
+                            rounded-full
+                            bg-white/90 backdrop-blur-sm
+                            flex items-center justify-center
+                            text-[#C0705A]
+                            shadow-md
+                            transition-all duration-200
+                            hover:bg-[#C0705A] hover:text-white
+                            opacity-0 group-hover:opacity-100
+                            scale-75 group-hover:scale-100
+                            z-20 hover:cursor-pointer
+                       `}
+                    >
+                        <X size={12} className="sm:w-3.5 sm:h-3.5" aria-hidden="true" />
+                    </button>}
                 </figure>
 
                 <footer className="bg-white/50 px-3 py-3 md:px-6 md:py-5">

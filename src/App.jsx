@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <Toaster
-        position="top-center"
+        position="bottom-right"
         gap={12}
         visibleToasts={3}
         toastOptions={{
@@ -59,6 +59,7 @@ function App() {
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/support" element={<Support />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   );

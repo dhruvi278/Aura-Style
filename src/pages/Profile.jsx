@@ -9,7 +9,7 @@ function Profile() {
 
     const [selfiOpen, setSelfiOpen] = useState(false)
     return (
-        <div className="flex flex-col px-10 pt-10 bg-[#F7F4EF] gap-20 min-h-[calc(100dvh-80px)] ">
+        <div className="flex flex-col px-10 pt-10 bg-[#F7F4EF] gap-12 min-h-[calc(100dvh-80px)] ">
             <TitleText
                 title="Your Style Identity"
                 description="Define your vibe, explore your fashion, and let AI style you with looks tailored to your unique aesthetic."

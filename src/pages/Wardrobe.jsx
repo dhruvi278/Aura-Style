@@ -21,9 +21,9 @@ function Wardrobe() {
 
 
     return (
-        <div className='flex flex-col gap-5 pt-12 bg-[#E7E1CF]/40' >
+        <div className='flex flex-col gap-5 lg:justify-center lg:items-center lg:w-full pt-12 bg-[#F7F4EF]' >
             {/* <Navbar /> */}
-            <div className='flex flex-col gap-10 px-12'>
+            <div className='flex flex-col gap-10 px-12 lg:max-w-6xl'>
                 <section aria-label='My worddrobe' className='flex flex-col md:flex-row md:justify-between md:items-end gap-4'>
                     {/* Headings */}
                     <div>
@@ -50,7 +50,7 @@ function Wardrobe() {
                     <Card src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
                     <Card src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
                     <Card src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
-                    <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
+                    <Card src="image.png" cardTitle="cotton Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
                     <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
                     <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
 
@@ -66,7 +66,7 @@ function Wardrobe() {
                 description='Upload a piece and let AI identify the details for you'
                 size='md'
             >
-                <UploadOption onClose={() => setUploadOpen(false)} onUpload={(e) => console.log(e.target)} />
+                <UploadOption onClose={() => setUploadOpen(false)} onUpload={(e) => console.log(e.target)} cameraFacing={`environment`} />
             </Modal>
         </div>
     )

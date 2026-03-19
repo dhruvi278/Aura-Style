@@ -9,19 +9,19 @@ import Pagination from "../components/ui/Pagination";
 
 function History() {
     return (
-        <div className="px-4 sm:px-6 lg:px-10 pt-10 bg-[#F7F4EF] min-h-[calc(100dvh-80px)] flex lg:items-center lg:justify-center">
-            <div className="max-w-6xl ">
+        <div className="px-4 sm:px-6 lg:px-10 pt-10 bg-[#F7F4EF]  flex flex-col gap-8 lg:items-center lg:justify-center min-h-[calc(100dvh-80px)]">
+            <div className="max-w-6xl flex flex-col gap-3 ">
                 <header>
                     <TitleText title="Your Style Archive" description="" />
                 </header>
 
-                <div className="mt-6">
+                <div>
                     <TotalOutfitCard />
                 </div>
 
                 {/* Search + Date Range */}
                 <section>
-                    <div className="mt-6 flex flex-col gap-4 lg:flex-row sm:items-center sm:justify-between">
+                    <div className="flex flex-col gap-4 lg:flex-row sm:items-center sm:justify-between">
                         <SearchOutfit />
                         <DateFilter />
                     </div>
@@ -29,40 +29,36 @@ function History() {
 
                 {/* Card Grid */}
                 <section>
-                    <div className="mt-6">
-                    <CardGrid showUpload={false}>
-                        <Card
-                            src="https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg"
-                            cardText="FEB 28, 2026"
-                            cardTitle="Top"
-                        />
-                        <Card
-                            src="https://images.pexels.com/photos/5560028/pexels-photo-5560028.jpeg"
-                            cardText="MAR 1, 2026"
-                            cardTitle="Top"
-                        />
-                        <Card
-                            src="https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg"
-                            cardText="MAR 2, 2026"
-                            cardTitle="Top"
-                        />
-                        <Card
-                            src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg"
-                            cardText="MAR 3, 2026"
-                            cardTitle="Top"
-                        />
-                    </CardGrid>
-                </div>
+                    <div>
+                        <CardGrid showUpload={false}>
+                            <Card
+                                src="https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg"
+                                cardText="FEB 28, 2026"
+                                cardTitle="Casual"
+                            />
+                            <Card
+                                src="https://images.pexels.com/photos/5560028/pexels-photo-5560028.jpeg"
+                                cardText="MAR 1, 2026"
+                                cardTitle="Formal"
+                            />
+                            <Card
+                                src="https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg"
+                                cardText="MAR 2, 2026"
+                                cardTitle="Social"
+                            />
+                            <Card
+                                src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg"
+                                cardText="MAR 3, 2026"
+                                cardTitle="Home"
+                            />
+                        </CardGrid>
+                    </div>
                 </section>
-
-                {/* Pagination */}
-                <div className="mt-10 pb-5 flex justify-center">
-                    <Pagination />
-                </div>
             </div>
+            <Pagination />
         </div>
     )
 }
 
-export default History; 
+export default History;
 

@@ -14,7 +14,7 @@ function OutfitCard() {
                 <img src={GenerateOutfitImg} alt="Generated Outfit" className='w-full h-[280px] sm:h-[360px] md:h-[420px] lg:h-[500px] object-cover object-top over' />
             </figure>
 
-            <section aria-label='Outfit actions' className='flex flex-col xl:flex-row justify-between items-start sm:items-center gap-4 px-2 sm:px-4 md:px-8'>
+            <section aria-label='Outfit actions' className='flex flex-col xl:flex-row justify-between items-start sm:items-center gap-4  '>
                 <ul className='flex gap-2 sm:gap-3 md:gap-4 w-full xl:w-auto'>
                     {outfitItems.map((items, i) =>
                         <li key={i}>

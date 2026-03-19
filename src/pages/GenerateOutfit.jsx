@@ -6,14 +6,16 @@ import AIResponce from '../components/generateOutfit/AIResponce'
 
 function GenerateOutfit() {
     return (
-        <main className='flex flex-col gap-5 px-4 sm:px-6 md:px-10 pt-6 sm:pt-8 lg:pt-2 bg-[#E7E1CF]/50 min-h-[calc(100dvh-80px)]'>
-            <TitleText title='Style Your Movement' description='Generate a trendy outfit from your wardrobe and elevate your everyday style.' />
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10'>
-                <OutfitForm />
-                <OutfitCard />
-                <aside className='block lg:hidden mb-10 px-2.5'>
-                    <AIResponce />
-                </aside>
+        <main className='flex flex-col lg:w-full lg:justify-center lg:items-center gap-5 px-4 sm:px-6 md:px-10 pt-6 sm:pt-8 lg:pt-2 bg-[#F7F4EF] min-h-[calc(100dvh-80px)]'>
+            <div className='lg:max-w-6xl flex flex-col gap-5 lg:gap-7 xl:gap-5'>
+                <TitleText title='Style Your Movement' description='Generate a trendy outfit from your wardrobe and elevate your everyday style.' />
+                <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-0'>
+                    <OutfitForm />
+                    <OutfitCard />
+                    <aside className='block lg:hidden mb-10 px-2.5'>
+                        <AIResponce />
+                    </aside>
+                </div>
             </div>
         </main>
     )

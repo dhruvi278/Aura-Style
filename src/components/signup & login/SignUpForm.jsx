@@ -5,6 +5,7 @@ import Formfield from "../ui/Formfield";
 import Button from "../ui/Button";
 import { Link } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 const SignUpForm = () => {
   const {
@@ -19,7 +20,9 @@ const SignUpForm = () => {
 
   const onSubmit = async (data) => {
     await new Promise((res) => setTimeout(res, 5000));
-    alert("Account Created")
+    toast.success('Sign Up', {
+    description: 'Account created successfully!',
+})
     console.log("Sign up data:", data);
   };
 
@@ -159,7 +162,7 @@ const SignUpForm = () => {
           </p>
           <Link
             to={"/login"}
-            className="work-sans text-[14px] text-[#C4A982] font-bold"
+            className="work-sans text-[14px] text-[#C4A982] hover:text-[#8c785d] font-bold"
           >
             Login
           </Link>

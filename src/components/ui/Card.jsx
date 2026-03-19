@@ -1,4 +1,4 @@
-import { Plus, X } from "lucide-react";
+import { Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
 import Modal from "./Modal";
 
@@ -37,8 +37,8 @@ function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPa
                             if (onDelete) onDelete()
                         }}
                         className={`
-                            absolute top-4 right-4
-                            sm:top-3 sm:right-3
+                            absolute top-2 right-2
+                            sm:top-4 sm:right-4
                             w-7 h-7 sm:w-8 sm:h-8
                             rounded-full
                             bg-white/90 backdrop-blur-sm
@@ -47,17 +47,17 @@ function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPa
                             shadow-md
                             transition-all duration-200
                             hover:bg-[#C0705A] hover:text-white
-                            opacity-0 group-hover:opacity-100
-                            scale-75 group-hover:scale-100
+                            opacity-100 md:opacity-0 md:group-hover:opacity-100
+                            scale-100 md:scale-75 md:group-hover:scale-100
                             z-20 hover:cursor-pointer
                        `}
                     >
-                        <X size={12} className="sm:w-3.5 sm:h-3.5" aria-hidden="true" />
+                        <Trash2 size={12} className="sm:w-3.5 sm:h-3.5" aria-hidden="true" />
                     </button>}
                 </figure>
 
                 <footer className="bg-white/50 px-3 py-3 md:px-6 md:py-5">
-                    <h3 className="playfair text-sm sm:text-base md:text-lg lg:text-xl text-gray-800 mb-1">{cardTitle}</h3>
+                    <h3 className="playfair text-sm sm:text-base md:text-lg lg:text-xl text-gray-800 mb-1 capitalize">{cardTitle}</h3>
                     <p className="work-sans text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs tracking-[2px] sm:tracking-[3px] md:tracking-[4px] text-[#EEBD2B] font-semibold uppercase">
                         {cardText}
                     </p>

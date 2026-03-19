@@ -11,7 +11,7 @@ function Profile() {
     return (
         // <div className=" flex flex-col px-10 pt-5 lg:w-full lg:items-center bg-[#F7F4EF] gap-12 min-h-[calc(100dvh-80px)] ">
         // <div className="flex flex-col px-10 pt-7 lg:w-full lg:items-center bg-[#F7F4EF] gap-12 h-[calc(100dvh-80px)] overflow-hidden">
-        <main className="flex flex-col px-5 pt-10 lg:px-10 lg:pt-5 lg:w-full lg:items-center bg-[#F7F4EF] gap-10 min-h-[calc(100dvh-80px)] overflow-y-auto">
+        <main className="flex flex-col px-5 pt-10 lg:px-10 lg:pt-5 w-full lg:items-center bg-[#F7F4EF] gap-10 min-h-[calc(100dvh-80px)] overflow-y-auto">
             <div className="max-w-6xl flex flex-col gap-8">
                 <header>
                     <TitleText
@@ -20,12 +20,12 @@ function Profile() {
                     />
                 </header>
                 <section>
-                    <div className="flex flex-col m-auto max-w-5xl gap-5 xl:gap-10 md:flex-col lg:flex-row lg:items-start  items-center">
+                    <div className="flex flex-col m-auto w-full gap-5 xl:gap-10 md:flex-col lg:flex-row lg:items-start items-center">
                         <ProfileCard openModal={() => setSelfiOpen(true)} />
                         <ProfileForm />
                     </div>
                 </section>
-                
+
 
                 <Modal
                     title={` Update Your Portrait`}

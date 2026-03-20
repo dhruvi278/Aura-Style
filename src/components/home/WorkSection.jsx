@@ -7,7 +7,7 @@ const WorkSection = () => {
       <div className="max-w-6xl w-full flex flex-col gap-16">
         <div className="flex flex-col gap-4 justify-center items-center text-center">
           <h2 className="playfair-display text-[36px]">The Aura Experience</h2>
-          <p className="work-sans text-[12px] text-[#1A1A18]/60">
+          <p className="work-sans text-[14px] sm:text-[18px] text-[#1A1A18]/60">
             Sophisticated Logic. Impeccable Style.
           </p>
         </div>

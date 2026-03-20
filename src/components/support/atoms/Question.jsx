@@ -24,10 +24,14 @@ function Question({ question, answer }) {
       </button>
 
 
-      {open && <div className='"mx-2 sm:mx-4 md:mx-6 p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl bg-[#FDFAF6] work-sans italic flex flex-col gap-2 border-l-2 border-[#F2CC0D]/50'>
-        <MessageSquareQuote size={24} color="#F2CC0D" strokeWidth={3} />
-        <p className='text-sm sm:text-base leading-relaxed'>{answer}</p>
-      </div>}
+      <div className={`accordion-content ${open ? 'open' : ''}`}>
+        <div className='accordion-content-inner'>
+          <div className={`mx-2 sm:mx-4 md:mx-6 p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl bg-[#FDFAF6] work-sans italic flex flex-col gap-2 border-l-2 border-[#F2CC0D]/50 transition-all duration-300 z`}>
+            <MessageSquareQuote size={24} color="#F2CC0D" strokeWidth={3} />
+            <p className='text-sm sm:text-base leading-relaxed'>{answer}</p>
+          </div>
+        </div>
+      </div>
     </article>
   )
 }

@@ -17,16 +17,6 @@ function Button({
       "bg-[#EDE9E2] text-[#1A1A18] border border-[#DDD8D0] hover:border-[#C9A96E] hover:text-[#A8895E]",
   };
 
-  const styles = {
-    primary: "bg-[#1C1C1A] text-[#FDFAF6]",
-    secondray: "bg-[#ECB613] text-black",
-    whiten: "bg-white text-black border",
-    transparent: "bg-none",
-    upload: "bg-[#EDE9E2] text-black",
-    // whiten: " text-black",
-    bordered: "border border-[#E7E5E4] text-black",
-    ghost: 'bg-[#EDE9E2] text-[#1A1A18] border border-[#DDD8D0] hover:border-[#C9A96E] hover:text-[#A8895E]'
-  }
 
   const handleClick = (e) => {
 

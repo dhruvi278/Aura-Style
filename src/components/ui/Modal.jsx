@@ -1,5 +1,5 @@
 
-
+import { createPortal } from 'react-dom'
 import { useEffect } from 'react'
 import { X } from 'lucide-react'
 
@@ -13,7 +13,7 @@ function Modal({
     showClose = true,
 }) {
 
-    
+
     useEffect(() => {
         const handleEsc = (e) => {
             if (e.key === 'Escape') onClose()
@@ -22,39 +22,50 @@ function Modal({
         return () => document.removeEventListener('keydown', handleEsc)
     }, [isOpen, onClose])
 
-    
+
     useEffect(() => {
-        if (isOpen) document.body.style.overflow = 'hidden'
-        else document.body.style.overflow = 'unset'
-        return () => document.body.style.overflow = 'unset'
+        if (isOpen) {
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+            document.body.style.overflow = 'hidden'
+            document.body.style.paddingRight = `${scrollbarWidth}px`
+        } else {
+            document.body.style.overflow = 'unset'
+            document.body.style.paddingRight = '0px'
+        }
+        return () => {
+            document.body.style.overflow = 'unset'
+            document.body.style.paddingRight = '0px'
+        }
     }, [isOpen])
 
     if (!isOpen) return null
 
     const sizes = {
-        sm:   'max-w-sm',
-        md:   'max-w-lg',
-        lg:   'max-w-2xl',
-        xl:   'max-w-4xl',
+        sm: 'max-w-sm',
+        md: 'max-w-lg',
+        lg: 'max-w-2xl',
+        xl: 'max-w-4xl',
         full: 'max-w-[95vw]',
     }
 
-    return (
+    return createPortal(
         // Backdrop
         <div
             role="dialog"
             aria-modal="true"
             aria-label={title}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center overscroll-none overflow-hidden p-4 h-screen w-screen"
         >
-            
+
             <div
                 aria-hidden="true"
                 onClick={onClose}
+                onWheel={(e) => e.preventDefault()}
+                onTouchMove={(e) => e.preventDefault()}
                 className="absolute inset-0 bg-[#1C1C1A]/50 backdrop-blur-sm transition-opacity duration-300"
             />
 
-          
+
             <article className={`
                 relative z-10
                 w-full ${sizes[size]}
@@ -68,7 +79,7 @@ function Modal({
                 animate-fade-up
             `}>
 
-                
+
                 {(title || showClose) && (
                     <header className='flex items-start justify-between px-6 sm:px-8 pt-6 sm:pt-8 pb-4'>
                         <div className='flex flex-col gap-1'>
@@ -84,7 +95,7 @@ function Modal({
                             )}
                         </div>
 
-                        
+
                         {showClose && (
                             <button
                                 type='button'
@@ -108,19 +119,20 @@ function Modal({
                     </header>
                 )}
 
-               
+
                 <div
                     aria-hidden='true'
                     className='mx-6 sm:mx-8 h-[1px] bg-[#E7E1CF]'
                 />
 
-                
+
                 <section className='px-6 sm:px-8 py-6 overflow-y-auto scrollbar-hide flex-1'>
                     {children}
                 </section>
 
             </article>
-        </div>
+        </div>,
+        document.body
     )
 }
 

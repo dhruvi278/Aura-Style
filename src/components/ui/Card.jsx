@@ -2,7 +2,7 @@ import { Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
 import Modal from "./Modal";
 
-function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPage = null }) {
+function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPage = null, uploadModal }) {
 
 
     const [load, setLoad] = useState(false)
@@ -10,16 +10,26 @@ function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPa
     return (
         <article
             aria-label={cardTitle}
-            className={`group relative rounded-[24px] lg:rounded-[48px] w-full overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer ${type !== "normal" ? `border-2 border-dashed border-[#E7E1CF] hover:border-[#C9A96E]` : `bg-[#F0EDE6]`}`}
+            className={`group relative rounded-[24px] lg:rounded-[48px] w-full overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer ${type !== "normal" ? `border-2 border-dashed border-[#E7E1CF] hover:border-[#C9A96E]` : `bg-white/50`}`}
 
         >
             {/* Upload Card */}
-            {type !== "normal" && <div className="absolute inset-0 flex flex-col justify-center items-center gap-3">
-                <div className="p-2 sm:p-3 border border-dashed border-[#E7E1CF] rounded-full group-hover:border-[#C9A96E] transition-all duration-200">
-                    <Plus size={20} color="#1C1C1A" className="opacity-20 group-hover:opacity-40 text-[#1C1C1A] sm:w-6 sm:h-6 md:w-7 md:h-7" />
-                </div>
-                <div className="uppercase newsreader text-[11px] sm:text-[12px] md:text-[13px] text-[#1C1C1A] opacity-40 group-hover:opacity-60 tracking-[2px] transition-all duration-200">add Item</div>
-            </div>}
+            {type !== "normal" && (
+                <button onClick={uploadModal} className="w-full relative">
+                    <div className="aspect-[4/5] w-full" />
+
+                    <div className="min-h-[64px] md:min-h-[70px]" />
+
+                    <div className="absolute inset-0 flex flex-col justify-center items-center gap-3">
+                        <div className="p-2 sm:p-3 border border-dashed border-[#E7E1CF] rounded-full group-hover:border-[#C9A96E] transition-all duration-200">
+                            <Plus size={20} className="opacity-20 group-hover:opacity-40 text-[#1C1C1A] sm:w-6 sm:h-6 md:w-7 md:h-7" />
+                        </div>
+                        <span className="uppercase newsreader text-[11px] sm:text-[12px] md:text-[13px] text-[#1C1C1A] opacity-40 group-hover:opacity-60 tracking-[2px] transition-all duration-200">
+                            Add Item
+                        </span>
+                    </div>
+                </button>
+            )}
 
             {/* Loading Effect */}
             {!load && type === "normal" && <div aria-hidden="true" className="absolute inset-0 z-10 bg-gradient-to-r from-[#E8E2D9] via-[#F0EDE6] to-[#E8E2D9] bg-[length:200%_100%] animate-shimmer" />}
@@ -56,8 +66,8 @@ function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPa
                     </button>}
                 </figure>
 
-                <footer className="bg-white/50 px-3 py-3 md:px-6 md:py-5">
-                    <h3 className="playfair text-sm sm:text-base md:text-lg lg:text-xl text-gray-800 mb-1 capitalize">{cardTitle}</h3>
+                <footer className="px-3 py-3 md:px-4 md:py-4 min-h-[64px] md:min-h-[72px] flex flex-col justify-center" >
+                    <h3 className="playfair text-sm sm:text-base md:text-lg lg:text-xl text-gray-800 mb-1 capitalize truncate">{cardTitle}</h3>
                     <p className="work-sans text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs tracking-[2px] sm:tracking-[3px] md:tracking-[4px] text-[#EEBD2B] font-semibold uppercase">
                         {cardText}
                     </p>

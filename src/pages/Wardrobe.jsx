@@ -43,14 +43,14 @@ function Wardrobe() {
 
 
                 {/* Cards */}
-                <CardGrid>
+                <CardGrid uploadModal={() => setUploadOpen(true)}>
                     <Card src="https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
                     <Card src="https://images.pexels.com/photos/5560028/pexels-photo-5560028.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
                     <Card src="https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
                     <Card src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
                     <Card src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
                     <Card src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
-                    <Card src="image.png" cardTitle="cotton Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
+                    <Card src="image.png" cardTitle="cutton Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
                     <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
                     <Card src="image.png" cardTitle="Silk Creame Blouse" cardText="Top" cardPage={`wardrobe`} />
 

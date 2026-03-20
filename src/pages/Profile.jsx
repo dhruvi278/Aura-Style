@@ -26,7 +26,6 @@ function Profile() {
                     </div>
                 </section>
 
-
                 <Modal
                     title={` Update Your Portrait`}
                     description={`Upload or capture a photo for your personal style profile.`}

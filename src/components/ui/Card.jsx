@@ -11,7 +11,6 @@ function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPa
         <article
             aria-label={cardTitle}
             className={`group relative rounded-[24px] lg:rounded-[48px] w-full overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer ${type !== "normal" ? `border-2 border-dashed border-[#E7E1CF] hover:border-[#C9A96E]` : `bg-[#F0EDE6]`}`}
-
         >
             {/* Upload Card */}
             {type !== "normal" && <div className="absolute inset-0 flex flex-col justify-center items-center gap-3">
@@ -61,7 +60,6 @@ function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPa
                     <p className="work-sans text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs tracking-[2px] sm:tracking-[3px] md:tracking-[4px] text-[#EEBD2B] font-semibold uppercase">
                         {cardText}
                     </p>
-
                 </footer>
             </div>}
 

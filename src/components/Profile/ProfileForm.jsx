@@ -17,6 +17,7 @@ function ProfileForm() {
                     name="fullname"
                     value="Riddhi kapoor"
                     variant="secondary"
+                    formVariant='underline'
                     placeholder={`Enter Your Name`}
                     className="border-b-1 border-t-0 border-l-0 border-r-0 rounded-none " />
                 <Formfield label="Email Address"
@@ -24,6 +25,7 @@ function ProfileForm() {
                     name="email"
                     value="ridhi@gmail.com"
                     variant="secondary"
+                    formVariant="underline"
                     placeholder={`abc@example.com`}
                     className="border-b-1 border-t-0 border-l-0 border-r-0 rounded-none " />
                 <Formfield label="Phone Number"
@@ -31,6 +33,7 @@ function ProfileForm() {
                     name="phone"
                     value="+44 7700 900077"
                     variant="secondary"
+                    formVariant="underline"
                     placeholder={`123456789`}
                     className="border-b-1 border-t-0 border-l-0 border-r-0 rounded-none " />
                 <label className="jost uppercase text-sm  font-medium text-[#C5A059] ">Gender Identity</label>

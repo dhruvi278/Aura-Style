@@ -7,7 +7,7 @@ function CollectionCard({ category, numberOfItems, CollectionIcon }) {
                 {CollectionIcon && <CollectionIcon size={18} />}
             </div>
             <div>
-                <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-[#EEBD2B] playfair-display">{numberOfItems}<span className="text-[#1A1A1A]/30 text-xs ml-1.5">{numberOfItems > 1 ? "ITEMS" : "ITEM"}</span></p>
+                <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl text-[#EEBD2B] playfair-display">{numberOfItems}<span className="text-[#1A1A1A] text-xs ml-1.5">{numberOfItems > 1 ? "ITEMS" : "ITEM"}</span></p>
             </div>
         </div>
     )

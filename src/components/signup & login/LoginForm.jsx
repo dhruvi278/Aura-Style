@@ -17,10 +17,12 @@ const LoginForm = () => {
   });
 
   const onSubmit = async (data) => {
+    console.log("clicked");
+
     await new Promise((res) => setTimeout(res, 5000));
-    toast.success('Login', {
-    description: 'Your have logged in successfully!',
-})
+    toast.success("Login", {
+      description: "Your have logged in successfully!",
+    });
     console.log("Sign up data:", data);
   };
 
@@ -30,6 +32,7 @@ const LoginForm = () => {
         <Logo />
         <TitleText
           title="Welcome Back"
+          login_signup={true}
           description="Sign in to your personal style sanctuary"
         />
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -63,22 +66,22 @@ const LoginForm = () => {
             error={errors.password?.message}
           />
           <div className=" mb-8 flex justify-between items-center">
-            <Link className="work-sans text-[14px] text-[#C4A982] italic">
-              Forgot your password?
-            </Link>
             <div className="flex gap-2 items-center">
-              <label className="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" id="remember" className="sr-only peer" />
-                <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none  rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-[#C4A982]"></div>
-
-              </label>
+              
               <label
                 htmlFor="remember"
                 className="work-sans text-[14px] text-[#475569] cursor-pointer"
               >
                 Remember me
               </label>
+              <label className="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="remember" className="sr-only peer" />
+                <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none  rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all duration-200 dark:border-gray-600 peer-checked:bg-[#C4A982]"></div>
+              </label>
             </div>
+            <Link className="work-sans text-[14px] text-[#C4A982] italic">
+              Forgot your password?
+            </Link>
           </div>
           <Button type="submit" disabled={isSubmitting} className="w-full">
             <p className="jost py-1 tracking-[2px]">
@@ -92,7 +95,7 @@ const LoginForm = () => {
           </p>
           <Link
             to={"/signup"}
-            className="work-sans text-[14px] text-[#C4A982] hover:text-[#8c785d] font-bold"
+            className="work-sans text-[14px] text-[#C4A982] hover:text-[#8c785d] font-semibold transition-colors duration-200"
           >
             Create Account
           </Link>

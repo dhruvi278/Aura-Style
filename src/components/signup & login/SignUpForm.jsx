@@ -20,10 +20,41 @@ const SignUpForm = () => {
 
   const onSubmit = async (data) => {
     await new Promise((res) => setTimeout(res, 5000));
-    toast.success('Sign Up', {
-    description: 'Account created successfully!',
-})
+    toast.success("Sign Up", {
+      description: "Account created successfully!",
+    });
     console.log("Sign up data:", data);
+  };
+
+  const allowOnlyNumbers = (e) => {
+    // Allow: backspace, delete, tab, escape, enter
+    const allowedKeys = [
+      "Backspace",
+      "Delete",
+      "Tab",
+      "Escape",
+      "Enter",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "ArrowDown",
+      "+",
+    ];
+
+    if (allowedKeys.includes(e.key)) return;
+
+    // Block anything that isn't a digit
+    if (!/^\d$/.test(e.key)) {
+      e.preventDefault();
+    }
+  };
+
+  const allowOnlyNumbersPaste = (e) => {
+    const pasted = e.clipboardData.getData("text");
+    // Strip everything except digits and leading +
+    if (!/^\+?\d+$/.test(pasted)) {
+      e.preventDefault();
+    }
   };
 
   return (
@@ -33,6 +64,7 @@ const SignUpForm = () => {
         <TitleText
           title="Create Your Account"
           description="Your curated sartorial journey begins with a single step."
+          login_signup={true}
         />
         <form onSubmit={handleSubmit(onSubmit)}>
           <Formfield
@@ -77,6 +109,8 @@ const SignUpForm = () => {
                 name="phone"
                 type="tel"
                 placeholder="eg. 9876543210"
+                onKeyDown={allowOnlyNumbers}
+                onPaste={allowOnlyNumbersPaste}
                 register={(name) =>
                   register(name, {
                     pattern: {
@@ -162,7 +196,7 @@ const SignUpForm = () => {
           </p>
           <Link
             to={"/login"}
-            className="work-sans text-[14px] text-[#C4A982] hover:text-[#8c785d] font-bold"
+            className="work-sans text-[14px] text-[#C4A982] hover:text-[#8c785d] font-semibold transition-colors duration-200"
           >
             Login
           </Link>

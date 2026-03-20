@@ -67,7 +67,7 @@ function Navbar() {
                     <div onClick={() => navigate('/')} className="cursor-pointer">
                         <Logo />
                     </div>
-
+                    {/* Desktop view */}
                     <ul className="hidden lg:flex gap-7 text-gray-700 font-medium">
 
                         {(isLoggedIn ? privateLinks : publicLinks).map((link) => (
@@ -82,6 +82,7 @@ function Navbar() {
                             </li>
                         ))}
                     </ul>
+                    {/* LogOut option for Logged In user  */}
 
                     <div className="hidden lg:flex gap-4 ">
                         {isLoggedIn ? (
@@ -140,6 +141,7 @@ function Navbar() {
                 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
             >
 
+                {/* Mobile view */}
                 <ul className="flex flex-col gap-6 text-gray-700 font-medium ">
 
                     {(isLoggedIn ? privateLinks : publicLinks).map((link) => (

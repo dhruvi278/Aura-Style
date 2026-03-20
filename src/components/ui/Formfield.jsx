@@ -9,7 +9,9 @@ const Formfield = ({
   placeholder,
   className,
   register,
-  variant="primary"
+  variant="primary",
+  onKeyDown,
+  onPaste,
 }) => {
   const style ={
     primary:"text-gray-600",
@@ -31,6 +33,8 @@ const Formfield = ({
             {...(register ? register(name) : {})}
             type={type}
             placeholder={placeholder}
+            onKeyDown={onKeyDown}
+            onPaste={onPaste}
             className={`jost w-full px-5 py-3 rounded-full border border-gray-300 
             bg-[#FDFAF6] outline-none 
             focus:border-[#EEBD2B] focus:ring-2 focus:ring-[#EEBD2B]/30

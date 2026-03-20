@@ -8,7 +8,7 @@ import WorkSection from "../components/home/WorkSection";
 const HomePage = () => {
   return (
     <>
-      <main>
+      <main className="page-enter">
         <About />
         <WorkSection />
         <Story />

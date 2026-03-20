@@ -1,23 +1,23 @@
 import DateFilter from "../components/History/Filter/DateFilter";
 import SearchOutfit from "../components/History/Filter/SearchOutfit";
-import TotalOutfitCard from "../components/History/TotalOutfitCard";
+
 import TitleText from "../components/ui/TitleText";
 import Card from "../components/ui/Card";
 import CardGrid from "../components/ui/CardGrid";
 import Pagination from "../components/ui/Pagination";
+import TotalItems from "../components/wardrobe/TotalItems";
 // import MyDatePicker from "../components/History/Filter/MyDatePicker";
 
 function History() {
     return (
-        <div className="px-4 sm:px-6 lg:px-10 pt-10 bg-[#F7F4EF]  flex flex-col gap-8 lg:items-center lg:justify-center min-h-[calc(100dvh-80px)]">
+        <div className="page-enter px-4 sm:px-6 lg:px-10 pt-10 bg-[#F7F4EF]  flex flex-col gap-8 lg:items-center lg:justify-center min-h-[calc(100dvh-80px)]">
             <div className="max-w-6xl flex flex-col gap-3 ">
                 <header>
                     <TitleText title="Your Style Archive" description="" />
                 </header>
 
-                <div>
-                    <TotalOutfitCard />
-                </div>
+                <TotalItems items={4} items_name={`look`} />
+
 
                 {/* Search + Date Range */}
                 <section>

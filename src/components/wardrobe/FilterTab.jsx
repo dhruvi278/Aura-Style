@@ -12,19 +12,10 @@ function FilterTabs({ filters = DEFAULT_FILTERS, onFilterChange }) {
     if (onFilterChange) onFilterChange(filter);
   };
 
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
-    }
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+ 
 
   return (
-    <nav aria-label="wardrobe filters" className={`overflow-x-auto scrollbar-hide ${scrolled ? `pb-0 border-b-0` : `pb-2 sm:pb-4 lg:pb-6 border-b border-[#E7E1CF]/50`}`}>
+    <nav aria-label="wardrobe filters" className={`overflow-x-auto scrollbar-hide`}>
       <ul className="flex items-center gap-2 min-w-max">
         {filters.map((filter) => (
           <li key={filter}>
@@ -37,8 +28,8 @@ function FilterTabs({ filters = DEFAULT_FILTERS, onFilterChange }) {
               font-medium tracking-[0.10em] sm:tracking-[0.12em]
               uppercase transition-all duration-200
               ${active === filter
-                  ? "bg-[#1C1C1A] text-[#FDFAF6]"
-                  : "bg-transparent text-[#6B6460] hover:text-[#1A1A18]"
+                  ? `bg-[#1C1C1A] text-[#FDFAF6]`
+                  : `bg-transparent text-[#6B6460] hover:text-[#1A1A18]`
                 }
           `}
             >

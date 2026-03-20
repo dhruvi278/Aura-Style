@@ -1,11 +1,15 @@
 import React from 'react'
 
-function TotalItems() {
+function TotalItems({items, items_name}) {
 
     return (
-        <p className='bg-[#E7E1CF]/40 px-3 py-2 w-fit border border-[#E7E1CF] newsreader uppercase rounded-full font-medium text-xs sm:text-sm text-[#1C1C1A]/60'>
-            Wardrobe Items <strong className='text-lg sm:text-xl pl-2 actor-regular font-extrabold text-[#EEBD2B]'>10</strong>
-        </p>
+        <article className='flex items-center gap-2 bg-[#E7E1CF]/40 w-fit border border-[#E7E1Cf] rounded-full px-4 py-2 '>
+            <span className='poppins  uppercase text-[12px] sm:text-[14px] tracking-[2px] font-medium'>
+                {items_name}
+            </span>
+            <div className='w-[1px] h-3 bg-[#d10c0c]' aria-hidden='true' />
+            <strong className='text-[15px] sm:text-[20px] font-medium text-[#b8821e]'>{items}</strong>
+        </article>
     )
 }
 

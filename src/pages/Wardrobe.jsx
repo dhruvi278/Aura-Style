@@ -21,23 +21,23 @@ function Wardrobe() {
 
 
     return (
-        <div className='flex flex-col gap-5 lg:justify-center lg:items-center lg:w-full pt-12 bg-[#F7F4EF]' >
+        <div className='page-enter flex flex-col gap-5 lg:justify-center lg:items-center lg:w-full pt-12 bg-[#F7F4EF]' >
             {/* <Navbar /> */}
             <div className='flex flex-col gap-10 px-12 lg:max-w-6xl'>
                 <section aria-label='My worddrobe' className='flex flex-col md:flex-row md:justify-between md:items-end gap-4'>
                     {/* Headings */}
                     <div>
                         <TitleText title='My Wardrobe' description='' />
-                        <TotalItems />
+                        <TotalItems items={10} items_name={`wardrobe items`} />
                     </div>
-                    <Button onClick={() => setUploadOpen(true)} className="w-full md:w-auto flex gap-2 justify-center">
-                        <CirclePlus color="#ffff" />
-                        <span className='newsreader uppercase text-md sm:text-lg'>Upload items</span>
+                    <Button onClick={() => setUploadOpen(true)} className="w-full md:w-auto flex items-center justify-center gap-2 ">
+                        <CirclePlus size={20} color='#ffff' aria-hidden='true' className='shrink-0' />
+                        <span className='playfair uppercase text-[14px] sm:text-[18px] tracking-[2px] font-semibold leading-none'>Upload items</span>
                     </Button>
                 </section>
 
                 {/* FilterBar */}
-                <div className='sticky top-18  z-40 backdrop-blur-sm py-3 w-full '>
+                <div className='sticky top-18 z-40 bg-[#F7F4EF]  backdrop-blur-md py-3 w-full border-b border-[#E7E1CF]/40 '>
                     <FilterTabs onFilterChange={(filter) => console.log(filter)} />
                 </div>
 

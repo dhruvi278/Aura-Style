@@ -14,7 +14,7 @@ const Story = () => {
               <blockquote className="playfair text-[32px] lg:text-[36px] mb-4 leading-10">
                 Style is a way to say who you are without having to speak.
               </blockquote>
-              <cite className="work-sans text-[#C5A059] text-[12px] font-bold mb-10 not-italic block">
+              <cite className="work-sans text-[#C5A059] text-[16px] font-bold mb-10 not-italic block">
                 — AuraStyle Manifesto
               </cite>
             </div>

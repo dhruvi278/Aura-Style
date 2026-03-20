@@ -10,7 +10,7 @@ const About = () => {
     <section id='about' className="min-h-screen w-full bg-[#F7F4EF] flex justify-center items-center px-6 py-20">
       <div className="max-w-6xl w-full flex flex-col lg:flex-row justify-between gap-12 lg:gap-16">
         <div className="flex-1 flex flex-col gap-6 lg:gap-8 justify-center">
-          <h5 className="work-sans font-bold text-[12px] text-[#C5A059] tracking-[2.4px]">
+          <h5 className="work-sans font-bold text-[14px] sm:text-[18px] text-[#C5A059] tracking-[2.4px]">
             AI-Powered Fashion Intelligence
           </h5>
           <h1 className="min-h-60 md:min-h-30 lg:min-h-60  playfair-display text-[48px] lg:text-[72px] leading-tight lg:leading-20">

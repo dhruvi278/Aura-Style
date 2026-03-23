@@ -374,23 +374,39 @@ html::-webkit-scrollbar {
 }
 
 .accordion-content {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .accordion-content.open {
-    grid-template-rows: 1fr;
+  grid-template-rows: 1fr;
 }
 
 .accordion-content-inner {
-    overflow: hidden;
-    opacity: 0;
-    transform: translateY(-6px);
-    transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .accordion-content.open .accordion-content-inner {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Override swiper slide width */
+.swiper {
+  width: 100% !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+.swiper-slide {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+.swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1) !important;
 }

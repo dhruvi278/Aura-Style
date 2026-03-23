@@ -10,7 +10,7 @@ function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPa
     return (
         <article
             aria-label={cardTitle}
-            className={`group relative rounded-[24px] lg:rounded-[48px] w-full overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer ${type !== "normal" ? `border-2 border-dashed border-[#E7E1CF] hover:border-[#C9A96E]` : `bg-white/50`}`}
+            className={`group relative rounded-[24px] lg:rounded-[30px] w-full overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ${type !== "normal" ? `border-2 border-dashed border-[#E7E1CF] hover:border-[#C9A96E]` : `bg-white/50`}`}
 
         >
             {/* Upload Card */}

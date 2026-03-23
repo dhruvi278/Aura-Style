@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 
 function Navbar() {
+
     const [isOpen, setIsOpen] = useState(false);
     const sidebarRef = useRef(null);
 
@@ -13,7 +14,7 @@ function Navbar() {
 
     const publicLinks = [
         { name: 'Home', path: '/' },
-        { name: 'Our story', path: '/ourstory' },
+        // { name: 'Our story', path: '/ourstory' },
         { name: 'Support', path: '/support' }
     ];
     const privateLinks = [
@@ -74,8 +75,8 @@ function Navbar() {
                             <li key={link.path}>
                                 <NavLink to={link.path}
                                     className={({ isActive }) => `pb-1 transition-colors duration-200 ${isActive
-                                            ? "border-b-2 border-gray-700"
-                                            : "hover: text-black"
+                                        ? "border-b-2 border-gray-700"
+                                        : "hover: text-black"
                                         }`}
                                 >{link.name}</NavLink>
 
@@ -101,14 +102,17 @@ function Navbar() {
                         ) : (
                             <>
                                 <Button
+                                    type={'button'}
                                     children="Sign In"
                                     variant="transparent"
+                                    onClick={() => navigate('/login')}
                                 />
 
                                 <Button
-                                    type="submit"
+                                    type="button"
                                     children="Get Start"
                                     variant="primary"
+                                    onClick={() => navigate('/signup')}
                                 />
                             </>
                         )}

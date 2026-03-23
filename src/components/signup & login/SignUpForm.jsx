@@ -76,9 +76,13 @@ const SignUpForm = () => {
               register(name, {
                 required: "Full name is required",
                 minLength: {
-                  value: 2,
-                  message: "Name must be at least 2 characters",
+                  value: 5,
+                  message: "Name must be at least 5 characters",
                 },
+                pattern: {
+                      value: /^[A-Za-z]+(?: [A-Za-z]+)*$/,
+                      message: "Must use letters only, with spaces between words.",
+                    },
               })
             }
             error={errors.fullName?.message}
@@ -136,8 +140,8 @@ const SignUpForm = () => {
                   message: "Password must be at least 6 characters",
                 },
                 pattern: {
-                  value: /^(?=.*[A-Za-z])(?=.*\d).+$/,
-                  message: "Password must contain letters and numbers",
+                  value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@#$%^&*!.]).+$/,
+                  message: "Password must contain at least one letter, one number, and one special character.",
                 },
               })
             }

@@ -36,9 +36,9 @@ function OutfitForm() {
                 </Button>
             </form>
 
-            <aside className='hidden lg:block'>
+            {/* <aside className='hidden lg:block'>
                 <AIResponce />
-            </aside>
+            </aside> */}
 
         </section>
     )

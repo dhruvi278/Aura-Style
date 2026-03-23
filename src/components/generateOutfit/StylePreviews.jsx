@@ -3,17 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { EffectCreative, Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/effect-creative'
+import previews from './generateOutfitPreviews'
 
-const INSPIRATIONS = [
-    { src: 'https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg', occasion: 'Casual' },
-    { src: 'https://images.pexels.com/photos/2220316/pexels-photo-2220316.jpeg', occasion: 'Formal' },
-    { src: 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg', occasion: 'Work' },
-    { src: 'https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg', occasion: 'Date Night' },
-    { src: 'https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg', occasion: 'Social' },
-    { src: 'https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg', occasion: 'Festive' },
-    { src: 'https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg', occasion: 'Travel' },
-    { src: 'https://images.pexels.com/photos/5560028/pexels-photo-5560028.jpeg', occasion: 'Active' },
-]
 
 function StyleInspiration() {
     const swiperRef = useRef(null)
@@ -24,10 +15,10 @@ function StyleInspiration() {
             aria-label='Style inspiration'
             className='bg-[#FDFAF6] border border-[#E7E5E4] rounded-3xl p-6 sm:p-8 flex flex-col gap-6'
         >
-            {/* Header */}
+
             <header className='flex flex-col gap-1'>
-                <p className='work-sans uppercase text-[10px] tracking-[3px] text-[#C9A96E]'>
-                    ✦ Style Inspiration
+                <p className='text-[#C5A059] work-sans font-bold text-[11px] sm:text-[12px] uppercase tracking-[2px]'>
+                    ✦ Style Ideas previews
                 </p>
                 <h2 className='playfair italic text-[1.3rem] sm:text-[1.5rem] text-[#1A1A18] font-medium'>
                     Your look will appear here
@@ -53,7 +44,7 @@ function StyleInspiration() {
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
                         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                         autoplay={{
-                            delay: 1000,
+                            delay: 2500,
                             disableOnInteraction: false,
                             pauseOnMouseEnter: true,
                         }}
@@ -70,9 +61,9 @@ function StyleInspiration() {
                             },
                         }}
                     >
-                        {INSPIRATIONS.map((item, i) => (
+                        {previews.map((item, i) => (
                             <SwiperSlide key={i}>
-                                <figure className='relative overflow-hidden rounded-[16px]'>
+                                <figure className='relative overflow-hidden rounded-[24px]'>
                                     <img
                                         src={item.src}
                                         alt={`${item.occasion} outfit inspiration`}
@@ -87,7 +78,7 @@ function StyleInspiration() {
                                             bg-[#FDFAF6]/90 backdrop-blur-sm
                                             text-[#1A1A18] font-medium
                                             rounded-full whitespace-nowrap
-                                            text-[10px] px-3 py-1.5
+                                            text-[12px] px-3 py-1.5
                                         '>
                                             {item.occasion}
                                         </span>
@@ -98,14 +89,14 @@ function StyleInspiration() {
                     </Swiper>
                 </div>
 
-                {/* Dots */}
+
                 <div className='flex justify-center gap-1.5 py-1'>
-                    {INSPIRATIONS.map((_, i) => (
+                    {previews.map((_, i) => (
                         <button
                             key={i}
                             type='button'
                             onClick={() => swiperRef.current?.slideToLoop(i)}
-                            aria-label={`Go to ${INSPIRATIONS[i].occasion}`}
+                            aria-label={`Go to ${previews[i].occasion}`}
                             className={`
                                 rounded-full transition-all duration-300
                                 ${i === activeIndex
@@ -119,7 +110,7 @@ function StyleInspiration() {
 
             </div>
 
-            {/* Divider */}
+
             <div className='flex items-center gap-3'>
                 <div className='flex-1 h-[1px] bg-[#E7E1CF]' aria-hidden='true' />
                 <span className='work-sans text-[10px] text-[#A8A29E] uppercase tracking-[2px]'>
@@ -128,7 +119,7 @@ function StyleInspiration() {
                 <div className='flex-1 h-[1px] bg-[#E7E1CF]' aria-hidden='true' />
             </div>
 
-            {/* CTA hint */}
+
             <footer className='flex items-start gap-3 p-4 rounded-[14px] bg-[#F5ECD9]/50 border border-[#E7E1CF]'>
                 <span className='text-[#C9A96E] text-[18px] leading-none mt-0.5' aria-hidden='true'>✦</span>
                 <p className='work-sans text-[12px] text-[#6B6460] leading-relaxed'>

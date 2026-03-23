@@ -54,6 +54,7 @@ function Modal({
             role="dialog"
             aria-modal="true"
             aria-label={title}
+            onClick={onClose}
             className="fixed inset-0 z-50 flex items-center justify-center overscroll-none overflow-hidden p-4 h-screen w-screen"
         >
 
@@ -62,11 +63,13 @@ function Modal({
                 onClick={onClose}
                 onWheel={(e) => e.preventDefault()}
                 onTouchMove={(e) => e.preventDefault()}
-                className="absolute inset-0 bg-[#1C1C1A]/50 backdrop-blur-sm transition-opacity duration-300"
+                className="absolute left-0 right-0 bottom-0 top-[72px] bg-[#1C1C1A]/40 backdrop-blur-sm transition-opacity duration-300"
             />
 
 
-            <article className={`
+            <article
+                onClick={(e) => e.stopPropagation()}
+                className={`
                 relative z-10
                 w-full ${sizes[size]}
                 bg-[#FDFAF6]

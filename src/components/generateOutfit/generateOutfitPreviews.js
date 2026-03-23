@@ -8,14 +8,14 @@ import TravelOutfit from "../../assets/generate_outfit_preview/travel.png";
 import WorkOutfit from "../../assets/generate_outfit_preview/work.png";
 
 const previews = [
-  { src: {ActiveOutfit}, occassion: "Active" },
-  { src: {CasualOutfit}, occassion: "Casual" },
-  { src: {FestiveOutfit}, occassion: "Festive" },
-  { src: {FormalOutfit}, occassion: "Formal" },
-  { src: {HomeOutfit}, occassion: "Home" },
-  { src: {SocialOutfit}, occassion: "Social" },
-  { src: {TravelOutfit}, occassion: "Travel" },
-  { src: {WorkOutfit}, occassion: "Work" },
+  { src: ActiveOutfit, occasion: "Active" },
+  { src: CasualOutfit, occasion: "Casual" },
+  { src: FestiveOutfit, occasion: "Festive" },
+  { src: FormalOutfit, occasion: "Formal" },
+  { src: HomeOutfit, occasion: "Home" },
+  { src: SocialOutfit, occasion: "Social" },
+  { src: TravelOutfit, occasion: "Travel" },
+  { src: WorkOutfit, occasion: "Work" },
 ];
 
 export default previews;

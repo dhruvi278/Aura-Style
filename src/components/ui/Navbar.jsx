@@ -133,7 +133,7 @@ function Navbar() {
 
             {isOpen && (
                 <div
-                    className="fixed inset-0 bg-black/30 z-40"
+                    className="fixed inset-0 bg-black/30 z-50"
                     onClick={() => setIsOpen(false)}
                 />
             )}
@@ -141,7 +141,7 @@ function Navbar() {
             <div
                 ref={sidebarRef}
                 className={`lg:hidden fixed  right-0 h-screen w-55 bg-[#faf2e5]/80 backdrop-blur-md p-6 
-                z-50 transform transition-transform duration-300 shadow-lg flex flex-col justify-between 
+                z-60 transform transition-transform duration-300 shadow-lg flex flex-col justify-between 
                 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
             >
 

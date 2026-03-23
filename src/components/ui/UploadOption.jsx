@@ -26,6 +26,7 @@ function UploadOption({ onUpload, onClose, cameraFacing }) {
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
         accept: { 'image/*': ['.jpg', '.jpeg', '.png', '.webp'] },
+        maxFiles:false,
         maxFiles: 1,
         maxSize: 10 * 1024 * 1024
     });
@@ -74,7 +75,7 @@ function UploadOption({ onUpload, onClose, cameraFacing }) {
                         }
                     >
                         <input {...getInputProps()} />
-
+                        
                         <div className='w-12 h-12 rounded-full bg-[#FDFAF6] border border-[#E7E1CF] flex items-center justify-center'>
                             <ImageUp size={20} className='text-[#C9A96E]' aria-hidden='true' />
                         </div>

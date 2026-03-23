@@ -11,6 +11,7 @@ import Pagination from '../components/ui/Pagination'
 import Modal from '../components/ui/Modal'
 import UploadOption from '../components/ui/UploadOption'
 import SearchOutfit from '../components/History/Filter/SearchOutfit'
+import { useSearchParams } from 'react-router-dom'
 
 
 
@@ -18,7 +19,14 @@ import SearchOutfit from '../components/History/Filter/SearchOutfit'
 function Wardrobe() {
 
 
-    const [uploadOpen, setUploadOpen] = useState(false)
+    const [uploadOpen, setUploadOpen] = useState(false);
+    const [searchParams, setSearchParams] = useSearchParams();
+    const activeFilter = searchParams.get('filter') || 'all';
+    const handleFilterChange = (filter) =>{
+        setSearchParams({filter:filter.toLowerCase()});
+        console.log(filter)
+        
+    }
 
 
     return (
@@ -40,10 +48,9 @@ function Wardrobe() {
 
                 {/* FilterBar */}
                 <div className='sticky top-18 z-40 bg-[#F7F4EF]  backdrop-blur-md py-3 w-full border-b border-[#E7E1CF]/40 flex flex-col lg:gap-0 lg:flex-row  lg:items-end justify-between '>
-                    <FilterTabs onFilterChange={(filter) => console.log(filter)} />
+                    <FilterTabs active={activeFilter} onFilterChange={handleFilterChange} />
                     <SearchOutfit />
                 </div>
-
 
                 {/* Cards */}
                 <CardGrid uploadModal={() => setUploadOpen(true)}>

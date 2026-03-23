@@ -1,7 +1,7 @@
 import Button from "../ui/Button";
 import { Camera } from 'lucide-react'
 
-function ProfileCard({ openModal }) {
+function ProfileCard({ openModal, openDeleteModal }) {
     return (
         <div className="px-5 py-9 md:py-13  flex flex-col justify-center items-center gap-4 w-2xs md:w-lg lg:w-sm bg-[#FDFAF6] rounded-4xl h-1/2">
             <div className="relative rounded-xl">
@@ -17,10 +17,9 @@ function ProfileCard({ openModal }) {
                 <p className="playfair text-3xl font-semibold italic">Riddhi</p>
                 <p className="jost text-[#1C1C1A]/50 text-lg">Member since 2023</p>
             </div>
-            {/* <div className="flex flex-col gap-5">
-                <Button onClick={openModal} variant="upload" type="button" ><span className="jost px-10 lg:px-16 font-semibold uppercase">Upload Photo</span></Button>
-                <Button variant="primary" type="button" className="uppercase" ><span className="jost px-10 lg:px-16 font-semibold uppercase">Edit Profile</span></Button>
-            </div> */}
+            <div className="flex flex-col gap-5">
+                <Button onClick={openDeleteModal} variant="ghost" type="button" ><span className="jost px-4 sm:px-8 md:px-10 lg:px-16 font-semibold uppercase">Delete Account</span></Button>
+            </div>
         </div>
     )
 }

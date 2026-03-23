@@ -13,6 +13,7 @@ const Formfield = ({
   onKeyDown,
   onPaste,
   formVariant="primary",
+  showError="true",
 }) => {
   const style ={
     primary:"text-gray-600",
@@ -54,7 +55,9 @@ const Formfield = ({
 
           {/* Error */}
 
-          <p className={`text-red-500 text-xs min-h-4 mb-2 transition-opacity duration-200 ${error ? "opacity-100" : "opacity-0"}`}>{error || " "}</p>
+          {showError  && (
+            <p className={`text-red-500 text-xs min-h-4 mb-2 transition-opacity duration-200 ${error ? "opacity-100" : "opacity-0"}`}>{error || " "}</p>
+          )}
         </div>
       )}
     </>

@@ -10,11 +10,19 @@ import Support from "./pages/Support";
 import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
 import { Toaster } from "sonner";
+import { useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
+
 
 
 import History from "./pages/History";
 
 function App() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [pathname])
   return (
     <>
       <Toaster
@@ -55,8 +63,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/generate_outfit" element={<GenerateOutfit />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/history" element={<History/>}/>
-        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/history" element={<History />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/support" element={<Support />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/profile" element={<Profile />} />

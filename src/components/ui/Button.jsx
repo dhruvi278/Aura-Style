@@ -17,21 +17,12 @@ function Button({
       "bg-[#EDE9E2] text-[#1A1A18] border border-[#DDD8D0] hover:border-[#C9A96E] hover:text-[#A8895E]",
   };
 
-  const handleClick = (e) => {
-    if (type !== "submit" && onClick) {
-      e.preventDefault();
-      onClick();
-    }
-  };
+
   return (
-    <button
-      type={type}
-      onClick={(e) => handleClick(e)}
+    <button type={type} onClick={(e) => onClick(e)}
       disabled={disabled}
-      className={`${styles[variant]}  rounded-full ${variant === "whiten" ? `hover:underline cursor-pointer transition-colors duration-200` : `hover:cursor-pointer hover:scale-105 hover:shadow-md transition-all duration-200`} px-4 py-2 md:px-6 md:py-3 ${className} disabled:bg-gray-500 disabled:cursor-not-allowed disabled:hover:scale-100`}
-    >
-      {children}{" "}
-    </button>
-  );
+      className={`${styles[variant]}  rounded-full ${variant === "whiten" ? `hover:underline cursor-pointer transition-colors duration-200` : `hover:cursor-pointer hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200`} px-4 py-2 md:px-6 md:py-3 ${className} disabled:bg-gray-500 disabled:cursor-not-allowed disabled:hover:scale-100`}>
+      {children} </ button>
+  )
 }
 export default Button;

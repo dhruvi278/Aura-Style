@@ -15,8 +15,7 @@ function Dashboard() {
 
 
     return (
-        <main className="px-10 pt-10 bg-[#F7F4EF] flex flex-col gap-20 lg:w-full xl:items-center">
- 
+        <main className="page-enter px-10 pt-10 bg-[#F7F4EF] flex flex-col gap-20 lg:w-full xl:items-center">
             <div className="max-w-6xl gap-20 flex flex-col">
                 <header>
                     <TitleText

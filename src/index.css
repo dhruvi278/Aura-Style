@@ -86,90 +86,91 @@
 }
 
 @theme {
-    --animate-fade-up: fadeUp 0.3s ease forwards;
+  --animate-fade-up: fadeUp 0.3s ease forwards;
 
-    @keyframes fadeUp {
-        from {
-            opacity: 0;
-            transform: translateY(16px) scale(0.98);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.98);
     }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
 }
 
 html {
-    overflow-y: scroll;
-    /* Firefox */
-    scrollbar-width: none;
+  overflow-y: scroll;
+  /* Firefox */
+  scrollbar-width: none;
 
-    /* IE/Edge */
-    -ms-overflow-style: none;
+  /* IE/Edge */
+  -ms-overflow-style: none;
 }
 
 html::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
+  width: 0px;
+  height: 0px;
 }
 
 
 /* ── Base toast ── */
 .aura-toast {
-    border-left: 3px solid #E7E1CF !important;
-    transition: all 0.3s ease !important;
+  border-left: 3px solid #E7E1CF !important;
+  transition: all 0.3s ease !important;
 }
 
 /* ── Title ── */
 .aura-toast-title {
-    font-family: 'Cormorant Garamond', Georgia, serif !important;
-    font-size: 15px !important;
-    font-weight: 500 !important;
-    font-style: italic !important;
-    color: #1A1A18 !important;
-    letter-spacing: 0.01em !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+  color: #1A1A18 !important;
+  letter-spacing: 0.01em !important;
 }
 
 /* ── Description ── */
 .aura-toast-description {
-    font-family: 'Jost', sans-serif !important;
-    font-size: 12px !important;
-    color: #6B6460 !important;
-    letter-spacing: 0.03em !important;
-    margin-top: 3px !important;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 12px !important;
+  color: #6B6460 !important;
+  letter-spacing: 0.03em !important;
+  margin-top: 3px !important;
 }
 
 /* ── Success ── */
 .aura-toast-success {
-    border-left: 3px solid #C9A96E !important;
-    background: #FDFAF6 !important;
+  border-left: 3px solid #C9A96E !important;
+  background: #FDFAF6 !important;
 }
 
 /* ── Error ── */
 .aura-toast-error {
-    border-left: 3px solid #C0705A !important;
-    background: #FDFAF6 !important;
+  border-left: 3px solid #C0705A !important;
+  background: #FDFAF6 !important;
 }
 
 /* ── Loading ── */
 .aura-toast-loading {
-    border-left: 3px solid #A8A29E !important;
-    background: #FDFAF6 !important;
+  border-left: 3px solid #A8A29E !important;
+  background: #FDFAF6 !important;
 }
 
 /* ── Action button ── */
 .aura-toast-action {
-    font-family: 'Jost', sans-serif !important;
-    font-size: 11px !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.08em !important;
-    text-transform: uppercase !important;
-    background: #1A1A18 !important;
-    color: #FDFAF6 !important;
-    border-radius: 50px !important;
-    padding: 6px 14px !important;
-    border: none !important;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  background: #1A1A18 !important;
+  color: #FDFAF6 !important;
+  border-radius: 50px !important;
+  padding: 6px 14px !important;
+  border: none !important;
 }
 
 
@@ -179,6 +180,7 @@ html::-webkit-scrollbar {
   display: grid !important;
   grid-template-columns: repeat(7, 1fr) !important;
 }
+
 /* 
 .datepicker-controls {
   display: flex !important;
@@ -343,10 +345,52 @@ html::-webkit-scrollbar {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }
+}
+
+/* index.css */
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: pageEnter 0.4s ease forwards;
+}
+
+.accordion-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.accordion-content.open {
+    grid-template-rows: 1fr;
+}
+
+.accordion-content-inner {
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.accordion-content.open .accordion-content-inner {
+    opacity: 1;
+    transform: translateY(0);
 }

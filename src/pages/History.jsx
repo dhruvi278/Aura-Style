@@ -1,27 +1,26 @@
 import DateFilter from "../components/History/Filter/DateFilter";
 import SearchOutfit from "../components/History/Filter/SearchOutfit";
-import TotalOutfitCard from "../components/History/TotalOutfitCard";
+
 import TitleText from "../components/ui/TitleText";
 import Card from "../components/ui/Card";
 import CardGrid from "../components/ui/CardGrid";
 import Pagination from "../components/ui/Pagination";
-// import MyDatePicker from "../components/History/Filter/MyDatePicker";
+import TotalItems from "../components/wardrobe/TotalItems";
 
 function History() {
     return (
-        <div className="px-4 sm:px-6 lg:px-10 pt-10 bg-[#F7F4EF]  flex flex-col gap-8 lg:items-center lg:justify-center min-h-[calc(100dvh-80px)]">
+        <div className="page-enter px-4 sm:px-6 lg:px-10 pt-10 bg-[#F7F4EF]  flex flex-col gap-8 lg:items-center lg:justify-center min-h-[calc(100dvh-80px)]">
             <div className="max-w-6xl flex flex-col gap-3 ">
                 <header>
                     <TitleText title="Your Style Archive" description="" />
                 </header>
 
-                <div>
-                    <TotalOutfitCard />
-                </div>
+                <TotalItems items={4} items_name={`look`} />
+
 
                 {/* Search + Date Range */}
-                <section>
-                    <div className="flex flex-col gap-4 lg:flex-row sm:items-center sm:justify-between">
+                <section>   
+                    <div className="flex flex-col gap-4 lg:flex-row sm:items-start sm:justify-between lg:items-end">
                         <SearchOutfit />
                         <DateFilter />
                     </div>
@@ -35,6 +34,7 @@ function History() {
                                 src="https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg"
                                 cardText="FEB 28, 2026"
                                 cardTitle="Casual"
+                                selected={true}
                             />
                             <Card
                                 src="https://images.pexels.com/photos/5560028/pexels-photo-5560028.jpeg"
@@ -45,11 +45,13 @@ function History() {
                                 src="https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg"
                                 cardText="MAR 2, 2026"
                                 cardTitle="Social"
+                                
                             />
                             <Card
                                 src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg"
                                 cardText="MAR 3, 2026"
                                 cardTitle="Home"
+                                selected={true}
                             />
                         </CardGrid>
                     </div>

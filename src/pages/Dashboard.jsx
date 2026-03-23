@@ -24,7 +24,6 @@ function Dashboard() {
                     />
                 </header>
                 
-
                 <section >
                     <QuickActions />
                 </section>

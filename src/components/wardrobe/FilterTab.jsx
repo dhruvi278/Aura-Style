@@ -37,6 +37,7 @@ function FilterTabs({ filters = DEFAULT_FILTERS, onFilterChange }) {
             </button>
           </li>
         ))}
+        
       </ul>
     </nav>
   );

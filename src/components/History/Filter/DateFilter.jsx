@@ -88,6 +88,7 @@ function DateFilter() {
                     <div className="flex justify-end gap-2 px-4 py-2.5 border-t border-gray-100">
                         <button
                             onClick={() => {
+                                setSelectionRange(null);
                                 setTempRange(
                                     selectionRange ?? {
                                         startDate: new Date(),
@@ -101,6 +102,22 @@ function DateFilter() {
                         >
                             Cancel
                         </button>
+
+                        {/* <button
+                            onClick={() => {
+                                setTempRange(
+                                    selectionRange ?? {
+                                        startDate: new Date(),
+                                        endDate: new Date(),
+                                        key: 'selection',
+                                    }
+                                );
+                                setIsOpen(false);
+                            }}
+                            className="px-4 py-1.5 rounded-md border border-gray-200 bg-gray-50 text-gray-500 text-sm font-medium hover:bg-gray-100 transition"
+                        >
+                            Cancel
+                        </button> */}
 
                         <button
                             onClick={() => {

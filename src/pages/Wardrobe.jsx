@@ -10,6 +10,7 @@ import Card from '../components/ui/Card'
 import Pagination from '../components/ui/Pagination'
 import Modal from '../components/ui/Modal'
 import UploadOption from '../components/ui/UploadOption'
+import SearchOutfit from '../components/History/Filter/SearchOutfit'
 
 
 
@@ -35,10 +36,12 @@ function Wardrobe() {
                         <span className='playfair uppercase text-[14px] sm:text-[18px] tracking-[2px] font-semibold leading-none'>Upload items</span>
                     </Button>
                 </section>
+                
 
                 {/* FilterBar */}
-                <div className='sticky top-18 z-40 bg-[#F7F4EF]  backdrop-blur-md py-3 w-full border-b border-[#E7E1CF]/40 '>
+                <div className='sticky top-18 z-40 bg-[#F7F4EF]  backdrop-blur-md py-3 w-full border-b border-[#E7E1CF]/40 flex flex-col lg:gap-0 lg:flex-row  lg:items-end justify-between '>
                     <FilterTabs onFilterChange={(filter) => console.log(filter)} />
+                    <SearchOutfit />
                 </div>
 
 

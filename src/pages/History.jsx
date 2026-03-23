@@ -6,7 +6,6 @@ import Card from "../components/ui/Card";
 import CardGrid from "../components/ui/CardGrid";
 import Pagination from "../components/ui/Pagination";
 import TotalItems from "../components/wardrobe/TotalItems";
-// import MyDatePicker from "../components/History/Filter/MyDatePicker";
 
 function History() {
     return (
@@ -20,8 +19,8 @@ function History() {
 
 
                 {/* Search + Date Range */}
-                <section>
-                    <div className="flex flex-col gap-4 lg:flex-row sm:items-center sm:justify-between">
+                <section>   
+                    <div className="flex flex-col gap-4 lg:flex-row sm:items-start sm:justify-between lg:items-end">
                         <SearchOutfit />
                         <DateFilter />
                     </div>
@@ -35,6 +34,7 @@ function History() {
                                 src="https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg"
                                 cardText="FEB 28, 2026"
                                 cardTitle="Casual"
+                                selected={true}
                             />
                             <Card
                                 src="https://images.pexels.com/photos/5560028/pexels-photo-5560028.jpeg"
@@ -45,11 +45,13 @@ function History() {
                                 src="https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg"
                                 cardText="MAR 2, 2026"
                                 cardTitle="Social"
+                                
                             />
                             <Card
                                 src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg"
                                 cardText="MAR 3, 2026"
                                 cardTitle="Home"
+                                selected={true}
                             />
                         </CardGrid>
                     </div>

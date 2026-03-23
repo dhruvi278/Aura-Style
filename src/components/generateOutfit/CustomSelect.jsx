@@ -1,7 +1,7 @@
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import React, { useEffect, useRef, useState } from 'react'
 
-function CustomSelect({ options = ["work", "casual", "formal", "social", "active", "festive", "travel", "home"], label, placeholder = "Select", onChange, labelClassname }) {
+function CustomSelect({ options = ["work", "casual", "formal", "social", "active", "festive", "travel", "home"], label, placeholder = "Select", onChange, labelClassname, value }) {
 
     const ref = useRef()
     const [selected, setSelected] = useState(null)
@@ -14,6 +14,13 @@ function CustomSelect({ options = ["work", "casual", "formal", "social", "active
         document.addEventListener("mousedown", handler)
         return () => document.removeEventListener("mousedown", handler)
     }, [])
+    
+    useEffect(() =>{
+        if(value){
+            setSelected(value);
+        }
+    },[value])
+    
 
     const handleSelected = (option) => {
         setSelected(option)

@@ -3,16 +3,20 @@ import CustomSelect from './CustomSelect'
 import Button from '../ui/Button'
 import { Sparkles } from 'lucide-react'
 import AIResponce from './AIResponce'
+import { useSearchParams } from 'react-router-dom'
 
 
 
 function OutfitForm() {
+
+    const [searchParams,setSearchParams] = useSearchParams();
+    const defaultOccassion = searchParams.get('occasion');
     return (
         <section aria-label='Outfit form' className='flex flex-col gap-6 sm:gap-8 mr-0 md:mr-10 w-full lg:w-[80%]'>
 
             <form className='rounded-3xl bg-[#FDFAF6] p-4 sm:p-6 md:p-8 flex flex-col gap-4 border border-[#E7E5E4]'>
                 <h2 className='text-[#C5A059] work-sans font-bold text-[11px] sm:text-[12px] uppercase tracking-[2px]'>Request Details</h2>
-                <CustomSelect label={`Occassion*`} placeholder='Select an occassion' />
+                <CustomSelect label={`Occassion*`} placeholder='Select an occassion' value={defaultOccassion} onChange={(value) => { setSearchParams({ occasion: value.toLowerCase() });console.log(value)}} />
                 <label className='flex flex-col gap-2' htmlFor="description">
                     <p className='work-sans uppercase text-[10px] sm:text-[11px] md:text-[13px] text-[#A8A29E] tracking-[2px]'>describe your event</p>
                     <textarea

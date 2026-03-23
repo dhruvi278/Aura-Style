@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import CollectionOverview from "../components/Dashboard/CollectionOverview";
 import QuickActions from "../components/Dashboard/QuickActions";
 import QuickGenerateOption from "../components/Dashboard/QuickGenerateOption";
@@ -9,10 +10,15 @@ import { useEffect } from "react";
 function Dashboard() {
     
     const { fetchLocation } = useGeolocation();
+    const navigate = useNavigate();
+
     useEffect(()=>{
         fetchLocation();
     },[])
-
+    const handleCardClick = (filter) =>{
+        navigate(`/wardrobe?filter=${filter}`);
+    }
+    
 
     return (
         <main className="page-enter px-10 pt-10 bg-[#F7F4EF] flex flex-col gap-20 lg:w-full xl:items-center">
@@ -29,7 +35,7 @@ function Dashboard() {
                 </section>
 
                 <section >
-                    <CollectionOverview />
+                    <CollectionOverview onSelect={handleCardClick}/>
                 </section>
 
                 <section >

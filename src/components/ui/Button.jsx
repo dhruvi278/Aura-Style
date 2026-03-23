@@ -19,7 +19,7 @@ function Button({
 
 
   return (
-    <button type={type} onClick={(e) => onClick(e)}
+    <button type={type} onClick={onClick}
       disabled={disabled}
       className={`${styles[variant]}  rounded-full ${variant === "whiten" ? `hover:underline cursor-pointer transition-colors duration-200` : `hover:cursor-pointer hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200`} px-4 py-2 md:px-6 md:py-3 ${className} disabled:bg-gray-500 disabled:cursor-not-allowed disabled:hover:scale-100`}>
       {children} </ button>

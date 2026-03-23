@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import GenerateOutfitImg from '../../assets/GenerateOutfit.png'
 import Shirt from '../../assets/Shirt.png'
 import Pant from '../../assets/Pant.png'
 import Shoes from '../../assets/Shoes.png'
 import Button from '../ui/Button'
+import StylePreviews from './StylePreviews'
 
 function OutfitCard() {
 
+    const [outfit, setOutfit] = useState(false)
+
     const outfitItems = [Shirt, Pant, Shoes];
+
+    if (!outfit) {
+        return (
+            <article className='ml-0 md:ml-10'>
+                <StylePreviews />
+            </article>
+        )
+    }
     return (
         <article aria-label='Generated Outfit' className='flex flex-col gap-4 sm:gap-6 md:gap-8 ml-0 lg:ml-10'>
             <figure className='bg-[#FDFAF6] border border-[#E7E5E4] rounded-3xl px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-10'>

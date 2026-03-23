@@ -1,18 +1,13 @@
 import { ChevronDown, ChevronUp, CircleQuestionMark, MessageSquareQuote } from 'lucide-react'
 import React, { useState } from 'react'
 
-function Question({ question, answer }) {
-  const [open, setOpen] = useState(false)
-
-  const handleClick = () => {
-    setOpen(prev => !prev);
-  }
-
+function Question({ question, answer, open, onToggle }) {
+  
   return (
     <article className='flex flex-col gap-2 transition-all duration-300'>
 
       <button
-        onClick={handleClick}
+        onClick={onToggle}
         className='flex w-full justify-between items-center p-4  md:p-6 bg-[#FDFAF6] relative overflow-hidden rounded-2xl sm:rounded-full border-l-4 border-[#F2CC0D]'>
 
 

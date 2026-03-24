@@ -3,27 +3,57 @@ import Logo from "../ui/Logo";
 import TitleText from "../ui/TitleText";
 import Formfield from "../ui/Formfield";
 import Button from "../ui/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { useDispatch, useSelector } from "react-redux";
+import { signup } from "../../store/slice/authSlice";
+
 
 const SignUpForm = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { loading, error } = useSelector(state => state.auth)
+
   const {
     register,
     handleSubmit,
-    control,  
+    control,
     formState: { errors, isSubmitting },
   } = useForm({
     mode: "onTouched",
     reValidateMode: "onChange",
+    defaultValues: {
+      fullName: '',
+      email: '',
+      phone: '',
+      password: '',
+      gender: ''
+    }
   });
 
   const onSubmit = async (data) => {
-    await new Promise((res) => setTimeout(res, 5000));
-    toast.success("Sign Up", {
-      description: "Account created successfully!",
-    });
-    console.log("Sign up data:", data);
+    const result = await dispatch(signup({
+      full_name: data.fullName,
+      email: data.email,
+      phone_number: data.phone || '',
+      password: data.password,
+      gender: data.gender
+    }))
+
+    if (result.type === 'auth/signup/fulfilled') {
+      toast.success('Welcome to AuraStyle', {
+        description: 'Your account has been created successfully',
+        style: { borderLeft: '3px solid #C9A96E' }
+      })
+      navigate('/login')
+    } else {
+      toast.error('Registration failed', {
+        description: typeof result.payload === 'string'
+          ? result.payload
+          : result.payload?.detail || 'Something went wrong — please try again'
+      })
+    }
   };
 
   const allowOnlyNumbers = (e) => {
@@ -80,9 +110,9 @@ const SignUpForm = () => {
                   message: "Name must be at least 5 characters",
                 },
                 pattern: {
-                      value: /^[A-Za-z]+(?: [A-Za-z]+)*$/,
-                      message: "Must use letters only, with spaces between words.",
-                    },
+                  value: /^[A-Za-z]+(?: [A-Za-z]+)*$/,
+                  message: "Must use letters only, with spaces between words.",
+                },
               })
             }
             error={errors.fullName?.message}
@@ -165,12 +195,11 @@ const SignUpForm = () => {
                       type="button"
                       onClick={() => field.onChange(option)}
                       className={`w-full py-2 rounded-full border transition
-                        ${
-                          field.value === option
-                            ? "border-[#C4A982] bg-[#C4A982]/10 text-[#C4A982]" // ← selected
-                            : errors.gender
-                              ? "border-red-400 text-[#475569]" // ← error state
-                              : "border-gray-300 text-[#475569]" // ← default
+                        ${field.value === option
+                          ? "border-[#C4A982] bg-[#C4A982]/10 text-[#C4A982]" // ← selected
+                          : errors.gender
+                            ? "border-red-400 text-[#475569]" // ← error state
+                            : "border-gray-300 text-[#475569]" // ← default
                         }`}
                     >
                       <p className="jost text-[16px]">{option}</p>
@@ -188,9 +217,9 @@ const SignUpForm = () => {
               {errors.gender?.message || " "}
             </p>
           </div>
-          <Button type="submit" disabled={isSubmitting} className="w-full">
+          <Button type="submit" disabled={isSubmitting || loading} className="w-full">
             <p className="jost py-1 tracking-[2px]">
-              {isSubmitting ? "Creating Account..." : "CREATE ACCOUNT →"}
+              {isSubmitting || loading ? "Creating Account..." : "CREATE ACCOUNT →"}
             </p>
           </Button>
         </form>

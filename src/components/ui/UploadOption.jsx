@@ -26,7 +26,7 @@ function UploadOption({ onUpload, onClose, cameraFacing }) {
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
         accept: { 'image/*': ['.jpg', '.jpeg', '.png', '.webp'] },
-        maxFiles:false,
+        multiple:false,
         maxFiles: 1,
         maxSize: 10 * 1024 * 1024
     });

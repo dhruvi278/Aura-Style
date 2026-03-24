@@ -1,4 +1,4 @@
-import { axios } from 'axios'
+import axios from 'axios'
 import { getToken, removeToken } from '../utils/accessTokenStorage'
 
 const api = axios.create({
@@ -12,15 +12,14 @@ api.interceptors.request.use((config) => {
     return config
 })
 
-api.interceptors.responce.use((config) => {
-    (responce) => responce,
-        (error) => {
-            if (error.responce?.status === 401) {
-                removeToken()
-                window.location.href = '/login'
-            }
-            return Promise.reject(error)
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (error.response?.status === 401) {
+            removeToken()
         }
-})
+        return Promise.reject(error)
+    }
+)
 
 export default api

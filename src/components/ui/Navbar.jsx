@@ -3,13 +3,18 @@ import Button from "./Button";
 import { Menu, X, LogOut } from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/slices/authSlice";
+import { getToken, removeToken } from "../../utils/accessTokenStorage";
 
 function Navbar() {
-
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const sidebarRef = useRef(null);
 
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const { user } = useSelector(state => state.auth)
+    const isLoggedIn = !!user || !!getToken()
 
 
     const publicLinks = [
@@ -57,7 +62,11 @@ function Navbar() {
         };
     }, []);
 
-    const navigate = useNavigate();
+    const handleLogout = async () => {
+        await dispatch(logout())
+        dispatch({ type: 'auth/logout/fulfilled' })
+        navigate('/login', { replace: true })
+    }
 
     return (
         <>
@@ -89,6 +98,7 @@ function Navbar() {
                         {isLoggedIn ? (
                             <>
                                 <Button
+                                    onClick={handleLogout}
                                     type="submit"
                                     children="LOGOUT"
                                     variant="transparent"

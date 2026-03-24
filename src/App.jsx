@@ -12,17 +12,34 @@ import Profile from "./pages/Profile";
 import { Toaster } from "sonner";
 import { useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
-
-
-
 import History from "./pages/History";
+import { useDispatch, useSelector } from "react-redux";
+import { getToken } from "./utils/accessTokenStorage";
+import { fetchMe, setInitialized } from "./store/slices/authSlice";
 
 function App() {
+  const dispatch = useDispatch()
+  const { isInitialized } = useSelector(state => state.auth)
   const { pathname } = useLocation()
 
   useEffect(() => {
+    if (getToken()) {
+      dispatch(fetchMe())
+    } else {
+      dispatch(setInitialized())
+    }
+  }, [])
+  useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [pathname])
+
+  if (!isInitialized) {
+    return (
+      <div className='min-h-screen flex items-center justify-center bg-[#F7F4EF]'>
+        <div className='w-8 h-8 rounded-full border-2 border-[#C9A96E] border-t-transparent animate-spin' />
+      </div>
+    )
+  }
   return (
     <>
       <Toaster

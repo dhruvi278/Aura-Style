@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux"
+import { login } from "../../store/slices/authSlice"
 import Formfield from "../ui/Formfield";
 import Logo from "../ui/Logo";
 import TitleText from "../ui/TitleText";
@@ -7,6 +9,9 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 const LoginForm = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { loading, error } = useSelector(state => state.auth)
   const {
     register,
     handleSubmit,
@@ -17,13 +22,22 @@ const LoginForm = () => {
   });
 
   const onSubmit = async (data) => {
-    console.log("clicked");
+    const result = await dispatch(login({
+      email: data.email,
+      password: data.password
+    }))
 
-    await new Promise((res) => setTimeout(res, 5000));
-    toast.success("Login", {
-      description: "Your have logged in successfully!",
-    });
-    console.log("Sign up data:", data);
+    if (result.type === 'auth/login/fulfilled') {
+      toast.success('Welcome back', {
+        description: 'Sign in to your style sanctuary',
+        style: { borderLeft: '3px solid #C9A96E' }
+      })
+      navigate('/dashboard')
+    } else {
+      toast.error('Sign in failed', {
+        description: result.payload || 'Please check your credentials'
+      })
+    }
   };
 
   return (
@@ -67,7 +81,7 @@ const LoginForm = () => {
           />
           <div className=" mb-8 flex justify-between items-center">
             <div className="flex gap-2 items-center">
-              
+
               <label
                 htmlFor="remember"
                 className="work-sans text-[14px] text-[#475569] cursor-pointer"
@@ -83,9 +97,9 @@ const LoginForm = () => {
               Forgot your password?
             </Link>
           </div>
-          <Button type="submit" disabled={isSubmitting} className="w-full">
+          <Button type="submit" disabled={isSubmitting || loading} className="w-full">
             <p className="jost py-1 tracking-[2px]">
-              {isSubmitting ? "Signing in..." : "Sign In"}
+              {isSubmitting || loading ? "Signing in..." : "Sign In"}
             </p>
           </Button>
         </form>
@@ -104,5 +118,5 @@ const LoginForm = () => {
     </section>
   );
 };
-``;
+
 export default LoginForm;

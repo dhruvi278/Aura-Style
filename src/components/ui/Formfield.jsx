@@ -12,8 +12,10 @@ const Formfield = ({
   variant="primary",
   onKeyDown,
   onPaste,
+  disabled = false,
   formVariant="primary",
   showError="true",
+  defaultValue,
 }) => {
   const style ={
     primary:"text-gray-600",
@@ -42,8 +44,10 @@ const Formfield = ({
           {/* Input */}
           <input
             name={name}
+            defaultValue={defaultValue}
             {...(register ? register(name) : {})}
             type={type}
+            disabled={disabled}
             placeholder={placeholder}
             onKeyDown={onKeyDown}
             onPaste={onPaste}

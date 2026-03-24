@@ -17,8 +17,8 @@ function Dashboard() {
     useEffect(() => {
         fetchLocation();
     }, [])
-    const handleCardClick = (filter) => {
-        navigate(`/wardrobe?filter=${filter}`);
+    const handleCardClick = (category) => {
+        navigate(`/wardrobe?filter=${category}`);
     }
 
 

@@ -5,9 +5,7 @@ export const fetchItemsAPI = (params) =>{
     return api.get('/api/clothes/get-wardrobe/',{params});
 }
 export const uploadItemAPI = (formData) =>{
-    return api.post('/api/clothes/upload-cloth/',formData,{
-        headers:{'Content-Type':'multiple/form-data'},
-    });
+    return api.post('/api/clothes/upload-cloth/',formData);
 }
 
 export const deleteItemAPI = (itemId) =>{

@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-const DEFAULT_FILTERS = ["All", "Tops", "Bottoms", "Footwear", "Accessories"];
+// const DEFAULT_FILTERS = ["all", "tops", "bottoms", "footwear", "accessories"];
+const DEFAULT_FILTERS = ["all", "top", "bottom", "footwear", "accessory"];
 
 function FilterTabs({ filters = DEFAULT_FILTERS, onFilterChange,active }) {
   // const [active, setActive] = useState(filters[0]);

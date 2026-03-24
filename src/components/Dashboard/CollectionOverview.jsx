@@ -6,10 +6,10 @@ function CollectionOverview({onSelect}){
         <div>
             <h2 className="text-[#1A1A18]/40 font-bold text-sm sm:text-base">COLLECTION OVERVIEW</h2>
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 ">
-                <CollectionCard category="TOTAL ITEMS" CollectionIcon={BookMinus} numberOfItems="07" onClick={()=>onSelect("All")}  />
-                <CollectionCard category="TOPS" CollectionIcon={Shirt} numberOfItems="04" onClick={()=>onSelect('Tops')} />
-                <CollectionCard category="BOTTOMS" CollectionIcon={Ruler} numberOfItems="01" onClick={()=>onSelect('Bottoms')} />
-                <CollectionCard category="ACCESSORIES" CollectionIcon={Gem} numberOfItems="01" onClick={()=>onSelect('Accessories')} />
+                <CollectionCard category="TOTAL ITEMS" CollectionIcon={BookMinus} numberOfItems="07" onClick={()=>onSelect("all")}  />
+                <CollectionCard category="TOPS" CollectionIcon={Shirt} numberOfItems="04" onClick={()=>onSelect('top')} />
+                <CollectionCard category="BOTTOMS" CollectionIcon={Ruler} numberOfItems="01" onClick={()=>onSelect('bottom')} />
+                <CollectionCard category="ACCESSORIES" CollectionIcon={Gem} numberOfItems="01" onClick={() => onSelect('accessory')} />
             </div>
            
         </div>

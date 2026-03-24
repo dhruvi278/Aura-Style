@@ -3,11 +3,11 @@ import { useState } from "react";
 import Modal from "./Modal";
 import Button from "./Button";
 
-function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPage = null, uploadModal, selected }) {
+function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPage = null, uploadModal, selectedOutfit }) {
 
 
     const [load, setLoad] = useState(false)
-    const [showDelete, setShowDelete] = useState(false);
+    // const [showDelete, setShowDelete] = useState(false);
     
 
 
@@ -42,7 +42,7 @@ function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPa
             {type === "normal" && <div>
                 <figure className="aspect-[4/5] overflow-hidden bg-[#F0EDE6] relative">
                     <img src={src} loading="lazy" alt={alt} onLoad={() => setLoad(true)} className={`w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105`} />
-                    {selected && (<div className="absolute top-3 right-2 md:right-3 sm:text-xs bg-[#EEBD2B] text-black text-[9px] md:text-[9px] rounded-full px-2 py-1 shadow-md uppercase tracking-wide z-20">selected</div>)}
+                    {selectedOutfit && (<div className="absolute top-3 right-2 md:right-3 sm:text-xs bg-[#EEBD2B] text-black text-[9px] md:text-[9px] rounded-full px-2 py-1 shadow-md uppercase tracking-wide z-20">selected</div>)}
                     {cardPage === "wardrobe" && <button
                         type="button"
                         aria-label={`Remove ${cardTitle} from wardrobe`}
@@ -81,42 +81,7 @@ function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPa
                 </footer>
             </div>}
 
-            {showDelete && (
-                <Modal
-                    isOpen={showDelete}
-                    onClose={() => setShowDelete(false)}
-                    title="Delete Item"
-                    description={`Are you sure you want to delete "${cardTitle}" from wardrobe collection ?`}
-                >
-                    <div className="flex flex-col gap-3">
-                        <div className="w-32 h-40 sm:w-40 sm:h-52 overflow-hidden rounded-xl border border-[#E7E1CF]">
-                            <img
-                                src={src}
-                                alt={alt}
-                                className="w-full h-full object-cover object-center"
-                            />
-                        </div>
-                        <div className="flex justify-between gap-3 w-full">
-                            <Button
-                                onClick={() => setShowDelete(false)}
-                                variant="ghost"
-                            >
-                                Cancel
-                            </Button>
-
-                            <Button
-                                onClick={() => {
-                                    if (onDelete) onDelete();
-                                    setShowDelete(false);
-                                }}
-                                variant="primary"
-                            >
-                                Delete
-                            </Button>
-                        </div>
-                    </div>
-                </Modal>
-            )}
+            
         </article>
 
     );
@@ -138,7 +103,7 @@ export default Card;
 // import Modal from "./Modal";
 // import Button from "./Button";
 
-// function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPage = null, uploadModal,selected }) {
+// function Card({ src, alt, cardTitle, cardText, type = "normal", onDelete, cardPage = null, uploadModal,selectedOutfit }) {
 
 
 //     const [load, setLoad] = useState(false)
@@ -176,7 +141,7 @@ export default Card;
 //             {type === "normal" && <div>
 //                 <figure className="aspect-[4/5] overflow-hidden bg-[#F0EDE6] relative">
 //                     <img src={src} loading="lazy" alt={alt} onLoad={() => setLoad(true)} className={`w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105`} />
-//                     {selected && (<div className="absolute top-3 right-2 md:right-3 sm:text-xs bg-[#EEBD2B] text-black text-[9px] md:text-[9px] rounded-full px-2 py-1 shadow-md uppercase tracking-wide z-20">selected</div>)}  
+//                     {selectedOutfit && (<div className="absolute top-3 right-2 md:right-3 sm:text-xs bg-[#EEBD2B] text-black text-[9px] md:text-[9px] rounded-full px-2 py-1 shadow-md uppercase tracking-wide z-20">selectedOutfit</div>)}  
 //                     {cardPage === "wardrobe" && <button
 //                         type="button"
 //                         aria-label={`Remove ${cardTitle} from wardrobe`}

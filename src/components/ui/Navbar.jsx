@@ -4,7 +4,7 @@ import { Menu, X, LogOut } from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../store/slice/authSlice";
+import { logout } from "../../store/slices/authSlice";
 import { getToken, removeToken } from "../../utils/accessTokenStorage";
 
 function Navbar() {

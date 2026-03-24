@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"
-import { login } from "../../store/slice/authSlice"
+import { login } from "../../store/slices/authSlice"
 import Formfield from "../ui/Formfield";
 import Logo from "../ui/Logo";
 import TitleText from "../ui/TitleText";

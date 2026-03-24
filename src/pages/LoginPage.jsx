@@ -5,7 +5,7 @@ import LoginSideImg from "../assets/signup & login/login_sideimg.jpg";
 
 const LoginPage = () => {
   return (
-    <main className="page-enter flex flex-col-reverse items-center lg:flex-row  min-h-[calc(100vh-80px)] bg-[#F7F4EF]">
+    <main className="page-enter flex flex-col-reverse items-center lg:flex-row  min-h-[calc(100vh-82px)] bg-[#F7F4EF]">
       <div className="w-full xl:block xl:w-2/5">
         <SideImg image={LoginSideImg} quote={'“Every outfit tells your story.”'} />
       </div>

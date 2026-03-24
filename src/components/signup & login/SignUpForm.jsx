@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
-import { signup } from "../../store/slice/authSlice";
+import { signup } from "../../store/slices/authSlice";
 
 
 const SignUpForm = () => {

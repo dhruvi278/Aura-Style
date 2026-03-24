@@ -182,7 +182,7 @@ function ProfileForm() {
             type="button"
             variant="ghost"
             onClick={onCancel}
-            disabled={isSubmitting}
+            disabled={isSubmitting || !isDirty}
           >
             <span className="px-10 md:px-7 lg:px-12 jost">Cancel</span>
           </Button>

@@ -13,9 +13,9 @@ api.interceptors.request.use((config) => {
 })
 
 api.interceptors.responce.use((config) => {
-    (responce) => responce,
+    (response) => response,
         (error) => {
-            if (error.responce?.status === 401) {
+            if (error.response?.status === 401) {
                 removeToken()
                 window.location.href = '/login'
             }

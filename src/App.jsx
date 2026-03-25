@@ -10,35 +10,37 @@ import Support from "./pages/Support";
 import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
 import { Toaster } from "sonner";
-import { useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import History from "./pages/History";
 import { useDispatch, useSelector } from "react-redux";
 import { getToken } from "./utils/accessTokenStorage";
 import { fetchMe, setInitialized } from "./store/slices/authSlice";
+import { GuestRoute, ProtectedRoute } from "./components/routes/ProtectedRoute";
 
 function App() {
-  const dispatch = useDispatch()
-  const { isInitialized } = useSelector(state => state.auth)
-  const { pathname } = useLocation()
+  const dispatch = useDispatch();
+  const { isInitialized } = useSelector((state) => state.auth);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     if (getToken()) {
-      dispatch(fetchMe())
+      dispatch(fetchMe());
     } else {
-      dispatch(setInitialized())
+      dispatch(setInitialized());
     }
-  }, [])
+  }, []);
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [pathname])
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
 
   // if (!isInitialized) {
   //   return (
-  //     <div className='min-h-screen flex items-center justify-center bg-[#F7F4EF]'>
-  //       <div className='w-8 h-8 rounded-full border-2 border-[#C9A96E] border-t-transparent animate-spin' />
+  //     <div className="min-h-screen flex items-center justify-center bg-[#F7F4EF]">
+  //       <div className="w-8 h-8 rounded-full border-2 border-[#C9A96E] border-t-transparent animate-spin" />
   //     </div>
-  //   )
+  //   );
   // }
   return (
     <>
@@ -76,15 +78,20 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/wardrobe" element={<Wardrobe />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/generate_outfit" element={<GenerateOutfit />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/history" element={<History />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/support" element={<Support />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/profile" element={<Profile />} />
+
+        <Route element={<GuestRoute />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Route>
+
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" index={true} element={<Dashboard />} />
+          <Route path="/wardrobe" element={<Wardrobe />} />
+          <Route path="/generate_outfit" element={<GenerateOutfit />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
       </Routes>
     </>
   );

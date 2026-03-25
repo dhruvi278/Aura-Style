@@ -1,0 +1,24 @@
+<svg width="100%" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .avatar-bg { fill: #F5ECD9; }
+    .avatar-shape { fill: #C9A96E; }
+    @media (prefers-color-scheme: dark) {
+      .avatar-bg { fill: #2E2A26; }
+    }
+  </style>
+
+  
+
+
+
+  <!-- Head -->
+  <circle cx="340" cy="255" r="88" class="avatar-shape" />
+
+  <!-- Body / shoulders arc -->
+  <path
+    d="M 135 560 Q 135 420 340 420 Q 545 420 545 560 Z"
+    class="avatar-shape"
+  />
+
+</svg>
+ 

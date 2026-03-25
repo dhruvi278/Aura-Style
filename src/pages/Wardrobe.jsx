@@ -184,11 +184,11 @@ function Wardrobe() {
                 description={`Are you sure you want to delete "${deleteItemSelected?.short_description}" from wardrobe collection?`}
             >
                 <div className="flex flex-col gap-3">
-                    <div className="w-32 h-40 sm:w-40 sm:h-52 overflow-hidden rounded-xl border border-[#E7E1CF]">
+                    <div className="w-32 h-40 sm:w-40 sm:h-52 overflow-hidden rounded-xl border border-[#E7E1CF]  mx-auto">
                         <img
                             src={deleteItemSelected?.image_url}
                             alt={deleteItemSelected?.short_description}
-                            className="w-full h-full object-cover object-center"
+                            className="w-full h-full object-cover object-center "
                         />
                     </div>
                     <div className="flex justify-between gap-3 w-full">

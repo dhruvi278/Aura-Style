@@ -19,14 +19,20 @@ const LoginForm = () => {
   } = useForm({
     mode: "onTouched",
     reValidateMode: "onChange",
+    defaultValues: {
+      email: '',
+      password: '',
+      remember: false
+    }
   });
 
   const onSubmit = async (data) => {
     const result = await dispatch(login({
       email: data.email,
-      password: data.password
+      password: data.password,
+      remember: data.remember
     }))
-
+    console.log(data)
     if (result.type === 'auth/login/fulfilled') {
       toast.success('Welcome back', {
         description: 'Sign in to your style sanctuary',
@@ -89,7 +95,7 @@ const LoginForm = () => {
                 Remember me
               </label>
               <label className="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" id="remember" className="sr-only peer" />
+                <input type="checkbox" id="remember" {...register("remember")} className="sr-only peer" />
                 <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none  rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all duration-200 dark:border-gray-600 peer-checked:bg-[#C4A982]"></div>
               </label>
             </div>

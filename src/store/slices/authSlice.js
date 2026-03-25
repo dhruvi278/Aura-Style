@@ -18,10 +18,10 @@ export const signup = createAsyncThunk(
 
 export const login = createAsyncThunk(
     'auth/login',
-    async (credentials, { rejectWithValue }) => {
+    async ({ email, password, remember }, { rejectWithValue }) => {
         try {
-            const data = await loginUser(credentials)
-            setToken(data.access_token)
+            const data = await loginUser({ email, password })
+            setToken(data.access_token, remember)
             const me = await getMe()
             return me
         } catch (error) {

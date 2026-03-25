@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../ui/Logo";
 
-const SideImg = ({image, quote}) => {
+const SideImg = ({ image, quote }) => {
   const [load, setLoad] = useState(false);
   return (
     <aside className="relative w-full h-full bg-[#F7F4EF]">
@@ -18,19 +18,19 @@ const SideImg = ({image, quote}) => {
           src={image}
           loading="lazy"
           alt="Elegantly dressed woman representing AuraStyle fashion"
-          className="h-full max-h-[calc(100vh-80px)] w-full object-cover object-[center_30%] rounded-3xl lg:rounded-none"
+          className="h-full max-h-[calc(100dvh-82px)] w-full object-cover object-[center_30%] rounded-3xl lg:rounded-none"
           onLoad={() => setLoad(true)}
         />
       </div>
-      
+
       {/* Text */}
-      
-        <div className={`absolute bottom-10 left-10 right-10 text-[#FDFAF6] max-w-md ${!load && 'hidden'}`}>
-          <Logo />
-          <blockquote className="playfair italic text-[30px] mt-8">
-            {quote}
-          </blockquote>
-        </div>
+
+      <div className={`absolute bottom-10 left-10 right-10 text-[#FDFAF6] max-w-md ${!load && 'hidden'}`}>
+        <Logo />
+        <blockquote className="playfair italic text-[30px] mt-8">
+          {quote}
+        </blockquote>
+      </div>
 
     </aside>
   );

@@ -175,6 +175,7 @@ function Navbar() {
                     {isLoggedIn ? (
                         <>
                             <Button
+                                onClick={handleLogout}
                                 type="submit"
                                 children="LOGOUT"
                                 variant="transparent"

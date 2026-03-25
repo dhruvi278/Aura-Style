@@ -28,37 +28,37 @@ function Dashboard() {
         }
         
     }
+    const full_name = user?.full_name.split(" ")[0] || "Guest";
+    const name = full_name[0].toUpperCase() + full_name.slice(1).toLowerCase();
 
+  return (
+    <main className="page-enter px-10 pt-10 bg-[#F7F4EF] flex flex-col gap-20 lg:w-full xl:items-center">
+      <div className="max-w-6xl gap-20 flex flex-col">
+        <header>
+          <TitleText
+            title={`${name}, Your Smart Wardrobe Awaits`}
+            description="Your curated wardrobe is ready for today's selection."
+          />
+        </header>
 
-    return (
-        <main className="page-enter px-10 pt-10 bg-[#F7F4EF] flex flex-col gap-20 lg:w-full xl:items-center">
-            <div className="max-w-6xl gap-20 flex flex-col">
-                <header>
-                    <TitleText
-                        title={`Welcome back, ${user?.full_name || 'Guest'}`}
-                        description="Your curated wardrobe is ready for today's selection."
-                    />
-                </header>
+        <section>
+          <QuickActions />
+        </section>
 
-                <section >
-                    <QuickActions />
-                </section>
+        <section>
+          <CollectionOverview onSelect={handleCardClick} overview={overview}/>
+        </section>
 
-                <section >
-                    <CollectionOverview onSelect={handleCardClick} overview={overview}/>
-                </section>
+        <section>
+          <RecentlyGenerated />
+        </section>
 
-                <section >
-                    <RecentlyGenerated />
-                </section>
-
-                <section >
-                    <QuickGenerateOption />
-                </section>
-            </div>
-        </main>
-    );
+        <section>
+          <QuickGenerateOption />
+        </section>
+      </div>
+    </main>
+  );
 }
 
 export default Dashboard;
-

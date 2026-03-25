@@ -34,8 +34,8 @@ function CustomSelect({
   useEffect(() => {
     if (value) {
       setSelected(value);
-      console.log('runs');
-      
+      // console.log('runs');
+
     }
   }, [value]);
 
@@ -59,11 +59,10 @@ function CustomSelect({
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         className={`w-full flex justify-between items-center hover:cursor-pointer p-2 sm:p-3 rounded-xl border border-t-0 border-l-0 border-r-0 transition-all duration-300
-                    ${
-                      hasError
-                        ? "border-b-red-400 hover:border-b-red-400" // ← error state
-                        : "border-b-[#E7E5E4] hover:border-[#C9A96E]" // ← normal
-                    }`}
+                    ${hasError
+            ? "border-b-red-400 hover:border-b-red-400" // ← error state
+            : "border-b-[#E7E5E4] hover:border-[#C9A96E]" // ← normal
+          }`}
       >
         <span className="newsreader italic text-[#1D1C1B] text-[14px] sm:text-[16px] md:text-[20px] font-medium capitalize">
           {selected || placeholder}
@@ -93,11 +92,10 @@ function CustomSelect({
               className={`
                                 rounded-xl px-3 sm:px-4 md:px-5 py-2 sm:py-3 playfair text-[13px] sm:text-[14px] md:text-base cursor-pointer capitalize
                                 transition-all duration-150
-                                ${
-                                  selected === option
-                                    ? "bg-[#F5ECD9] text-[#1A1A18]"
-                                    : "text-[#1A1A18]/90 hover:bg-[#F5ECD9] hover:text-[#A8895E]"
-                                }
+                                ${selected === option
+                  ? "bg-[#F5ECD9] text-[#1A1A18]"
+                  : "text-[#1A1A18]/90 hover:bg-[#F5ECD9] hover:text-[#A8895E]"
+                }
                             `}
             >
               {option}

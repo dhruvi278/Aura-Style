@@ -7,18 +7,26 @@ import TitleText from "../components/ui/TitleText";
 import useGeolocation from "../hooks/sensors/useGeoLocation";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useWardrobe } from "../hooks/useWardrobe";
 
 function Dashboard() {
 
     const { fetchLocation } = useGeolocation();
     const navigate = useNavigate();
     const { user } = useSelector(state => state.auth)
+    const { overview, fetchOverview } = useWardrobe();
 
     useEffect(() => {
         fetchLocation();
+        fetchOverview();
     }, [])
     const handleCardClick = (category) => {
-        navigate(`/wardrobe?filter=${category}`);
+        if(category == 'all'){
+            navigate('/wardrobe');
+        } else{
+            navigate(`/wardrobe?filter=${category}`);
+        }
+        
     }
 
 
@@ -37,7 +45,7 @@ function Dashboard() {
                 </section>
 
                 <section >
-                    <CollectionOverview onSelect={handleCardClick} />
+                    <CollectionOverview onSelect={handleCardClick} overview={overview}/>
                 </section>
 
                 <section >
@@ -54,34 +62,3 @@ function Dashboard() {
 
 export default Dashboard;
 
-
-
-// import CollectionOverview from "../components/Dashboard/CollectionOverview";
-// import QuickActions from "../components/Dashboard/QuickActions";
-// import QuickGenerateOption from "../components/Dashboard/QuickGenerateOption";
-// import RecentlyGenerated from "../components/Dashboard/RecentlyGenerated";
-// import TitleText from "../components/ui/TitleText";
-
-// function Dashboard (){
-//     return(
-//         <div className="px-10 pt-10 bg-[#F7F4EF] flex flex-col gap-20 lg:w-full xl:items-center ">
-//             <div className="max-w-6xl gap-20 flex flex-col">
-//                 <TitleText title="Welcome back, Eleanor" description="Your curated wardrobe is ready for today's selection." />
-//                 <div>
-//                     <QuickActions />
-//                 </div>
-//                 <div>
-//                     <CollectionOverview />
-//                 </div>
-//                 <div>
-//                     <RecentlyGenerated />
-//                 </div>
-//                 <div>
-//                     <QuickGenerateOption />
-//                 </div>
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default Dashboard;

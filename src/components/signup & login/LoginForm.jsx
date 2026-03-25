@@ -98,7 +98,7 @@ const LoginForm = () => {
             </Link>
           </div>
           <Button type="submit" disabled={isSubmitting || loading} className="w-full">
-            <p className="jost py-1 tracking-[2px]">
+            <p className="jost py-1 tracking-[2px] uppercase">
               {isSubmitting || loading ? "Signing in..." : "Sign In"}
             </p>
           </Button>

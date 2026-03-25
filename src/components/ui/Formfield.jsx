@@ -16,6 +16,8 @@ const Formfield = ({
   formVariant="primary",
   showError="true",
   defaultValue,
+  value,
+  onChange,
 }) => {
   const style ={
     primary:"text-gray-600",
@@ -43,8 +45,11 @@ const Formfield = ({
 
           {/* Input */}
           <input
+          
             name={name}
             defaultValue={defaultValue}
+            value={value}
+            onChange={onChange}
             {...(register ? register(name) : {})}
             type={type}
             disabled={disabled}

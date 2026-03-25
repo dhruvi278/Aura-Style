@@ -133,8 +133,8 @@ function UploadOption({ onUpload, onClose, cameraFacing }) {
                 </section>
             ) : (
                 <section className='flex flex-col gap-4'>
-                    <figure className='relative rounded-[16px] overflow-hidden bg-[#F0EDE6]'>
-                        <img src={preview} alt="Selected wardrobe Item" className='w-full h-[240px] sm:h-[280px] object-cover object-top' />
+                    <figure className='relative rounded-[16px] mx-auto overflow-hidden bg-[#F0EDE6]'>
+                        <img src={preview} alt="Selected wardrobe Item" className='w-fit h-[240px] sm:h-[280px] object-cover object-center' />
 
                         <button
                             type='button'

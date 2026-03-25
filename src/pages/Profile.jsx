@@ -5,11 +5,29 @@ import Modal from "../components/ui/Modal";
 import TitleText from "../components/ui/TitleText";
 import UploadOption from "../components/ui/UploadOption";
 import Button from "../components/ui/Button";
+import { useDispatch } from "react-redux";
+import { saveProfile } from "../store/slices/authSlice";
+import { toast } from "sonner";
 
 function Profile() {
-
+    const dispatch = useDispatch();
     const [selfiOpen, setSelfiOpen] = useState(false)
     const [deleteOpen, setDeleteOpen] = useState(false)
+
+    const handleProfilePhotoUpload = async (file) => {
+        const result = await dispatch(saveProfile({ file }))
+        if (saveProfile.fulfilled.match(result)) {
+            toast.success("Profile Photo Updated", {
+                description: "Your profile photo has been saved successfully.",
+            })
+            setSelfiOpen(false)
+        } else {
+            toast.error("Upload Failed", {
+                description: result.payload || "Something went wrong. Please try again.",
+            })
+        }
+    }
+
     return (
         // <div className=" flex flex-col px-10 pt-5 lg:w-full lg:items-center bg-[#F7F4EF] gap-12 min-h-[calc(100dvh-80px)] ">
         // <div className="flex flex-col px-10 pt-7 lg:w-full lg:items-center bg-[#F7F4EF] gap-12 h-[calc(100dvh-80px)] overflow-hidden">
@@ -35,7 +53,7 @@ function Profile() {
                     isOpen={selfiOpen}
                     onClose={() => setSelfiOpen(false)}
                 >
-                    <UploadOption onClose={() => setSelfiOpen(false)} onUpload={(e) => console.log(e.target)} cameraFacing="user" />
+                    <UploadOption onClose={() => setSelfiOpen(false)} onUpload={handleProfilePhotoUpload} cameraFacing="user" />
                 </Modal>
 
                 {/* Delete account Confirmation Modal */}

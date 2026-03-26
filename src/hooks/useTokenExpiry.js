@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import {
   getTimeUntilExpiry,
+  getToken,
   isTokenExpired,
   removeToken,
 } from "../utils/accessTokenStorage";
@@ -15,26 +16,32 @@ function useTokenExpiry() {
   const warningTimerRef = useRef(null);
   const expiryTimerRef = useRef(null);
 
+  const location = useLocation();
+
   const handleLogout = () => {
-    if (warningTostid.current) {
-      toast.dismiss(warningTostid.current);
-    }
+    if (warningTostid.current) toast.dismiss(warningTostid.current);
     removeToken();
     dispatch({ type: "auth/logout/fulfilled" });
     navigate("/login", { replace: true });
-    toast.error("Session expired", {
-      description: "Please Sign in agian to continue",
-    });
+    if (location.pathname !== "/login") {
+      toast.error("Session expired", {
+        description: "Please sign in again to continue",
+      });
+    }
   };
 
   useEffect(() => {
     const clearTimers = () => {
-      if (warningTostid.current) clearTimeout(warningTostid.current);
+      if (warningTimerRef.current) clearTimeout(warningTimerRef.current);
       if (expiryTimerRef.current) clearTimeout(expiryTimerRef.current);
     };
 
+    const token = getToken();
+    if (!token) return;
+
     if (isTokenExpired()) {
-      handleLogout();
+      removeToken();
+      dispatch({ type: "auth/logout/fulfilled" });
       return;
     }
 

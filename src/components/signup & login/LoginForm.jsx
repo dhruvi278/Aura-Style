@@ -34,7 +34,7 @@ const LoginForm = () => {
         remember: data.remember,
       }),
     );
-    console.log(data);
+    
     if (result.type === "auth/login/fulfilled") {
       toast.success("Welcome back", {
         description: "Sign in to your style sanctuary",

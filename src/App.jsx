@@ -14,7 +14,11 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import History from "./pages/History";
 import { useDispatch, useSelector } from "react-redux";
-import { getToken } from "./utils/accessTokenStorage";
+import {
+  getToken,
+  isTokenExpired,
+  removeToken,
+} from "./utils/accessTokenStorage";
 import { fetchMe, setInitialized } from "./store/slices/authSlice";
 import { GuestRoute, ProtectedRoute } from "./components/routes/ProtectedRoute";
 import PageNotFound from "./pages/PageNotFound";
@@ -29,11 +33,17 @@ function App() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (getToken()) {
-      dispatch(fetchMe());
-    } else {
+    const token = getToken();
+    if (!token) {
       dispatch(setInitialized());
+      return;
     }
+    if (isTokenExpired()) {
+      removeToken();
+      dispatch(setInitialized());
+      return;
+    }
+    dispatch(fetchMe());
   }, []);
 
   useTokenExpiry();
@@ -46,9 +56,11 @@ function App() {
     const handleAuthLogout = () => {
       dispatch({ type: "auth/logout/fulfilled" });
       navigate("/login", { replace: true });
-      toast.error("Session expired", {
-        description: "Please sign in again to continue",
-      });
+      if (pathname !== "/login") {
+        toast.error("Session expired", {
+          description: "Please sign in again to continue",
+        });
+      }
     };
 
     window.addEventListener("auth:logout", handleAuthLogout);
@@ -64,17 +76,17 @@ function App() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // if (!isInitialized) {
-  //   return (
-  //     <div className="min-h-screen flex items-center justify-center bg-[#F7F4EF]">
-  //       <div className="w-8 h-8 rounded-full border-2 border-[#C9A96E] border-t-transparent animate-spin" />
-  //     </div>
-  //   );
-  // }
+  if (!isInitialized) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#F7F4EF]">
+        <div className="w-8 h-8 rounded-full border-2 border-[#C9A96E] border-t-transparent animate-spin" />
+      </div>
+    );
+  }
   return (
     <>
       <Toaster
-        position={isMobile? 'top-center' : 'bottom-center'}
+        position={isMobile ? "top-center" : "bottom-right"}
         gap={12}
         visibleToasts={3}
         toastOptions={{

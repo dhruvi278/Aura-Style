@@ -5,6 +5,7 @@ import {
   getMe,
   logoutUser,
   updateProfile,
+  deleteAccount,
 } from "../../services/authService";
 import { setToken, removeToken } from "../../utils/accessTokenStorage";
 
@@ -51,7 +52,9 @@ export const fetchMe = createAsyncThunk(
       return data;
     } catch (error) {
       removeToken();
-      return rejectWithValue(error.response?.data?.detail || "Session expired");
+      return rejectWithValue(
+        error.response?.data?.detail || "Failed to get Profile",
+      );
     }
   },
 );
@@ -69,11 +72,10 @@ export const logout = createAsyncThunk("auth/logout", async () => {
 export const saveProfile = createAsyncThunk(
   "auth/saveProfile",
   async (profileData, { rejectWithValue }) => {
-    try {        
+    try {
       await updateProfile(profileData);
-      const me = await getMe();    
-      console.log(me);
-        
+      const me = await getMe();
+
       return me;
     } catch (error) {
       return rejectWithValue(
@@ -81,6 +83,21 @@ export const saveProfile = createAsyncThunk(
           error.response?.data?.message ||
           "Failed to updata profile",
       );
+    }
+  },
+);
+
+export const deleteUserAccount = createAsyncThunk(
+  "auth/deleteAccount",
+  async (_, { rejectWithValue }) => {
+    try {
+      await deleteAccount();
+    } catch (error) {
+      return rejectWithValue(
+        error.response?.data?.detail || "Delete account failed",
+      );
+    } finally {
+      removeToken();
     }
   },
 );
@@ -160,8 +177,8 @@ const authSlice = createSlice({
 
       //save profile
       .addCase(saveProfile.pending, (state) => {
-        state.updateLoading = true
-        state.updateError = null
+        state.updateLoading = true;
+        state.updateError = null;
       })
 
       .addCase(saveProfile.fulfilled, (state, action) => {
@@ -172,8 +189,23 @@ const authSlice = createSlice({
         state.updateLoading = false;
         state.updateError = action.payload;
       })
+
+      // delete account
+      .addCase(deleteUserAccount.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(deleteUserAccount.fulfilled, (state) => {
+        state.loading = false;
+        state.user = null;
+        state.error = null;
+      })
+      .addCase(deleteUserAccount.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
   },
 });
 
-export const { clearError, clearUpdateError, setInitialized } = authSlice.actions;
+export const { clearError, clearUpdateError, setInitialized } =
+  authSlice.actions;
 export default authSlice.reducer;

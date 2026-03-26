@@ -140,16 +140,9 @@ function Navbar() {
         </div>
       </nav>
 
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/30 z-50"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
-
       <div
         ref={sidebarRef}
-        className={`lg:hidden fixed  right-0 h-screen w-55 bg-[#faf2e5]/80 backdrop-blur-md p-6 
+        className={`lg:hidden fixed  right-0  h-[calc(100dvh-72px)] w-55 bg-[#faf2e5]/80 backdrop-blur-md p-6 
                 z-60 transform transition-transform duration-300 shadow-lg flex flex-col justify-between 
                 ${isOpen ? "translate-x-0" : "translate-x-full"}`}
       >
@@ -170,7 +163,7 @@ function Navbar() {
             </li>
           ))}
         </ul>
-        <div className="mb-15 pt-2 border-t border-[#c0c0b391] text-center">
+        <div className="pt-4 border-t border-[#c0c0b391] text-center">
           {isLoggedIn ? (
             <>
               <Button

@@ -1,27 +1,52 @@
-import { CircleUserRound, Phone } from "lucide-react";
-import CustomSelect from "../generateOutfit/CustomSelect";
+import { CircleUserRound } from "lucide-react";
 import Button from "../ui/Button";
 import Formfield from "../ui/Formfield";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { clearUpdateError, saveProfile } from "../../store/slices/authSlice";
 
 function ProfileForm() {
+  const dispatch = useDispatch();
+  const { user, updateLoading, updateError } = useSelector(
+    (state) => state.auth,
+  );
+
+  const buildDefaults = (u) => ({
+    fullname: u?.full_name || "",
+    email: u?.email || "",
+    phone: u?.phone_number || "",
+    gender: u?.gender || "",
+  });
+
   const {
     register,
     handleSubmit,
     control,
     reset,
-    formState: { errors, isSubmitting, isDirty },
+    formState: { errors, isDirty },
   } = useForm({
     mode: "onTouched",
     reValidateMode: "onChange",
-    defaultValues: {
-      fullname: "Riddhi Kapoor",
-      email: "riddhi@gmail.com",
-      phone: "1234567890",
-      gender: "Female",
-    },
+    defaultValues: buildDefaults(user),
   });
+
+  useEffect(() => {
+    if (user) {
+      reset(buildDefaults(user), {
+        keepDirty: false,
+        keepDefaultValues: false,
+      });
+    }
+  }, [user, reset]);
+
+  useEffect(() => {
+    if (updateError) {
+      toast.error("Update Failed", { description: updateError });
+      dispatch(clearUpdateError());
+    }
+  }, [updateError, dispatch]);
 
   const allowOnlyNumbers = (e) => {
     const allowedKeys = [
@@ -44,15 +69,30 @@ function ProfileForm() {
   };
 
   const onSubmit = async (data) => {
-    await new Promise((res) => setTimeout(res, 1500)); // simulate API
-    console.log("Profile saved:", data);
-    toast.success("Profile Updated", {
-      description: "Your changes have been saved successfully.",
-    });
+    const payload = {
+      full_name: data.fullname.trim(),
+      phone_number: data.phone.trim(),
+      gender: data.gender.trim(),
+    };
+
+    const result = await dispatch(saveProfile(payload));
+    if (saveProfile.fulfilled.match(result)) {
+      toast.success("Profile Updated", {
+        description: "Your changes have been saved successfully.",
+      });
+
+      reset(buildDefaults(result.payload), {
+        keepDirty: false,
+        keepDefaultValues: false,
+      });
+    }
   };
 
   const onCancel = () => {
-    reset();
+    reset(buildDefaults(user), {
+      keepDirty: false,
+      keepDefaultValues: false,
+    });
     toast.info("Changes discarded");
   };
 
@@ -67,20 +107,19 @@ function ProfileForm() {
           label="Full name"
           type="text"
           name="fullname"
-          defaultValue="Riddhi kapoor"
           variant="secondary"
           formVariant="underline"
           placeholder={`Enter Your Name`}
           register={(name) =>
             register(name, {
               required: "Full name is required",
-              minLength: {
-                value: 5,
-                message: "Name must be at least 5 characters",
-              },
-              pattern: {
-                value: /^[A-Za-z]+(?: [A-Za-z]+)*$/,
-                message: "Must use letters only, with spaces between words.",
+              validate: (value) => {
+                const trimmed = value.trim();
+                if (trimmed.length < 5)
+                  return "Name must be at least 5 characters";
+                if (!/^[A-Za-z]+(?: [A-Za-z]+)*$/.test(trimmed))
+                  return "Full name must contain only letters and single spaces between words.";
+                return true;
               },
             })
           }
@@ -90,7 +129,6 @@ function ProfileForm() {
           label="Email Address"
           type="email"
           name="email"
-          defaultValue="ridhi@gmail.com"
           variant="secondary"
           formVariant="underline"
           disabled={true}
@@ -110,7 +148,6 @@ function ProfileForm() {
           label="Phone Number"
           type="text"
           name="phone"
-          defaultValue="9876543210"
           variant="secondary"
           formVariant="underline"
           placeholder="eg. 9876543210"
@@ -171,10 +208,10 @@ function ProfileForm() {
           <Button
             type="submit"
             variant="primary"
-            disabled={isSubmitting || !isDirty}  // ← grey out if nothing changed
+            disabled={updateLoading || !isDirty} // ← grey out if nothing changed
           >
             <span className="px-5 jost">
-              {isSubmitting ? "Saving..." : "Save Changes"}
+              {updateLoading ? "Saving..." : "Save Changes"}
             </span>
           </Button>
 
@@ -182,7 +219,7 @@ function ProfileForm() {
             type="button"
             variant="ghost"
             onClick={onCancel}
-            disabled={isSubmitting || !isDirty}
+            disabled={updateLoading || !isDirty}
           >
             <span className="px-10 md:px-7 lg:px-12 jost">Cancel</span>
           </Button>

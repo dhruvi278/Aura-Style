@@ -3,6 +3,9 @@ import React from 'react'
 
 function Pagination({ currentPage = 1, totalPages, onPageChange }) {
 
+    if (currentPage >totalPages){
+        onPageChange(totalPages)
+    } 
     const getPages = () => {
         const pages = [];
 

@@ -3,7 +3,7 @@ function CollectionCard({ category, numberOfItems, CollectionIcon,onClick }) {
     return (
         <div className="bg-white p-4 md:p-8 w-full rounded-2xl md:rounded-3xl lg:rounded-3xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer" onClick={onClick}>
             <div className="flex justify-between ">
-                <h2 className="text-xs sm:text-sm md:text-lg lg:text-lg ">{category}</h2>
+                <h2 className="text-xs sm:text-sm md:text-lg lg:text-sm xl:text-lg uppercase">{category}</h2>
                 {CollectionIcon && <CollectionIcon size={18} />}
             </div>
             <div>

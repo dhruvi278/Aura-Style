@@ -34,7 +34,7 @@ function History() {
                                 src="https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg"
                                 cardText="FEB 28, 2026"
                                 cardTitle="Casual"
-                                selected={true}
+                                selectedOutfit={true}
                             />
                             <Card
                                 src="https://images.pexels.com/photos/5560028/pexels-photo-5560028.jpeg"
@@ -51,7 +51,7 @@ function History() {
                                 src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg"
                                 cardText="MAR 3, 2026"
                                 cardTitle="Home"
-                                selected={true}
+                                selectedOutfit={true}
                             />
                         </CardGrid>
                     </div>

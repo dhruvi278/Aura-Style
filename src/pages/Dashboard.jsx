@@ -7,21 +7,29 @@ import TitleText from "../components/ui/TitleText";
 import useGeolocation from "../hooks/sensors/useGeoLocation";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useWardrobe } from "../hooks/useWardrobe";
 
 function Dashboard() {
-  const { fetchLocation } = useGeolocation();
-  const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    fetchLocation();
-  }, []);
-  const handleCardClick = (filter) => {
-    navigate(`/wardrobe?filter=${filter}`);
-  };
+    const { fetchLocation } = useGeolocation();
+    const navigate = useNavigate();
+    const { user } = useSelector(state => state.auth)
+    const { overview, fetchOverview } = useWardrobe();
 
-  const full_name = user?.full_name.split(" ")[0] || "Guest";
-  const name = full_name[0].toUpperCase() + full_name.slice(1).toLowerCase();
+    useEffect(() => {
+        fetchLocation();
+        fetchOverview();
+    }, [])
+    const handleCardClick = (category) => {
+        if(category == 'all'){
+            navigate('/wardrobe');
+        } else{
+            navigate(`/wardrobe?filter=${category}`);
+        }
+        
+    }
+    const full_name = user?.full_name.split(" ")[0] || "Guest";
+    const name = full_name[0].toUpperCase() + full_name.slice(1).toLowerCase();
 
   return (
     <main className="page-enter px-10 pt-10 bg-[#F7F4EF] flex flex-col gap-20 lg:w-full xl:items-center">
@@ -38,7 +46,7 @@ function Dashboard() {
         </section>
 
         <section>
-          <CollectionOverview onSelect={handleCardClick} />
+          <CollectionOverview onSelect={handleCardClick} overview={overview}/>
         </section>
 
         <section>

@@ -9,11 +9,10 @@ import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../store/slices/authSlice";
 
-
 const SignUpForm = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const { loading, error } = useSelector(state => state.auth)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { loading } = useSelector((state) => state.auth);
 
   const {
     register,
@@ -24,35 +23,39 @@ const SignUpForm = () => {
     mode: "onTouched",
     reValidateMode: "onChange",
     defaultValues: {
-      fullName: '',
-      email: '',
-      phone: '',
-      password: '',
-      gender: ''
-    }
+      fullName: "",
+      email: "",
+      phone: "",
+      password: "",
+      gender: "",
+    },
   });
 
   const onSubmit = async (data) => {
-    const result = await dispatch(signup({
-      full_name: data.fullName,
-      email: data.email,
-      phone_number: data.phone || '',
-      password: data.password,
-      gender: data.gender
-    }))
+    const result = await dispatch(
+      signup({
+        full_name: data.fullName.trim(),
+        email: data.email.trim(),
+        phone_number: data.phone.trim() || "",
+        password: data.password.trim(),
+        gender: data.gender.trim(),
+      }),
+    );
 
-    if (result.type === 'auth/signup/fulfilled') {
-      toast.success('Welcome to AuraStyle', {
-        description: 'Your account has been created successfully',
-        style: { borderLeft: '3px solid #C9A96E' }
-      })
-      navigate('/login')
+    if (result.type === "auth/signup/fulfilled") {
+      toast.success("Welcome to AuraStyle", {
+        description: "Your account has been created successfully",
+        style: { borderLeft: "3px solid #C9A96E" },
+      });
+      navigate("/login");
     } else {
-      toast.error('Registration failed', {
-        description: typeof result.payload === 'string'
-          ? result.payload
-          : result.payload?.detail || 'Something went wrong — please try again'
-      })
+      toast.error("Registration failed", {
+        description:
+          typeof result.payload === "string"
+            ? result.payload
+            : result.payload?.detail ||
+              "Something went wrong — please try again",
+      });
     }
   };
 
@@ -105,13 +108,13 @@ const SignUpForm = () => {
             register={(name) =>
               register(name, {
                 required: "Full name is required",
-                minLength: {
-                  value: 5,
-                  message: "Name must be at least 5 characters",
-                },
-                pattern: {
-                  value: /^[A-Za-z]+(?: [A-Za-z]+)*$/,
-                  message: "Must use letters only, with spaces between words.",
+                validate: (value) => {
+                  const trimmed = value.trim();
+                  if (trimmed.length < 5)
+                    return "Name must be at least 5 characters";
+                  if (!/^[A-Za-z]+(?: [A-Za-z]+)*$/.test(trimmed))
+                    return "Full name must contain only letters and single spaces between words.";
+                  return true;
                 },
               })
             }
@@ -171,7 +174,8 @@ const SignUpForm = () => {
                 },
                 pattern: {
                   value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@#$%^&*!.]).+$/,
-                  message: "Password must contain at least one letter, one number, and one special character.",
+                  message:
+                    "Password must contain at least one letter, one number, and one special character.",
                 },
               })
             }
@@ -195,11 +199,12 @@ const SignUpForm = () => {
                       type="button"
                       onClick={() => field.onChange(option)}
                       className={`w-full py-2 rounded-full border transition
-                        ${field.value === option
-                          ? "border-[#C4A982] bg-[#C4A982]/10 text-[#C4A982]" // ← selected
-                          : errors.gender
-                            ? "border-red-400 text-[#475569]" // ← error state
-                            : "border-gray-300 text-[#475569]" // ← default
+                        ${
+                          field.value === option
+                            ? "border-[#C4A982] bg-[#C4A982]/10 text-[#C4A982]" // ← selected
+                            : errors.gender
+                              ? "border-red-400 text-[#475569]" // ← error state
+                              : "border-gray-300 text-[#475569]" // ← default
                         }`}
                     >
                       <p className="jost text-[16px]">{option}</p>
@@ -217,9 +222,15 @@ const SignUpForm = () => {
               {errors.gender?.message || " "}
             </p>
           </div>
-          <Button type="submit" disabled={isSubmitting || loading} className="w-full">
+          <Button
+            type="submit"
+            disabled={isSubmitting || loading}
+            className="w-full"
+          >
             <p className="jost py-1 tracking-[2px]">
-              {isSubmitting || loading ? "Creating Account..." : "CREATE ACCOUNT →"}
+              {isSubmitting || loading
+                ? "Creating Account..."
+                : "CREATE ACCOUNT →"}
             </p>
           </Button>
         </form>

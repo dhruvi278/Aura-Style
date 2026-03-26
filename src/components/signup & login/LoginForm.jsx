@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux"
-import { login } from "../../store/slices/authSlice"
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../store/slices/authSlice";
 import Formfield from "../ui/Formfield";
 import Logo from "../ui/Logo";
 import TitleText from "../ui/TitleText";
@@ -9,9 +9,9 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 const LoginForm = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const { loading, error } = useSelector(state => state.auth)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { loading, error } = useSelector((state) => state.auth);
   const {
     register,
     handleSubmit,
@@ -20,29 +20,31 @@ const LoginForm = () => {
     mode: "onTouched",
     reValidateMode: "onChange",
     defaultValues: {
-      email: '',
-      password: '',
-      remember: false
-    }
+      email: "",
+      password: "",
+      remember: false,
+    },
   });
 
   const onSubmit = async (data) => {
-    const result = await dispatch(login({
-      email: data.email,
-      password: data.password,
-      remember: data.remember
-    }))
-    console.log(data)
-    if (result.type === 'auth/login/fulfilled') {
-      toast.success('Welcome back', {
-        description: 'Sign in to your style sanctuary',
-        style: { borderLeft: '3px solid #C9A96E' }
-      })
-      navigate('/dashboard')
+    const result = await dispatch(
+      login({
+        email: data.email,
+        password: data.password,
+        remember: data.remember,
+      }),
+    );
+    console.log(data);
+    if (result.type === "auth/login/fulfilled") {
+      toast.success("Welcome back", {
+        description: "Sign in to your style sanctuary",
+        style: { borderLeft: "3px solid #C9A96E" },
+      });
+      navigate("/dashboard");
     } else {
-      toast.error('Sign in failed', {
-        description: result.payload || 'Please check your credentials'
-      })
+      toast.error("Sign in failed", {
+        description: result.payload || "Please check your credentials",
+      });
     }
   };
 
@@ -87,7 +89,6 @@ const LoginForm = () => {
           />
           <div className=" mb-8 flex justify-between items-center">
             <div className="flex gap-2 items-center">
-
               <label
                 htmlFor="remember"
                 className="work-sans text-[14px] text-[#475569] cursor-pointer"
@@ -95,7 +96,12 @@ const LoginForm = () => {
                 Remember me
               </label>
               <label className="relative inline-flex items-center cursor-pointer">
-                <input type="checkbox" id="remember" {...register("remember")} className="sr-only peer" />
+                <input
+                  type="checkbox"
+                  id="remember"
+                  {...register("remember")}
+                  className="sr-only peer"
+                />
                 <div className="w-9 h-5 bg-gray-200 peer-focus:outline-none  rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all duration-200 dark:border-gray-600 peer-checked:bg-[#C4A982]"></div>
               </label>
             </div>
@@ -103,7 +109,11 @@ const LoginForm = () => {
               Forgot your password?
             </Link>
           </div>
-          <Button type="submit" disabled={isSubmitting || loading} className="w-full">
+          <Button
+            type="submit"
+            disabled={isSubmitting || loading}
+            className="w-full"
+          >
             <p className="jost py-1 tracking-[2px]">
               {isSubmitting || loading ? "Signing in..." : "Sign In"}
             </p>

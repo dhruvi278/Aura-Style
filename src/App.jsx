@@ -1,5 +1,5 @@
 // import './App.css'
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Navbar from "./components/ui/Navbar";
 import HomePage from "./pages/HomePage";
 import Wardrobe from "./pages/Wardrobe";
@@ -9,19 +9,24 @@ import Dashboard from "./pages/Dashboard";
 import Support from "./pages/Support";
 import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
-import { Toaster } from "sonner";
+import { toast, Toaster } from "sonner";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import History from "./pages/History";
 import { useDispatch, useSelector } from "react-redux";
 import { getToken } from "./utils/accessTokenStorage";
 import { fetchMe, setInitialized } from "./store/slices/authSlice";
 import { GuestRoute, ProtectedRoute } from "./components/routes/ProtectedRoute";
+import PageNotFound from "./pages/PageNotFound";
+import useTokenExpiry from "./hooks/useTokenExpiry";
 
 function App() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isInitialized } = useSelector((state) => state.auth);
   const { pathname } = useLocation();
+
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     if (getToken()) {
@@ -31,9 +36,33 @@ function App() {
     }
   }, []);
 
+  useTokenExpiry();
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [pathname]);
+
+  useEffect(() => {
+    const handleAuthLogout = () => {
+      dispatch({ type: "auth/logout/fulfilled" });
+      navigate("/login", { replace: true });
+      toast.error("Session expired", {
+        description: "Please sign in again to continue",
+      });
+    };
+
+    window.addEventListener("auth:logout", handleAuthLogout);
+    return () => window.removeEventListener("auth:logout", handleAuthLogout);
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // if (!isInitialized) {
   //   return (
@@ -45,7 +74,7 @@ function App() {
   return (
     <>
       <Toaster
-        position="bottom-right"
+        position={isMobile? 'top-center' : 'bottom-center'}
         gap={12}
         visibleToasts={3}
         toastOptions={{
@@ -79,6 +108,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/support" element={<Support />} />
+        <Route path="*" element={<PageNotFound />} />
 
         <Route element={<GuestRoute />}>
           <Route path="/login" element={<LoginPage />} />

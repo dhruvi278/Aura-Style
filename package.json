@@ -32,6 +32,7 @@
     "flowbite": "^4.0.1",
     "flowbite-datepicker": "^2.0.0",
     "flowbite-react": "^0.12.17",
+    "jwt-decode": "^4.0.0",
     "lucide-react": "^0.577.0",
     "node-vibrant": "^4.0.4",
     "path": "^0.12.7",

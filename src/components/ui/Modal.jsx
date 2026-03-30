@@ -57,8 +57,6 @@ function Modal({
       <div
         aria-hidden="true"
         onClick={onClose}
-        onWheel={(e) => e.preventDefault()}
-        onTouchMove={(e) => e.preventDefault()}
         className="absolute left-0 right-0 bottom-0 top-0 bg-[#1C1C1A]/40 backdrop-blur-sm transition-opacity duration-300"
       />
 

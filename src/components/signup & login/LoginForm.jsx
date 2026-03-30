@@ -115,7 +115,7 @@ const LoginForm = () => {
             className="w-full"
           >
             <p className="jost py-1 tracking-[2px]">
-              {isSubmitting || loading ? "Signing in..." : "Sign In"}
+              {isSubmitting || loading ? "Signing in..." : "SIGN IN"}
             </p>
           </Button>
         </form>

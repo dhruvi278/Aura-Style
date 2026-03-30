@@ -87,8 +87,8 @@ function Wardrobe() {
     setUploadOpen(false);
 
     const uploadItem = upload({ file }).then((result) => {
-      if (uploadItem.type === "wardrobe/uploadItem/rejected") {
-        throw new Error(result.payload || "Uplod failed");
+      if (result.type === "wardrobe/upload/rejected") {
+        throw new Error(result.payload || "Upload failed");
       }
       return result;
     });
@@ -107,10 +107,11 @@ function Wardrobe() {
   };
 
   return (
-    <div className="page-enter flex flex-col gap-5 lg:justify-center lg:items-center lg:w-full pt-12 bg-[#F7F4EF] min-h-[calc(100dvh-72px)] lg:min-h-[calc(100dvh-80px)]">
-      <div className="flex flex-col gap-10 px-6 sm:px-8 lg:px-12 w-full max-w-6xl mx-auto flex-1">
+    <div className="page-enter flex flex-col gap-5 pt-12 bg-[#F7F4EF] min-h-[calc(100dvh-72px)] lg:min-h-[calc(100dvh-80px)]">
+      <div className="flex flex-col gap-10 px-6 sm:px-8 lg:px-12 w-full max-w-6xl mx-auto">
         <section
           aria-label="My wardrobe"
+          role="region"
           className="flex flex-col md:flex-row md:justify-between md:items-end gap-4"
         >
           <div>
@@ -132,7 +133,6 @@ function Wardrobe() {
             </span>
           </Button>
         </section>
-
         {/* Filter Bar */}
         <div className="sticky top-18 z-40 bg-[#F7F4EF] backdrop-blur-md py-3 w-full border-b border-[#E7E1CF]/40 flex flex-col lg:gap-0 lg:flex-row lg:items-end justify-between">
           <FilterTabs
@@ -142,19 +142,27 @@ function Wardrobe() {
           <SearchOutfit value={searchQuery} onChange={setSearch} />
         </div>
 
-        <div className="flex-1 flex flex-col">
+        <main aria-label="Wardrobe items">
           {loading && items.length === 0 ? (
             <p className="text-center playfair italic text-2xl mt-12">
               Loading wardrobe...
             </p>
           ) : items.length === 0 ? (
-            <div className="flex-1 flex items-center justify-center">
-              <p className="text-center playfair italic text-2xl">
+            <section
+              aria-label="Empty wardrobe"
+              className="w-full flex flex-col items-center justify-center py-20 gap-3"
+            >
+              <p className="playfair italic text-2xl text-[#1C1C1A]">
                 {searchQuery
-                  ? `No items found for "${searchQuery}"`
-                  : "No items Found"}
+                  ? `No results for "${searchQuery}"`
+                  : "Your wardrobe is empty"}
               </p>
-            </div>
+              <p className="jost text-sm text-[#6B6460]">
+                {searchQuery
+                  ? "Try a different search term"
+                  : "Upload your first piece to get started"}
+              </p>
+            </section>
           ) : (
             <CardGrid>
               {Array.isArray(items) &&
@@ -171,21 +179,22 @@ function Wardrobe() {
                   />
                 ))}
               {currentPage === totalPage && (
-                <div className="w-4xs  ">
+                <div className="w-4xs">
                   <Card uploadModal={() => setUploadOpen(true)} type="upload" />
                 </div>
               )}
             </CardGrid>
           )}
-        </div>
-
-        <div>
-          <Pagination
-            totalPages={totalPage}
-            currentPage={currentPage}
-            onPageChange={setCurrentPage}
-          />
-        </div>
+        </main>
+        {items.length > 0 && (
+          <nav aria-label="Wardrobe pagination">
+            <Pagination
+              totalPages={totalPage}
+              currentPage={currentPage}
+              onPageChange={setCurrentPage}
+            />
+          </nav>
+        )}
       </div>
 
       {/* Upload Modal */}
@@ -226,9 +235,19 @@ function Wardrobe() {
             <Button
               onClick={() => {
                 if (deleteItemSelected) {
-                  const deletItemPromise = deleteItem(deleteItemSelected.c_id);
+                  const deletItemPromise = deleteItem(
+                    deleteItemSelected.c_id,
+                  ).then((result) => {
+                    if (result.type == "wardrobe/delete/rejected") {
+                      throw new Error(result.payload || "Delete Failed");
+                    }
+                  });
                   toast.promise(deletItemPromise, {
+                    loading: "Deleting item .....",
                     success: "This piece has been deleted from your wardrobe",
+                    error: (err) =>
+                      err.message ||
+                      "Please check your connection and try again.",
                   });
                 }
                 setDeleteOpen(false);

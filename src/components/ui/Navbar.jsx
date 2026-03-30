@@ -70,22 +70,22 @@ function Navbar() {
 
   return (
     <>
-      <nav className="bg-[#faf2e5]/80 backdrop-blur-sm shadow-md sticky top-0 w-full z-50">
-        <div className="min-full mx-auto px-6 py-4 flex justify-between items-center">
+      <nav className="bg-[#faf2e5]/80 backdrop-blur-md shadow-[0_2px_16px_rgba(28,28,26,0.08)] sticky top-0 w-full z-50">
+        <div className="min-w-full mx-auto px-6 py-4 flex justify-between items-center">
           <div onClick={() => navigate("/")} className="cursor-pointer">
             <Logo />
           </div>
           {/* Desktop view */}
-          <ul className="hidden lg:flex gap-7 text-gray-700 font-medium">
+          <ul className="hidden lg:flex gap-7 font-medium">
             {(isLoggedIn ? privateLinks : publicLinks).map((link) => (
               <li key={link.path}>
                 <NavLink
                   to={link.path}
                   className={({ isActive }) =>
-                    `pb-1 transition-colors duration-200 ${
+                    `jost text-base tracking-wide pb-1 transition-colors duration-200 ${
                       isActive
-                        ? "border-b-2 border-gray-700"
-                        : "hover: text-black"
+                        ? "border-b-2 border-[#BF9A5E] text-[#1C1C1A]"
+                        : "text-[#6B6460] hover:text-[#1C1C1A]"
                     }`
                   }
                 >
@@ -96,65 +96,81 @@ function Navbar() {
           </ul>
           {/* LogOut option for Logged In user  */}
 
-          <div className="hidden lg:flex gap-4 ">
+          <div className="hidden lg:flex items-center gap-4 ">
             {isLoggedIn ? (
               <>
                 <Button
                   onClick={handleLogout}
                   type="submit"
-                  children="LOGOUT"
                   variant="transparent"
                   className="flex items-center gap-2"
                 >
-                  <LogOut size={18} />
-                  LOGOUT
+                  <LogOut size={18} aria-hidden="true" />
+                  <span className="jost text-sm tracking-widest uppercase">
+                    Logout
+                  </span>
                 </Button>
               </>
             ) : (
               <>
                 <Button
                   type={"button"}
-                  children="Sign In"
                   variant="transparent"
                   onClick={() => navigate("/login")}
-                />
+                >
+                  <span className="jost text-base">Sign In</span>
+                </Button>
 
                 <Button
                   type="button"
-                  children="Get Start"
                   variant="primary"
                   onClick={() => navigate("/signup")}
-                />
+                >
+                  <span className="jost text-base tracking-wide">
+                    Get Started
+                  </span>
+                </Button>
               </>
             )}
           </div>
 
           <div className="lg:hidden flex items-center">
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md hover:bg-gray-200 transition-colors duration-200"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              className="p-2 rounded-lg hover:bg-[#EDE9E2] text-[#1C1C1A] transition-colors duration-200"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? (
+                <X size={24} aria-hidden="true" />
+              ) : (
+                <Menu size={24} aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
       </nav>
 
-      <div
+      {isOpen &&<div
         ref={sidebarRef}
-        className={`lg:hidden fixed  right-0  h-[calc(100dvh-72px)] w-55 bg-[#faf2e5]/80 backdrop-blur-md p-6 
-                z-60 transform transition-transform duration-300 shadow-lg flex flex-col justify-between 
-                ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+        className={`lg:hidden fixed top-[72px] right-0 h-[calc(100dvh-72px)] w-64 bg-[#F5F0E8]/95 backdrop-blur-md
+            z-40 transition-transform duration-300 ease-in-out
+            shadow-[-4px_0_24px_rgba(28,28,26,0.08)]
+            flex flex-col justify-between
+            ${isOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         {/* Mobile view */}
-        <ul className="flex flex-col gap-6 text-gray-700 font-medium ">
+        <ul className="flex flex-col gap-1 p-6">
           {(isLoggedIn ? privateLinks : publicLinks).map((link) => (
             <li onClick={() => setIsOpen(false)} key={link.path}>
               <NavLink
                 to={link.path}
                 className={({ isActive }) =>
-                  `pb-1 transition-colors duration-200 ${
-                    isActive ? "border-b-2 border-gray-700" : "text-black"
+                  `block px-3 py-2.5 rounded-lg jost text-sm font-medium transition-colors duration-200 ${
+                    isActive
+                      ? "bg-[#BF9A5E]/10 text-[#1C1C1A] border-l-2 border-[#BF9A5E]"
+                      : "text-[#6B6460] hover:bg-[#EDE9E2] hover:text-[#1C1C1A]"
                   }`
                 }
               >
@@ -163,7 +179,7 @@ function Navbar() {
             </li>
           ))}
         </ul>
-        <div className="pt-4 border-t border-[#c0c0b391] text-center">
+        <div className="p-6 border-t border-[#E2D9C4] flex flex-col gap-3">
           {isLoggedIn ? (
             <>
               <Button
@@ -171,10 +187,12 @@ function Navbar() {
                 type="submit"
                 children="LOGOUT"
                 variant="transparent"
-                className="flex items-center gap-2"
+                className="w-full flex items-center justify-center gap-2"
               >
-                <LogOut size={18} />
-                LOGOUT
+                <LogOut size={16} aria-hidden="true" />
+                <span className="jost text-sm tracking-widest uppercase">
+                  Logout
+                </span>
               </Button>
             </>
           ) : (
@@ -184,22 +202,28 @@ function Navbar() {
                   navigate("/login");
                   setIsOpen(false);
                 }}
-                children="Sign In"
                 variant="transparent"
-              />
+                className={"w-full"}
+              >
+                <span className="jost text-base">Sign In</span>
+              </Button>
 
               <Button
                 onClick={() => {
                   navigate("/signup");
                   setIsOpen(false);
                 }}
-                children="Get Start"
                 variant="primary"
-              />
+                className={`w-full`}
+              >
+                <span className="jost text-base tracking-wide">
+                  Get Started
+                </span>
+              </Button>
             </>
           )}
         </div>
-      </div>
+      </div>}
     </>
   );
 }

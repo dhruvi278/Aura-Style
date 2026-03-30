@@ -97,12 +97,15 @@ function ProfileForm() {
   };
 
   return (
-    <div className="bg-[#FDFAF6] px-10 py-8 rounded-4xl w-2xs lg:w-lg mb-7 xl:w-xl md:w-lg">
-      <h2 className="pb-4 border-b mb-5 flex items-center gap-2 border-gray-300 jost uppercase text-sm  font-medium text-[#C5A059] tracking-[3px]">
+    <section
+      aria-label="Profile Update form"
+      className="bg-[#FDFAF6] px-6 sm:px-8 py-6 lg:py-7 rounded-3xl shadow-[0_4px_24px_rgba(28,28,26,0.08)] w-full max-w-xs md:max-w-lg lg:max-w-lg mb-0"
+    >
+      <h2 className="pb-4 border-b mb-5 flex items-center gap-2 border-[#E7E1CF] jost uppercase text-sm font-medium text-[#C9A96E] tracking-[3px]">
         <CircleUserRound size={20} />
         <span>My Profile</span>
       </h2>
-      <form className="mx-4" onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Formfield
           label="Full name"
           type="text"
@@ -165,7 +168,7 @@ function ProfileForm() {
         />
 
         <div className="flex flex-col gap-2 mb-4">
-          <label className="jost uppercase text-sm font-medium text-[#C5A059]">
+          <label className="jost uppercase text-sm font-medium text-[#C9A96E]">
             Gender Identity
           </label>
 
@@ -174,7 +177,7 @@ function ProfileForm() {
             control={control}
             rules={{ required: "Please select a gender identity" }}
             render={({ field }) => (
-              <div className="flex gap-6 w-full">
+              <div className="flex gap-3 sm:gap-6 w-full">
                 {["Male", "Female"].map((option) => (
                   <button
                     key={option}
@@ -204,11 +207,12 @@ function ProfileForm() {
           </p>
         </div>
 
-        <div className="flex flex-col justify-between gap-3 sm:flex-row mt-10">
+        <div className="flex flex-col sm:flex-row justify-between gap-3 mt-10">
           <Button
             type="submit"
             variant="primary"
-            disabled={updateLoading || !isDirty} // ← grey out if nothing changed
+            disabled={updateLoading || !isDirty}
+            className={`w-full sm:w-auto`}
           >
             <span className="px-5 jost">
               {updateLoading ? "Saving..." : "Save Changes"}
@@ -220,12 +224,13 @@ function ProfileForm() {
             variant="ghost"
             onClick={onCancel}
             disabled={updateLoading || !isDirty}
+            className={`w-full sm:w-auto`}
           >
-            <span className="px-10 md:px-7 lg:px-12 jost">Cancel</span>
+            <span className="px-6 jost">Cancel</span>
           </Button>
         </div>
       </form>
-    </div>
+    </section>
   );
 }
 export default ProfileForm;

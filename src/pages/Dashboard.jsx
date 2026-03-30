@@ -20,6 +20,7 @@ function Dashboard() {
         fetchLocation();
         fetchOverview();
     }, [])
+    
     const handleCardClick = (category) => {
         if(category == 'all'){
             navigate('/wardrobe');

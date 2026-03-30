@@ -6,61 +6,110 @@ import Card from "../components/ui/Card";
 import CardGrid from "../components/ui/CardGrid";
 import Pagination from "../components/ui/Pagination";
 import TotalItems from "../components/wardrobe/TotalItems";
+import useOutfitHistory from "../hooks/useHistory";
+import { useEffect, useState } from "react";
 
 function History() {
-    return (
-        <div className="page-enter px-4 sm:px-6 lg:px-10 pt-10 bg-[#F7F4EF]  flex flex-col gap-8 lg:items-center lg:justify-center min-h-[calc(100dvh-80px)]">
-            <div className="max-w-6xl flex flex-col gap-3 ">
-                <header>
-                    <TitleText title="Your Style Archive" description="" />
-                </header>
+  const {
+    filteredOutfits,
+    totalOutfits,
+    loading,
+    error,
+    searchOccasion,
+    dateRange,
+    handleSearch,
+    handleDateRange,
+    handleClear,
+  } = useOutfitHistory();
 
-                <TotalItems items={4} items_name={`look`} />
+  const itemPerPage = 4;
+  const totalPage = Math.ceil(filteredOutfits.length / itemPerPage);
+  const [currentPage, setCurrentPage] = useState(1);
+  const startIdx = (currentPage - 1) * itemPerPage;
+  const endIdx = startIdx + itemPerPage;
+  const currentOutfits = filteredOutfits.slice(startIdx, endIdx);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchOccasion, dateRange]);
+  return (
+    <div className="page-enter px-4 sm:px-6 lg:px-10 pt-10 pb-10 bg-[#F7F4EF] flex flex-col gap-8 min-h-[calc(100dvh-72px)] lg:min-h-[calc(100dvh-80px)]">
+      <div className="w-full max-w-6xl mx-auto flex flex-col gap-3 ">
+        <header>
+          <TitleText title="Your Style Archive" description="" />
+        </header>
 
-                {/* Search + Date Range */}
-                <section>   
-                    <div className="flex flex-col gap-4 lg:flex-row sm:items-start sm:justify-between lg:items-end">
-                        <SearchOutfit />
-                        <DateFilter />
-                    </div>
-                </section>
+        <TotalItems items={totalOutfits} items_name={`look`} />
 
-                {/* Card Grid */}
-                <section>
-                    <div>
-                        <CardGrid showUpload={false}>
-                            <Card
-                                src="https://images.pexels.com/photos/6333499/pexels-photo-6333499.jpeg"
-                                cardText="FEB 28, 2026"
-                                cardTitle="Casual"
-                                selectedOutfit={true}
-                            />
-                            <Card
-                                src="https://images.pexels.com/photos/5560028/pexels-photo-5560028.jpeg"
-                                cardText="MAR 1, 2026"
-                                cardTitle="Formal"
-                            />
-                            <Card
-                                src="https://images.pexels.com/photos/2002717/pexels-photo-2002717.jpeg"
-                                cardText="MAR 2, 2026"
-                                cardTitle="Social"
-                                
-                            />
-                            <Card
-                                src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg"
-                                cardText="MAR 3, 2026"
-                                cardTitle="Home"
-                                selectedOutfit={true}
-                            />
-                        </CardGrid>
-                    </div>
-                </section>
-            </div>
-            <Pagination />
-        </div>
-    )
+        {/* Search + Date Range */}
+        <section>
+          <div className="flex flex-col gap-4 lg:flex-row sm:items-start sm:justify-between lg:items-end">
+            <SearchOutfit onChange={handleSearch} value={searchOccasion} />
+            <DateFilter onDateChange={handleDateRange} />
+          </div>
+        </section>
+
+        {totalOutfits === 0 && (
+          <section
+            aria-label="Empty history"
+            className="w-full flex flex-col items-center justify-center py-20 gap-3"
+          >
+            <p className="playfair italic font-semibold text-2xl text-[#1C1C1A]">
+              No looks yet
+            </p>
+            <p className="jost text-sm text-[#6B6460]">
+              Your generated outfits will appear here
+            </p>
+          </section>
+        )}
+        {totalOutfits > 0 && filteredOutfits.length === 0 && (
+          <section
+            aria-label="No results"
+            className="w-full flex flex-col items-center justify-center py-20 gap-3"
+          >
+            <p className="playfair italic text-2xl text-[#1C1C1A]">
+              No outfits found
+            </p>
+            <p className="jost text-sm text-[#6B6460]">
+              Try adjusting your search or date range
+            </p>
+          </section>
+        )}
+
+        {/* Card Grid */}
+        <section>
+          <CardGrid showUpload={false}>
+            {filteredOutfits &&
+              currentOutfits.map((item, i) => (
+                <Card
+                  key={item.outfit_id}
+                  cardTitle={item.occasion}
+                  cardText={new Date(item.created_at)
+                    .toDateString()
+                    .split(" ")
+                    .slice(1)
+                    .join(" ")}
+                  selectedOutfit={item.is_selected}
+                  src={
+                    item.tryon_image
+                      ? item.tryon_image
+                      : "https://images.pexels.com/photos/6899209/pexels-photo-6899209.jpeg"
+                  }
+                  alt={`outfit for ${item.occasion}`}
+                />
+              ))}
+          </CardGrid>
+        </section>
+      </div>
+      {filteredOutfits.length > 0 && (
+        <Pagination
+          onPageChange={setCurrentPage}
+          totalPages={totalPage}
+          currentPage={currentPage}
+        />
+      )}
+    </div>
+  );
 }
 
 export default History;
-

@@ -23,7 +23,7 @@ export const getTokenExpiry = () => {
   if (!token) return null;
   try {
     const decode = jwtDecode(token);
-    console.log(decode)
+    // console.log(decode)
     return decode.exp * 1000;
   } catch {
     return null;

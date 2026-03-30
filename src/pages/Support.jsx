@@ -2,6 +2,7 @@ import React from 'react'
 import TitleText from '../components/ui/TitleText'
 import FrequentlyQuestions from '../components/support/FrequentlyQuestions'
 import Contact from '../components/support/Contact'
+import InquiryCard from '../components/support/InquiryCard'
 
 function Support() {
     return (
@@ -10,6 +11,7 @@ function Support() {
                 <TitleText title='How may we assist you?' description='Experience our bespoke support services, tailored to your unique style journey.
             Search our archives or reach out to your dedicated stylist.' />
             <FrequentlyQuestions />
+            <InquiryCard/>
             <Contact />
             </div>
         </main>

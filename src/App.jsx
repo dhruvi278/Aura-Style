@@ -11,7 +11,7 @@ import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
 import { toast, Toaster } from "sonner";
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import History from "./pages/History";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -29,9 +29,12 @@ function App() {
   const navigate = useNavigate();
   const { isInitialized } = useSelector((state) => state.auth);
   const { pathname } = useLocation();
-
+  const pathnameRef = useRef(pathname);
   const [isMobile, setIsMobile] = useState(false);
 
+  useEffect(() => {
+    pathnameRef.current = pathname;
+  }, [pathname]);
   useEffect(() => {
     const token = getToken();
     if (!token) {
@@ -56,7 +59,7 @@ function App() {
     const handleAuthLogout = () => {
       dispatch({ type: "auth/logout/fulfilled" });
       navigate("/login", { replace: true });
-      if (pathname !== "/login") {
+      if (pathnameRef.current !== "/login") {
         toast.error("Session expired", {
           description: "Please sign in again to continue",
         });
@@ -116,6 +119,7 @@ function App() {
           },
         }}
       />
+      
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />

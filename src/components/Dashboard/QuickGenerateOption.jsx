@@ -17,7 +17,7 @@ function QuickGenerateOption() {
     return (
         <div className="bg-[#1C1C1A] py-5 px-2.5 lg:p-8 md:p-8 rounded-3xl mb-3">
             {/* <div className="bg-[#1C1C1A] py-5 px-3 sm:px-4 lg:p-8 md:p-8 rounded-3xl mb-3"> */}
-            <h2 className="text-white text-2xl lg:text-3xl md:text-3xl px-3 playfair-display">What's the Occassion?</h2>
+            <h2 className="text-white text-2xl lg:text-3xl md:text-3xl px-3 playfair-display">Select the Occasion</h2>
             <div className="hidden md:flex justify-end">
                 <Button type="submit" variant="secondray" className="flex justify-end "onClick={handleGenerate}><span className=" flex px-5 gap-3 work-sans font-bold "><WandSparkles />Generate Outfit</span></Button>
             </div>

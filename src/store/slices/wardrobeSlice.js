@@ -6,7 +6,6 @@ export const fetchItems = createAsyncThunk(
     async (params,{rejectWithValue}) =>{
         try{
             const res = await fetchItemsAPI(params);
-            console.log('Fetch data: ' , res.data.total);
             
             return res.data;
 
@@ -27,8 +26,12 @@ export const uploadItem = createAsyncThunk(
       const res = await uploadItemAPI(formData);
       return res.data;
     } catch (err) {
-      
-      return rejectWithValue(err.response?.data?.detail || err.message || 'Upload failed');
+      const message =
+                err.response?.data?.detail ||
+                err.response?.data?.message ||
+                err.message ||
+                'Upload failed';
+        return rejectWithValue(message);
     }
   }
 );
@@ -37,7 +40,6 @@ export const deleteItem = createAsyncThunk(
     async(itemId,{rejectWithValue}) =>{
         try{
             await deleteItemAPI(itemId);
-            console.log(itemId);
             return itemId;
         } catch(err){
             return rejectWithValue(err.response?.detail || 'Delete Failed');
